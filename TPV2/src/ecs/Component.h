@@ -1,7 +1,9 @@
 #ifndef COMPONENT_H_
 #define COMPONENT_H_
 
-#include "Entity.h"
+class Entity;
+
+class Manager;
 
 class Component
 {

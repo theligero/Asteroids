@@ -10,12 +10,12 @@ Entity::~Entity()
 
 }
 
-inline bool Entity::isAlive()
+bool Entity::isAlive()
 {
 	return alive;
 }
 
-inline void Entity::setAlive(const bool& al)
+void Entity::setAlive(const bool& al)
 {
 	alive = al;
 }

@@ -13,7 +13,7 @@ Manager::~Manager()
 Entity* Manager::addEntity()
 {
 	Entity* e = new Entity();
-	e->setAlive(true);
+	// e->setAlive(true);
 	// e->setContext(this);
 	ents.push_back(e);
 	return e;

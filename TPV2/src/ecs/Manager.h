@@ -2,8 +2,7 @@
 #define MANAGER_H_
 
 #include "Entity.h"
-
-class Entity;
+#include <vector>
 
 class Manager
 {

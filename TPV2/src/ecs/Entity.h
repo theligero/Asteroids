@@ -1,20 +1,16 @@
 #ifndef ENTITY_H_
 #define ENTITY_H_
 
+#include "Component.h"
 #include <vector>
-#include "Manager.h"
-
-class Component;
-
-class Manager;
 
 class Entity
 {
 public:
 	Entity();
 	virtual ~Entity();
-	inline bool isAlive();
-	inline void setAlive(const bool& al);
+	bool isAlive();
+	void setAlive(const bool& al);
 	template <typename T, typename ...Ts>
 	inline T* addComponent();
 	inline void deleteComponent();
