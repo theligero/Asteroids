@@ -18,10 +18,10 @@ public:
 	void setAlive(const bool& al);
 	//template <typename T, typename ...Ts>
 	//inline T* addComponent(cmpId_type cId, Ts &&…args);
-	inline void removeComponent(cmpId_type cId);
+	void removeComponent(cmpId_type cId);
 	template <typename T>
-	inline T* getComponent(cmpId_type cId);
-	inline bool hasComponent(cmpId_type cId);
+	T* getComponent(cmpId_type cId);
+	bool hasComponent(cmpId_type cId);
 	virtual void update();
 	virtual void render();
 private:

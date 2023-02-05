@@ -1,14 +1,1 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  DisableOnExit.cpp
-DeAcceleration.obj : error LNK2019: símbolo externo "public: class Vector2D & __cdecl Transform::getDir(void)" (?getDir@Transform@@QEAAAEAVVector2D@@XZ) sin resolver al que se hace referencia en la función "public: virtual void __cdecl DeAcceleration::update(void)" (?update@DeAcceleration@@UEAAXXZ)
-DeAcceleration.obj : error LNK2019: símbolo externo "public: class Transform * __cdecl Entity::getComponent<class Transform>(unsigned char)" (??$getComponent@VTransform@@@Entity@@QEAAPEAVTransform@@E@Z) sin resolver al que se hace referencia en la función "public: __cdecl DeAcceleration::DeAcceleration(void)" (??0DeAcceleration@@QEAA@XZ)
-DisableOnExit.obj : error LNK2001: símbolo externo "public: class Transform * __cdecl Entity::getComponent<class Transform>(unsigned char)" (??$getComponent@VTransform@@@Entity@@QEAAPEAVTransform@@E@Z) sin resolver
-Image.obj : error LNK2001: símbolo externo "public: class Transform * __cdecl Entity::getComponent<class Transform>(unsigned char)" (??$getComponent@VTransform@@@Entity@@QEAAPEAVTransform@@E@Z) sin resolver
-ShowAtOpposideSide.obj : error LNK2001: símbolo externo "public: class Transform * __cdecl Entity::getComponent<class Transform>(unsigned char)" (??$getComponent@VTransform@@@Entity@@QEAAPEAVTransform@@E@Z) sin resolver
-DisableOnExit.obj : error LNK2019: símbolo externo "public: float & __cdecl Transform::getW(void)" (?getW@Transform@@QEAAAEAMXZ) sin resolver al que se hace referencia en la función "public: __cdecl DisableOnExit::DisableOnExit(void)" (??0DisableOnExit@@QEAA@XZ)
-Image.obj : error LNK2001: símbolo externo "public: float & __cdecl Transform::getW(void)" (?getW@Transform@@QEAAAEAMXZ) sin resolver
-DisableOnExit.obj : error LNK2019: símbolo externo "public: float & __cdecl Transform::getH(void)" (?getH@Transform@@QEAAAEAMXZ) sin resolver al que se hace referencia en la función "public: __cdecl DisableOnExit::DisableOnExit(void)" (??0DisableOnExit@@QEAA@XZ)
-Image.obj : error LNK2001: símbolo externo "public: float & __cdecl Transform::getH(void)" (?getH@Transform@@QEAAAEAMXZ) sin resolver
-Image.obj : error LNK2019: símbolo externo "public: class Vector2D & __cdecl Transform::getPos(void)" (?getPos@Transform@@QEAAAEAVVector2D@@XZ) sin resolver al que se hace referencia en la función "public: virtual void __cdecl Image::render(void)" (?render@Image@@UEAAXXZ)
-Image.obj : error LNK2019: símbolo externo "public: float & __cdecl Transform::getRot(void)" (?getRot@Transform@@QEAAAEAMXZ) sin resolver al que se hace referencia en la función "public: virtual void __cdecl Image::render(void)" (?render@Image@@UEAAXXZ)
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\bin\AsteroidsDebug.exe : fatal error LNK1120: 6 externos sin resolver
+﻿

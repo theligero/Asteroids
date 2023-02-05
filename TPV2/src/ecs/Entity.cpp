@@ -43,7 +43,7 @@ void Entity::setAlive(const bool& al)
 //	return c;
 //}
 
-inline void Entity::removeComponent(cmpId_type cId)
+void Entity::removeComponent(cmpId_type cId)
 {
 	if (cmps[cId] != nullptr) {
 		auto it = std::find(currCmps.begin(), currCmps.end(), cmps[cId]);
@@ -54,12 +54,12 @@ inline void Entity::removeComponent(cmpId_type cId)
 }
 
 template<typename T>
-inline T* Entity::getComponent(cmpId_type cId)
+T* Entity::getComponent(cmpId_type cId)
 {
 	return static_cast<T*>(cmps[cId]);
 }
 
-inline bool Entity::hasComponent(cmpId_type cId)
+bool Entity::hasComponent(cmpId_type cId)
 {
 	return cmps[cId] != nullptr;
 }

@@ -3,20 +3,20 @@
 
 Image::Image(Texture* t)
 {
-	tex = t;
-	tr = ent->getComponent<Transform>(TRANSFORM);
-	assert(tr != nullptr);
+	//tex = t;
+	//tr = ent->getComponent<Transform>(TRANSFORM);
+	//assert(tr != nullptr);
 }
 
 Image::~Image()
 {
-	delete tex;
+	// delete tex;
 }
 
 void Image::render()
 {
-	SDL_Rect dest = build_sdlrect(tr->getPos(),
+	/*SDL_Rect dest = build_sdlrect(tr->getPos(),
 		tr->getW(),
 		tr->getH());
-	tex->render(dest, tr->getRot());
+	tex->render(dest, tr->getRot());*/
 }

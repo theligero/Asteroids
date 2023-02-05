@@ -9,11 +9,11 @@ class Transform : public Component
 public:
 	Transform(float w, float h, float r) : width(w), height(h), rotation(r) {}
 	virtual ~Transform() {}
-	inline Vector2D& getPos();
-	inline Vector2D& getDir();
-	inline float& getW();
-	inline float& getH();
-	inline float& getRot();
+	Vector2D& getPos();
+	Vector2D& getDir();
+	float& getW();
+	float& getH();
+	float& getRot();
 
 	void update();
 private:

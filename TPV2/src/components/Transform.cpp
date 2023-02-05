@@ -1,26 +1,26 @@
 #include "Transform.h"
 
-inline Vector2D& Transform::getPos()
+Vector2D& Transform::getPos()
 {
 	return pos;
 }
 
-inline Vector2D& Transform::getDir()
+Vector2D& Transform::getDir()
 {
 	return dir;
 }
 
-inline float& Transform::getW()
+float& Transform::getW()
 {
 	return width;
 }
 
-inline float& Transform::getH()
+float& Transform::getH()
 {
 	return height;
 }
 
-inline float& Transform::getRot()
+float& Transform::getRot()
 {
 	return rotation;
 }

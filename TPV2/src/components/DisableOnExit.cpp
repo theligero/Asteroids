@@ -3,9 +3,9 @@
 
 DisableOnExit::DisableOnExit()
 {
-	tr = ent->getComponent<Transform>(TRANSFORM);
-	widthTr = tr->getW();
-	heightTr = tr->getH();
+	//tr = ent->getComponent<Transform>(TRANSFORM);
+	//widthTr = tr->getW();
+	//heightTr = tr->getH();
 }
 
 void DisableOnExit::update()

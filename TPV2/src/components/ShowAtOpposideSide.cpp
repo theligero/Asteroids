@@ -3,7 +3,7 @@
 
 ShowAtOpposideSide::ShowAtOpposideSide()
 {
-	tr = ent->getComponent<Transform>(TRANSFORM);
+	// tr = ent->getComponent<Transform>(TRANSFORM);
 }
 
 void ShowAtOpposideSide::update()
