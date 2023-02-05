@@ -37,6 +37,18 @@
     <Filter Include="Source Files\ecs">
       <UniqueIdentifier>{7165758b-a21b-4b9c-9160-52df0f4cff2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\components">
+      <UniqueIdentifier>{71f912c7-61b1-4ec1-92d3-798a493c7b32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game">
+      <UniqueIdentifier>{c36bd9d1-b87b-4480-9f45-cd21cd7ff4d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\components">
+      <UniqueIdentifier>{952686f8-bac8-4611-aa81-c1743d778c44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{00dbf376-a698-478a-9766-be20ecd66aa3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\json\JSONValue.h">
@@ -102,6 +114,42 @@
     <ClInclude Include="src\ecs\Manager.h">
       <Filter>Header Files\ecs</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\ecs_def.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Transform.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\DeAcceleration.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Image.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\DisableOnExit.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\FighterCtrl.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Follow.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\FramedImage.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Generations.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Gun.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Health.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\ShowAtOpposideSide.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -142,6 +190,39 @@
     </ClCompile>
     <ClCompile Include="src\ecs\Component.cpp">
       <Filter>Source Files\ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Transform.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\DeAcceleration.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Image.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\DisableOnExit.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\FighterCtrl.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Follow.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\FramedImage.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Generations.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Gun.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Health.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\ShowAtOpposideSide.cpp">
+      <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

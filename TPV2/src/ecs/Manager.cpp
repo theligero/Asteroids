@@ -1,20 +1,22 @@
 #include "Manager.h"
 
-Manager::Manager() 
+Manager::Manager() : ents()
 {
-
+	ents.reserve(100);
 }
 
 Manager::~Manager()
 {
-
+	for (auto& e : ents) {
+		delete e;
+	}
 }
 
 Entity* Manager::addEntity()
 {
 	Entity* e = new Entity();
-	// e->setAlive(true);
-	// e->setContext(this);
+	e->setAlive(true);
+	e->setContext(this);
 	ents.push_back(e);
 	return e;
 }
@@ -36,10 +38,16 @@ void Manager::refresh()
 
 void Manager::update()
 {
-
+	auto n = ents.size();
+	for (auto i = 0u; i < n; ++i) {
+		ents[i]->update();
+	}
 }
 
 void Manager::render()
 {
-
+	auto n = ents.size();
+	for (auto i = 0u; i < n; ++i) {
+		ents[i]->render();
+	}
 }

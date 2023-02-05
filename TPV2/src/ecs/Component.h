@@ -8,8 +8,8 @@ class Manager;
 class Component
 {
 public:
-	Component();
-	virtual ~Component();
+	Component() : ent(), mngr() {}
+	virtual ~Component() {}
 	inline void setContext(Entity* e, Manager* m);
 
 	virtual void update();
