@@ -27,44 +27,12 @@ void Entity::setAlive(const bool& al)
 	alive = al;
 }
 
-//template<typename T, typename ...Ts>
-//inline T* Entity::addComponent(cmpId_type cId, Ts &&…args)
-//{
-//	T* c = new T(std::forward<Ts>(args)...);
-//
-//	removeComponent(cId);
-//
-//	currCmps.push_back(c);
-//	cmps[cId] = c;
-//
-//	c->setContext(this, mngr);
-//	c->initComponent();
-//
-//	return c;
-//}
-
-void Entity::removeComponent(cmpId_type cId)
-{
-	if (cmps[cId] != nullptr) {
-		auto it = std::find(currCmps.begin(), currCmps.end(), cmps[cId]);
-		currCmps.erase(it);
-		delete cmps[cId];
-		cmps[cId] = nullptr;
-	}
-}
-
-template<typename T>
-T* Entity::getComponent(cmpId_type cId)
-{
-	return static_cast<T*>(cmps[cId]);
-}
-
-bool Entity::hasComponent(cmpId_type cId)
+inline bool Entity::hasComponent(cmpId_type cId)
 {
 	return cmps[cId] != nullptr;
 }
 
-void Entity::update()
+inline void Entity::update()
 {
 	auto n = currCmps.size();
 	for (auto i = 0u; i < n; ++i) {
@@ -72,7 +40,7 @@ void Entity::update()
 	}
 }
 
-void Entity::render()
+inline void Entity::render()
 {
 	auto n = currCmps.size();
 	for (auto i = 0u; i < n; ++i) {

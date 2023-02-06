@@ -1,15 +1,5 @@
 #include "Transform.h"
 
-Vector2D& Transform::getPos()
-{
-	return pos;
-}
-
-Vector2D& Transform::getDir()
-{
-	return dir;
-}
-
 float& Transform::getW()
 {
 	return width;

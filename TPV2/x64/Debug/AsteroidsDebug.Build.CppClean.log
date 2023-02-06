@@ -1,36 +1,36 @@
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\vc142.pdb
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\vc142.idb
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\sdlutils_demo.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\sdlutils.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\main.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\json_demo.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\jsonvalue.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\json.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\manager.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\entity.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\component.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\transform.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\showatopposideside.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\image.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\health.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\gun.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\generations.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\framedimage.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\follow.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\fighterctrl.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\disableonexit.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\deacceleration.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\vector2d.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\collisions.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\texture.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\soundeffect.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\game.obj
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\asteroidsdebug.ilk
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\bin\asteroidsdebug.exe
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\bin\asteroidsdebug.pdb
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\asteroids.tlog\cl.command.1.tlog
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\asteroids.tlog\cl.read.1.tlog
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\asteroids.tlog\cl.write.1.tlog
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\asteroids.tlog\link.command.1.tlog
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\asteroids.tlog\link.read.1.tlog
-c:\users\ilige\onedrive\documentos\2º videojuegos\tpv2\asteroids\tpv2\x64\debug\asteroids.tlog\link.write.1.tlog
+u:\hlocal\asteroids\tpv2\x64\debug\vc143.pdb
+u:\hlocal\asteroids\tpv2\x64\debug\vc143.idb
+u:\hlocal\asteroids\tpv2\x64\debug\sdlutils.obj
+u:\hlocal\asteroids\tpv2\x64\debug\main.obj
+u:\hlocal\asteroids\tpv2\x64\debug\json_demo.obj
+u:\hlocal\asteroids\tpv2\x64\debug\jsonvalue.obj
+u:\hlocal\asteroids\tpv2\x64\debug\json.obj
+u:\hlocal\asteroids\tpv2\x64\debug\game.obj
+u:\hlocal\asteroids\tpv2\x64\debug\manager.obj
+u:\hlocal\asteroids\tpv2\x64\debug\entity.obj
+u:\hlocal\asteroids\tpv2\x64\debug\component.obj
+u:\hlocal\asteroids\tpv2\x64\debug\transform.obj
+u:\hlocal\asteroids\tpv2\x64\debug\showatopposideside.obj
+u:\hlocal\asteroids\tpv2\x64\debug\image.obj
+u:\hlocal\asteroids\tpv2\x64\debug\health.obj
+u:\hlocal\asteroids\tpv2\x64\debug\gun.obj
+u:\hlocal\asteroids\tpv2\x64\debug\generations.obj
+u:\hlocal\asteroids\tpv2\x64\debug\framedimage.obj
+u:\hlocal\asteroids\tpv2\x64\debug\follow.obj
+u:\hlocal\asteroids\tpv2\x64\debug\fighterctrl.obj
+u:\hlocal\asteroids\tpv2\x64\debug\disableonexit.obj
+u:\hlocal\asteroids\tpv2\x64\debug\deacceleration.obj
+u:\hlocal\asteroids\tpv2\x64\debug\vector2d.obj
+u:\hlocal\asteroids\tpv2\x64\debug\collisions.obj
+u:\hlocal\asteroids\tpv2\x64\debug\texture.obj
+u:\hlocal\asteroids\tpv2\x64\debug\soundeffect.obj
+u:\hlocal\asteroids\tpv2\x64\debug\sdlutils_demo.obj
+u:\hlocal\asteroids\bin\asteroidsdebug.exe
+u:\hlocal\asteroids\tpv2\x64\debug\asteroidsdebug.ilk
+u:\hlocal\asteroids\bin\asteroidsdebug.pdb
+u:\hlocal\asteroids\tpv2\x64\debug\asteroids.tlog\cl.command.1.tlog
+u:\hlocal\asteroids\tpv2\x64\debug\asteroids.tlog\cl.read.1.tlog
+u:\hlocal\asteroids\tpv2\x64\debug\asteroids.tlog\cl.write.1.tlog
+u:\hlocal\asteroids\tpv2\x64\debug\asteroids.tlog\link.command.1.tlog
+u:\hlocal\asteroids\tpv2\x64\debug\asteroids.tlog\link.read.1.tlog
+u:\hlocal\asteroids\tpv2\x64\debug\asteroids.tlog\link.write.1.tlog

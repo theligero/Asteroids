@@ -13,6 +13,8 @@ public:
 	void update() override;
 private:
 	Transform* tr;
+	int WindowWidth;
+	int WindowHeight;
 };
 
 #endif /*SHOW_AT_OPPOSIDE_SIDE_H_*/

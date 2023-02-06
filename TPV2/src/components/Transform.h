@@ -7,15 +7,16 @@
 class Transform : public Component 
 {
 public:
-	Transform(float w, float h, float r) : width(w), height(h), rotation(r) {}
+	Transform(Vector2D p, Vector2D d, float w, float h, float r) : 
+		pos(p), dir(d), width(w), height(h), rotation(r) {}
 	virtual ~Transform() {}
-	Vector2D& getPos();
-	Vector2D& getDir();
+	inline Vector2D& getPos() { return pos; }
+	inline Vector2D& getDir() { return dir; }
 	float& getW();
 	float& getH();
 	float& getRot();
 
-	void update();
+	void update() override;
 private:
 	Vector2D pos;
 	Vector2D dir;

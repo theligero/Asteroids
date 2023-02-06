@@ -150,7 +150,7 @@
     <ClInclude Include="src\components\ShowAtOpposideSide.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\game.h">
+    <ClInclude Include="src\game\Game.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
   </ItemGroup>
@@ -227,7 +227,7 @@
     <ClCompile Include="src\components\ShowAtOpposideSide.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\game.cpp">
+    <ClCompile Include="src\game\Game.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
   </ItemGroup>

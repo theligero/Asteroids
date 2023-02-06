@@ -10,11 +10,14 @@ class Component
 public:
 	Component() : ent(), mngr() {}
 	virtual ~Component() {}
-	inline void setContext(Entity* e, Manager* m);
+	inline void setContext(Entity* e, Manager* m) {
+		ent = e;
+		mngr = m;
+	}
 
-	virtual void update();
-	virtual void render();
-	virtual void handleEvents() {}
+	virtual void update() {}
+	virtual void render() {}
+	virtual void initComponent() {}
 protected:
 	Entity* ent;
 	Manager* mngr;
