@@ -1,7 +1,7 @@
 #include "Image.h"
 #include "../ecs/Entity.h"
 
-Image::Image(Texture* t) : tex(t), tr(nullptr)
+void Image::initComponent() 
 {
 	tr = ent->getComponent<Transform>(TRANSFORM);
 	assert(tr != nullptr);

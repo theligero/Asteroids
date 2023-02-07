@@ -1,46 +1,14 @@
-﻿c:\software\programacion\MSVStudio2022\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  DeAcceleration.cpp
-U:\hlocal\Asteroids\TPV2\src\components\DeAcceleration.h(7,35): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-  DisableOnExit.cpp
-  FighterCtrl.cpp
-  Follow.cpp
-  FramedImage.cpp
-  Generations.cpp
-  Gun.cpp
-  Health.cpp
-  Image.cpp
-  ShowAtOpposideSide.cpp
-  Transform.cpp
-  Component.cpp
-  Entity.cpp
-  Manager.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
   Game.cpp
-U:\hlocal\Asteroids\TPV2\src\game\Game.cpp(17,2): warning C4551: la llamada a la función no tiene lista de argumentos
-U:\hlocal\Asteroids\TPV2\src\ecs\Entity.h(21,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\Game.cpp(23,2): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\ecs\Entity.h(21,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
           with
           [
               _Ty=int
           ]
-U:\hlocal\Asteroids\TPV2\src\game\Game.cpp(26,91): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
+C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\Game.cpp(32): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
           with
           [
               T=Transform
           ]
-  JSON.cpp
-  JSONValue.cpp
-  json_demo.cpp
-  main.cpp
-  SDLUtils.cpp
-  Generando código...
-  Compilando...
-  sdlutils_demo.cpp
-U:\hlocal\Asteroids\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
-U:\hlocal\Asteroids\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
-U:\hlocal\Asteroids\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-  SoundEffect.cpp
-  Texture.cpp
-  Collisions.cpp
-  Vector2D.cpp
-  Generando código...
-     Creando biblioteca U:\hlocal\Asteroids\bin\AsteroidsDebug.lib y objeto U:\hlocal\Asteroids\bin\AsteroidsDebug.exp
-  TPV2.vcxproj -> U:\hlocal\Asteroids\bin\AsteroidsDebug.exe
+  TPV2.vcxproj -> C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\bin\AsteroidsDebug.exe

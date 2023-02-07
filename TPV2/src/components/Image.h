@@ -8,9 +8,10 @@
 class Image : public Component
 {
 public:
-	Image(Texture* t);
+	Image(Texture* t) : tex(t), tr(nullptr) {}
 	virtual ~Image();
 	void render() override;
+	void initComponent() override;
 
 private:
 	Transform* tr;
