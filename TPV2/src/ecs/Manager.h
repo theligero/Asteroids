@@ -2,12 +2,12 @@
 #define MANAGER_H_
 
 #include "Entity.h"
+#include "../utils/Singleton.h"
 #include <vector>
 
-class Manager
+class Manager : public Singleton<Manager>
 {
 public:
-	Manager();
 	virtual ~Manager();
 
 	Entity* addEntity();
@@ -16,6 +16,8 @@ public:
 	void render();
 
 private:
+	friend Singleton<Manager>;
+	Manager();
 	std::vector<Entity*> ents;
 };
 

@@ -35,10 +35,9 @@ public:
 	void update();
 	void handleEvents();
 private:
-	Manager* manager;
 	SDL_Renderer* renderer;
 	SDL_Window* window;
-	Texture* arrayTex[NUM_TEXTURES];
+	std::unique_ptr<Texture> arrayTex[NUM_TEXTURES];
 };
 
 #endif GAME_H_

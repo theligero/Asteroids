@@ -9,7 +9,7 @@ class Image : public Component
 {
 public:
 	Image(Texture* t) : tex(t), tr(nullptr) {}
-	virtual ~Image();
+	virtual ~Image() {}
 	void render() override;
 	void initComponent() override;
 

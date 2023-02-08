@@ -7,11 +7,6 @@ void Image::initComponent()
 	assert(tr != nullptr);
 }
 
-Image::~Image()
-{
-	delete tex;
-}
-
 void Image::render()
 {
 	SDL_Rect dest = build_sdlrect(tr->getPos(),
