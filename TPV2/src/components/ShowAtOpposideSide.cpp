@@ -2,21 +2,21 @@
 #include "ShowAtOpposideSide.h"
 #include "../ecs/Entity.h"
 
-ShowAtOpposideSide::ShowAtOpposideSide()
+void ShowAtOpposideSide::initComponent() 
 {
 	tr = ent->getComponent<Transform>(TRANSFORM);
 	assert(tr != nullptr);
 }
 
 void ShowAtOpposideSide::update()
-{
-	if (tr->getW() + tr->getPos().getY() > WindowWidth)
-		tr->getPos().setY(-tr->getW());
-	else if (tr->getPos().getY() < -tr->getW())
-		tr->getPos().setY(WindowWidth + tr->getW());
-	
-	if (tr->getH() + tr->getPos().getX() > WindowHeight)
-		tr->getPos().setX(-tr->getH());
-	else if (tr->getPos().getX() < -tr->getH())
-		tr->getPos().setX(WindowHeight + tr->getH());
+{	
+	if (tr->getPos().getX() > WindowWidth)
+		tr->getPos().setX(-tr->getW());
+	else if (tr->getPos().getX() < -tr->getW())
+		tr->getPos().setX(WindowWidth);
+
+	if (tr->getPos().getY() > WindowHeight)
+		tr->getPos().setY(-tr->getH());
+	else if (tr->getPos().getY() < -tr->getH())
+		tr->getPos().setY(WindowHeight);
 }

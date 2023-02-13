@@ -7,9 +7,10 @@
 class ShowAtOpposideSide : public Component
 {
 public:
-	ShowAtOpposideSide();
+	ShowAtOpposideSide(int w, int h) : WindowWidth(w), WindowHeight(h) {}
 	virtual ~ShowAtOpposideSide() {}
 
+	void initComponent() override;
 	void update() override;
 private:
 	Transform* tr;
