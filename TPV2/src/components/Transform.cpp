@@ -1,21 +1,9 @@
 #include "Transform.h"
 
-float& Transform::getW()
-{
-	return width;
-}
-
-float& Transform::getH()
-{
-	return height;
-}
-
-float& Transform::getRot()
-{
-	return rotation;
-}
-
 void Transform::update()
 {
+	/*Vector2D rot(sin(rotation), cos(rotation));
+	pos = pos + (Vector2D(rot.getX() * dir.getX(), rot.getY() * dir.getY()));*/
+
 	pos = pos + dir;
 }

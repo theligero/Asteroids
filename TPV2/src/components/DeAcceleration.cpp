@@ -1,7 +1,8 @@
 #include "DeAcceleration.h"
 #include "../ecs/Entity.h"
+#include <iostream>
 
-DeAcceleration::DeAcceleration()
+void DeAcceleration::initComponent()
 {
 	tr = ent->getComponent<Transform>(TRANSFORM);
 }
@@ -9,7 +10,10 @@ DeAcceleration::DeAcceleration()
 void DeAcceleration::update()
 {
 	if (tr->getDir().magnitude() > 0.05)
+	{
 		tr->getDir().set(tr->getDir() * deAcceleration);
+		std::cout << tr->getDir() << std::endl;
+	}
 	else
 		tr->getDir().set(Vector2D(0, 0));
 }

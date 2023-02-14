@@ -7,14 +7,15 @@
 class DisableOnExit : public Component
 {
 public:
-	DisableOnExit();
+	DisableOnExit() {}
 	virtual ~DisableOnExit() {}
 
+	void initComponent() override;
 	void update() override;
 private:
-	Transform* tr;
-	float widthTr;
-	float heightTr;
+	Transform* tr = nullptr;
+	float widthTr = 0;
+	float heightTr = 0;
 };
 
 #endif /*DISABLE_ON_EXIT_H_*/

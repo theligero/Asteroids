@@ -9,9 +9,10 @@ const float deAcceleration = 0.995;
 class DeAcceleration : public Component
 {
 public:
-	DeAcceleration();
+	DeAcceleration() {}
 	virtual ~DeAcceleration() {}
 
+	void initComponent() override;
 	void update() override;
 private:
 	Transform* tr;

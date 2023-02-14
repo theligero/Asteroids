@@ -4,6 +4,7 @@
 #include "../components/ShowAtOpposideSide.h"
 #include "../components/FighterCtrl.h"
 #include "../sdlutils/Font.h"
+#include "../components/DeAcceleration.h"
 
 Game::Game()
 {
@@ -29,14 +30,15 @@ Game::~Game()
 void Game::run()
 {
 	// crear manager
-	Manager::init();
+	auto& man = *Manager::instance();
 	
-	auto fighter = Manager::instance()->addEntity();
-	auto asteroid = Manager::instance()->addEntity();
+	auto fighter = man.addEntity();
+	auto asteroid = man.addEntity();
 	fighter->addComponent<Transform>(TRANSFORM, Vector2D(125, 125), Vector2D(- 0.0125, - 0.0125), 85, 77, 0);
 	auto imageFighter = fighter->addComponent<Image>(IMAGE, arrayTex[FIGHTER].get());
 	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, 800, 600);
 	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL);
+	fighter->addComponent<DeAcceleration>(DEACCELERATION);
 }
 
 void Game::render()

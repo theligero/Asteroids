@@ -1,11 +1,11 @@
 #include "DisableOnExit.h"
 #include "../ecs/Entity.h"
 
-DisableOnExit::DisableOnExit()
+void DisableOnExit::initComponent()
 {
-	//tr = ent->getComponent<Transform>(TRANSFORM);
-	//widthTr = tr->getW();
-	//heightTr = tr->getH();
+	tr = ent->getComponent<Transform>(TRANSFORM);
+	widthTr = tr->getW();
+	heightTr = tr->getH();
 }
 
 void DisableOnExit::update()

@@ -8,14 +8,16 @@ void FighterCtrl::initComponent()
 
 void FighterCtrl::update()
 {
-	// InputHandler::refresh();
+	auto& ih = *InputHandler::instance();
 
-	if (InputHandler::instance()->isKeyDown(SDLK_w))
-		tr->getDir().set(tr->getDir() + Vector2D(0, -0.05));
-	else if (InputHandler::instance()->isKeyDown(SDLK_a))
-		tr->getDir().set(tr->getDir() + Vector2D(-0.05, 0));
-	else if (InputHandler::instance()->isKeyDown(SDLK_s))
-		tr->getDir().set(tr->getDir() + Vector2D(0, 0.05));
-	else if (InputHandler::instance()->isKeyDown(SDLK_d))
-		tr->getDir().set(tr->getDir() + Vector2D(0.05, 0));
+	ih.refresh();
+
+	if (ih.isKeyDown(SDLK_w))
+		tr->getDir().setY(tr->getDir().getY() - 0.125);
+	else if (ih.isKeyDown(SDLK_s))
+		tr->getDir().setY(tr->getDir().getY() + 0.125);
+	if (ih.isKeyDown(SDLK_a))
+		tr->setRot(tr->getRot() - 5.0f);
+	else if (ih.isKeyDown(SDLK_d))
+		tr->setRot(tr->getRot() + 5.0f);
 }

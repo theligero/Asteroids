@@ -12,9 +12,10 @@ public:
 	virtual ~Transform() {}
 	inline Vector2D& getPos() { return pos; }
 	inline Vector2D& getDir() { return dir; }
-	float& getW();
-	float& getH();
-	float& getRot();
+	inline float& getRot() { return rotation; }
+	inline void setRot(float rot) { rotation = rot; }
+	inline float& getW() { return width; }
+	inline float& getH() { return height; }
 
 	void update() override;
 private:
