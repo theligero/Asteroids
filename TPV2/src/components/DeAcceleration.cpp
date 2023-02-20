@@ -9,11 +9,16 @@ void DeAcceleration::initComponent()
 
 void DeAcceleration::update()
 {
-	if (tr->getDir().magnitude() > 0.05)
-	{
-		tr->getDir().set(tr->getDir() * deAcceleration);
-		std::cout << tr->getDir() << std::endl;
+	if (lastTime + 10 <= timer->currTime()) {
+		if (tr->getDir().magnitude() > 0.0005)
+		{
+			tr->getDir().set(tr->getDir() * deAcceleration);
+			// std::cout << tr->getDir() << std::endl;
+		}
+		else
+			tr->getDir().set(Vector2D(0, 0));
+		lastTime = timer->currTime();
+		std::cout << timer->currTime() << std::endl;
 	}
-	else
-		tr->getDir().set(Vector2D(0, 0));
+	
 }
