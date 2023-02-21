@@ -14,7 +14,7 @@ public:
 	Entity();
 	virtual ~Entity();
 	void setContext(Manager* man);
-	bool isAlive();
+	inline bool& isAlive() { return alive; }
 	void setAlive(const bool& al);
 	template <typename T, typename ...Ts>
 	inline T* addComponent(cmpId_type cId, Ts&& ...args) {

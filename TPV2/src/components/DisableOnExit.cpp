@@ -4,19 +4,14 @@
 void DisableOnExit::initComponent()
 {
 	tr = ent->getComponent<Transform>(TRANSFORM);
-	widthTr = tr->getW();
-	heightTr = tr->getH();
 }
 
 void DisableOnExit::update()
 {
 	// comprobación por si no está dentro de los límites del mapa
-	//if (...)
-	//	// algo
-	//else if (...)
-	//	// otra cosa
-	//else if (...)
-	//	// otra cosa
-	//else if (...)
-	//	// otra cosa
+
+	if (!(tr->getPos().getX() > 0 && tr->getPos().getX() < tr->getW() + WindowWidth &&
+		tr->getPos().getY() > 0 && tr->getPos().getY() < tr->getH() + WindowHeight)) {
+		ent->setAlive(false);
+	}
 }

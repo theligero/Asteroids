@@ -5,6 +5,7 @@
 #include "../components/FighterCtrl.h"
 #include "../sdlutils/Font.h"
 #include "../components/DeAcceleration.h"
+#include "../components/DisableOnExit.h"
 
 Game::Game()
 {
@@ -39,6 +40,7 @@ void Game::run()
 	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, 800, 600);
 	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL);
 	fighter->addComponent<DeAcceleration>(DEACCELERATION);
+	// fighter->addComponent<DisableOnExit>(DISABLE_ON_EXIT, 800, 600);
 }
 
 void Game::render()

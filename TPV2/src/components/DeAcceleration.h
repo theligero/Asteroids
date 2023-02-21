@@ -5,7 +5,7 @@
 #include "../sdlutils/VirtualTimer.h"
 #include "Transform.h"
 
-const float deAcceleration = 0.995;
+const float deAcceleration = 0.9995;
 
 class DeAcceleration : public Component
 {

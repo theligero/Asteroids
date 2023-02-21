@@ -17,11 +17,6 @@ void Entity::setContext(Manager* man)
 	mngr = man;
 }
 
-bool Entity::isAlive()
-{
-	return alive;
-}
-
 void Entity::setAlive(const bool& al)
 {
 	alive = al;
