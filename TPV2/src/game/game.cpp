@@ -3,9 +3,10 @@
 #include "../components/Image.h"
 #include "../components/ShowAtOpposideSide.h"
 #include "../components/FighterCtrl.h"
-#include "../sdlutils/Font.h"
 #include "../components/DeAcceleration.h"
 #include "../components/DisableOnExit.h"
+#include "../components/FramedImage.h"
+#include "../sdlutils/Font.h"
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -26,6 +27,9 @@ Game::Game()
 Game::~Game()
 {
 	Manager::close();
+	for (auto& e : arrayTex) {
+		e.reset();
+	}
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit;
@@ -37,12 +41,15 @@ void Game::run()
 	auto& man = *Manager::instance();
 	
 	auto fighter = man.addEntity();
-	auto asteroid = man.addEntity();
-	fighter->addComponent<Transform>(TRANSFORM, Vector2D(125, 125), Vector2D(- 0.0125, - 0.0125), 35, 30, 0);
-	auto imageFighter = fighter->addComponent<Image>(IMAGE, arrayTex[FIGHTER].get());
+	fighter->addComponent<Transform>(TRANSFORM, Vector2D(125, 125), Vector2D(-0.0125, -0.0125), 35, 30, 0);
+	fighter->addComponent<Image>(IMAGE, arrayTex[FIGHTER].get());
 	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
 	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL);
 	fighter->addComponent<DeAcceleration>(DEACCELERATION);
+
+	auto asteroid = man.addEntity();
+	asteroid->addComponent<Transform>(TRANSFORM, Vector2D(250, 250), Vector2D(0, 0), 25, 25, 0);
+	asteroid->addComponent<FramedImage>(IMAGE, arrayTex[ASTEROID].get(), TEXT_DESCR[ASTEROID].rows, TEXT_DESCR[ASTEROID].cols);
 	// fighter->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 

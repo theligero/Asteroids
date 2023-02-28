@@ -13,7 +13,7 @@ public:
 	void render() override;
 	void initComponent() override;
 
-private:
+protected:
 	Transform* tr;
 	Texture* tex;
 };
