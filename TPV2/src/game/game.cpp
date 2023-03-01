@@ -3,6 +3,8 @@
 #include "../components/Image.h"
 #include "../components/ShowAtOpposideSide.h"
 #include "../components/FighterCtrl.h"
+#include "../components/Health.h"
+#include "../sdlutils/Font.h"
 #include "../components/DeAcceleration.h"
 #include "../components/DisableOnExit.h"
 #include "../components/FramedImage.h"
@@ -46,6 +48,7 @@ void Game::run()
 	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
 	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL);
 	fighter->addComponent<DeAcceleration>(DEACCELERATION);
+	fighter->addComponent<Health>(HEALTH)
 
 	auto asteroid = man.addEntity();
 	asteroid->addComponent<Transform>(TRANSFORM, Vector2D(250, 250), Vector2D(0, 0), 25, 25, 0);
