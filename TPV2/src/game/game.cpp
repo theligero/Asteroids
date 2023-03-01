@@ -20,6 +20,12 @@ Game::Game()
 		SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	int mixOpenAudio = Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	assert(mixOpenAudio == 0);
+	int mixInit_ret = Mix_Init(
+		MIX_INIT_FLAC | MIX_INIT_MOD | MIX_INIT_MP3 | MIX_INIT_OGG);
+	assert(mixInit_ret != 0);
+	SoundEffect::setNumberofChannels(8); // we start with 8 channels
 	for (int i = 0; i < NUM_TEXTURES; ++i) {
 		const TextureDescription& desc = TEXT_DESCR[i];
 		arrayTex[i] = std::make_unique<Texture>(renderer, "resources/images/" + desc.filename);
