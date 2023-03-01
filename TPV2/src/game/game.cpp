@@ -44,11 +44,12 @@ void Game::run()
 	
 	auto fighter = man.addEntity();
 	fighter->addComponent<Transform>(TRANSFORM, Vector2D(125, 125), Vector2D(-0.0125, -0.0125), 35, 30, 0);
-	fighter->addComponent<Image>(IMAGE, arrayTex[FIGHTER].get());
-	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
-	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL);
 	fighter->addComponent<DeAcceleration>(DEACCELERATION);
 	fighter->addComponent<Health>(HEALTH)
+	fighter->addComponent<Image>(IMAGE, arrayTex[FIGHTER].get());
+	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL);
+	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
+	
 
 	auto asteroid = man.addEntity();
 	asteroid->addComponent<Transform>(TRANSFORM, Vector2D(250, 250), Vector2D(0, 0), 25, 25, 0);
