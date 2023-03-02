@@ -20,6 +20,7 @@ void FighterCtrl::update()
 		Vector2D newDir = tr->getDir() + Vector2D(0, -1).rotate(tr->getRot()) * thrust;
 		if (newDir.magnitude() > speedLimit) newDir.normalize()* speedLimit;
 		tr->getDir().set(newDir);
+		thrustSound->play();
 	}
 	if (ih.isKeyDown(SDLK_a))
 		tr->setRot(tr->getRot() - 5.0f);

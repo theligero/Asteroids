@@ -28,9 +28,9 @@ const TextureDescription TEXT_DESCR[NUM_TEXTURES] = {
 	{"heart.png", 1, 1}
 };
 
-//const char* SOUND_DESCRIPTIONS[NUM_SOUNDS] = {
-//	{"thrust.wav"}
-//};
+const std::string SOUND_DESCR[NUM_SOUNDS] = {
+	{"thrust.wav"}
+};
 
 class Manager;
 
@@ -46,8 +46,7 @@ private:
 	SDL_Renderer* renderer;
 	SDL_Window* window;
 	std::unique_ptr<Texture> arrayTex[NUM_TEXTURES];
-	Mix_Chunk* arraySound[NUM_SOUNDS];
-	Mix_Chunk* chunk;
+	std::unique_ptr<SoundEffect> arraySound[NUM_SOUNDS];
 };
 
 #endif GAME_H_

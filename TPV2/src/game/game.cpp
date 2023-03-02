@@ -27,8 +27,12 @@ Game::Game()
 	assert(mixInit_ret != 0);
 	SoundEffect::setNumberofChannels(8); // we start with 8 channels
 	for (int i = 0; i < NUM_TEXTURES; ++i) {
-		const TextureDescription& desc = TEXT_DESCR[i];
-		arrayTex[i] = std::make_unique<Texture>(renderer, "resources/images/" + desc.filename);
+		const TextureDescription& textDesc = TEXT_DESCR[i];
+		arrayTex[i] = std::make_unique<Texture>(renderer, "resources/images/" + textDesc.filename);
+	}
+	for (int i = 0; i < NUM_SOUNDS; ++i) {
+		const std::string soundDesc = SOUND_DESCR[i];
+		arraySound[i] = std::make_unique<SoundEffect>("resources/sound/" + soundDesc);
 	}
 }
 
@@ -51,9 +55,9 @@ void Game::run()
 	auto fighter = man.addEntity();
 	fighter->addComponent<Transform>(TRANSFORM, Vector2D(125, 125), Vector2D(-0.0125, -0.0125), 35, 30, 0);
 	fighter->addComponent<DeAcceleration>(DEACCELERATION);
-	fighter->addComponent<Health>(HEALTH)
+	fighter->addComponent<Health>(HEALTH, WINDOW_WIDTH, WINDOW_HEIGHT, arrayTex[HEART].get());
 	fighter->addComponent<Image>(IMAGE, arrayTex[FIGHTER].get());
-	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL);
+	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL, arraySound[THRUST].get());
 	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
 	
 

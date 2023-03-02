@@ -10,7 +10,7 @@ const int MAX_LIVES = 3;
 class Health : public Component
 {
 private:
-	int livesCount = 500;
+	int livesCount = MAX_LIVES;
 	int window_Width, window_Height;
 	Texture* tex;
 	Transform* tr;
