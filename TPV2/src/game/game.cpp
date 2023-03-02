@@ -8,7 +8,9 @@
 #include "../components/DeAcceleration.h"
 #include "../components/DisableOnExit.h"
 #include "../components/FramedImage.h"
+#include "../components/Gun.h"
 #include "../sdlutils/Font.h"
+#include <iostream>
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -53,12 +55,13 @@ void Game::run()
 	auto& man = *Manager::instance();
 	
 	auto fighter = man.addEntity();
-	fighter->addComponent<Transform>(TRANSFORM, Vector2D(125, 125), Vector2D(-0.0125, -0.0125), 35, 30, 0);
+	fighter->addComponent<Transform>(TRANSFORM, Vector2D(400, 300), Vector2D(-0.0125, -0.0125), 35, 30, 0);
 	fighter->addComponent<DeAcceleration>(DEACCELERATION);
 	fighter->addComponent<Health>(HEALTH, WINDOW_WIDTH, WINDOW_HEIGHT, arrayTex[HEART].get());
 	fighter->addComponent<Image>(IMAGE, arrayTex[FIGHTER].get());
 	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL, arraySound[THRUST].get());
 	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
+	fighter->addComponent<Gun>(GUN, arraySound[SHOOT].get());
 	
 
 	auto asteroid = man.addEntity();
@@ -77,6 +80,7 @@ void Game::render()
 void Game::update()
 {
 	Manager::instance()->update();
+	InputHandler::instance()->refresh();
 }
 
 void Game::handleEvents()

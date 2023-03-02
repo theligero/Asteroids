@@ -7,10 +7,10 @@
 #include "../sdlutils/SoundEffect.h"
 
 const int NUM_TEXTURES = 6;
-const int NUM_SOUNDS = 1;
+const int NUM_SOUNDS = 2;
 
 enum TextureName { ASTEROID, ASTEROID_GOLD, FIGHTER, FIGHTER2, FIRE, HEART };
-enum SoundName {THRUST};
+enum SoundName {THRUST, SHOOT};
 
 // estructura simple con una cadena de caracteres del archivo, y entero de final y columnas
 typedef struct {
@@ -29,7 +29,8 @@ const TextureDescription TEXT_DESCR[NUM_TEXTURES] = {
 };
 
 const std::string SOUND_DESCR[NUM_SOUNDS] = {
-	{"thrust.wav"}
+	{"thrust.wav"},
+	{"fire.wav"}
 };
 
 class Manager;
