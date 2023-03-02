@@ -5,7 +5,6 @@
 void DeAcceleration::initComponent()
 {
 	tr = ent->getComponent<Transform>(TRANSFORM);
-	tr->getDir().set(Vector2D(0, 0));
 }
 
 void DeAcceleration::update()
