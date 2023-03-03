@@ -25,13 +25,6 @@ public:
 	void refresh();
 	void update();
 	void render();
-	inline const auto& getEntitiesByGroup(grpId_type gId) {
-		return entsByGroup_[gId];
-	}
-	inline void addToGroupList(grpId_type gId, Entity* e) {
-		entsByGroup_[gId].push_back(e);
-	}
-
 private:
 	friend Singleton<Manager>;
 	Manager();
