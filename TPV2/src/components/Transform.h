@@ -12,15 +12,18 @@ public:
 	virtual ~Transform() {}
 	inline Vector2D& getPos() { return pos; }
 	inline Vector2D& getDir() { return dir; }
+	inline Vector2D& getCenter() { return center; }
 	inline float& getRot() { return rotation; }
 	inline void setRot(float rot) { rotation = rot; }
 	inline float& getW() { return width; }
 	inline float& getH() { return height; }
 
+	void initComponent() override;
 	void update() override;
 private:
 	Vector2D pos;
 	Vector2D dir;
+	Vector2D center;
 	float width;
 	float height;
 	float rotation;

@@ -62,15 +62,15 @@ void Game::run()
 	fighter->addComponent<Image>(IMAGE, arrayTex[FIGHTER].get());
 	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL, arraySound[THRUST].get());
 	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
-	fighter->addComponent<Gun>(GUN, arraySound[SHOOT].get());
+	fighter->addComponent<Gun>(GUN, arraySound[SHOOT].get(), arrayTex[FIRE].get(), WINDOW_WIDTH, WINDOW_HEIGHT);
 	fighter->getComponent<Transform>(TRANSFORM)->getPos();
 	
 
-	auto asteroid = man.addEntity();
+	/*auto asteroid = man.addEntity(_grp_ASTEROIDS);
 	asteroid->addComponent<Transform>(TRANSFORM, Vector2D(250, 250), Vector2D(0, 0), 25, 25, 0);
 	asteroid->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
 	asteroid->addComponent<FramedImage>(IMAGE, arrayTex[ASTEROID].get(), TEXT_DESCR[ASTEROID].rows, TEXT_DESCR[ASTEROID].cols);
-	asteroid->addComponent<Follow>(FOLLOW, fighter);
+	asteroid->addComponent<Follow>(FOLLOW, fighter);*/
 	//asteroid->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 

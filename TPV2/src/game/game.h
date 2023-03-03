@@ -43,6 +43,7 @@ public:
 	void render();
 	void update();
 	void handleEvents();
+	
 private:
 	SDL_Renderer* renderer;
 	SDL_Window* window;

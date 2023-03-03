@@ -1,53 +1,67 @@
 #include "Manager.h"
 
-Manager::Manager() : ents()
+Manager::Manager() : entsByGroup_()
 {
-	ents.reserve(100);
+	for (auto& grpEnts : entsByGroup_) {
+		grpEnts.reserve(100);
+	}
 }
 
 Manager::~Manager()
 {
-	for (auto& e : ents) {
-		delete e;
+	for (auto& ents : entsByGroup_) {
+		for (auto e : ents) {
+			delete e;
+		}
 	}
 }
 
-Entity* Manager::addEntity()
+Entity* Manager::addEntity(grpId_type gId)
 {
 	Entity* e = new Entity();
 	e->setAlive(true);
 	e->setContext(this);
-	ents.push_back(e);
+	entsByGroup_[gId].push_back(e);
 	return e;
 }
 
+
+
 void Manager::refresh()
 {
-	ents.erase(
-		std::remove_if(ents.begin(), ents.end(), [](Entity* e) {
-			if (e->isAlive()) {
-				return false;
-			}
-			else {
-				delete e;
-				return true;
-			}
-			}),
-		ents.end());
+	for (grpId_type gId = 0; gId < maxGroupId; gId++) {
+		auto& grpEnts = entsByGroup_[gId];
+		grpEnts.erase(
+			std::remove_if(grpEnts.begin(), grpEnts.end(),
+				[](Entity* e) {
+					if (e->isAlive()) {
+						return false;
+					}
+					else {
+						delete e;
+						return true;
+					}
+				}),
+			grpEnts.end());
+	}
 }
 
 void Manager::update()
 {
-	auto n = ents.size();
-	for (auto i = 0u; i < n; ++i) {
-		ents[i]->update();
+	for (auto& ents : entsByGroup_) {
+		auto n = ents.size();
+		for (auto i = 0u; i < n; i++) {
+			ents[i]->update();
+		}
 	}
 }
 
 void Manager::render()
 {
-	auto n = ents.size();
-	for (auto i = 0u; i < n; ++i) {
-		ents[i]->render();
+	for (auto& ents : entsByGroup_) {
+		auto n = ents.size();
+		for (auto i = 0u; i < n; i++) {
+			ents[i]->render();
+		}
 	}
 }

@@ -5,6 +5,7 @@
 #include "../game/ecs_def.h"
 #include <vector>
 #include <array>
+#include <bitset>
 
 using namespace ecs;
 
@@ -45,6 +46,7 @@ public:
 	inline bool hasComponent(cmpId_type cId);
 	inline virtual void update();
 	inline virtual void render();
+
 private:
 	bool alive;
 	Manager* mngr;
