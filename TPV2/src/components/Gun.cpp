@@ -17,7 +17,7 @@ void Gun::update()
 		auto newBullet = mngr->addEntity(_grp_BULLETS);
 		Vector2D bulletP = tr->getCenter() + Vector2D(0.0f, -(tr->getH() / 2.0f + 5.0f)).rotate(tr->getRot());
 		Vector2D bulletV = Vector2D(0.0f, -1.0f).rotate(tr->getRot())* 0.09f;
-		newBullet->addComponent<Transform>(TRANSFORM, bulletP, bulletV, 25, 25, tr->getRot());
+		newBullet->addComponent<Transform>(TRANSFORM, bulletP, bulletV, 10, 12, tr->getRot());
 		newBullet->addComponent<Image>(IMAGE, bulletTexture);
 		newBullet->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WindowWidth, WindowHeight);
 		shootSound->play();
