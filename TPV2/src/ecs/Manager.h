@@ -10,6 +10,7 @@ enum grpId : grpId_type {
 	_grp_GENERAL,
 	_grp_ASTEROIDS,
 	_grp_BULLETS,
+	_grp_PAUSE,
 	_LAST_GRP_ID
 };
 
@@ -24,6 +25,7 @@ public:
 	inline const auto& getEntities(grpId_type gId = _grp_GENERAL) { return entsByGroup_[gId]; }
 	void refresh();
 	void update();
+	void update(grpId_type gId);
 	void render();
 private:
 	friend Singleton<Manager>;

@@ -6,6 +6,18 @@
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SoundEffect.h"
 #include "../sdlutils/Font.h"
+#include "../components/Transform.h"
+#include "../components/Image.h"
+#include "../components/ShowAtOpposideSide.h"
+#include "../components/FighterCtrl.h"
+#include "../components/Health.h"
+#include "../components/DeAcceleration.h"
+#include "../components/DisableOnExit.h"
+#include "../components/FramedImage.h"
+#include "../components/Gun.h"
+#include "../components/Follow.h"
+#include "../states/GameStateMachine.h"
+#include "../states/PlayState.h"
 
 const int NUM_TEXTURES = 6;
 const int NUM_TEXTS = 1;
@@ -14,6 +26,9 @@ const int NUM_SOUNDS = 2;
 enum TextureName { ASTEROID, ASTEROID_GOLD, FIGHTER, FIGHTER2, FIRE, HEART};
 enum TextName { PAUSE };
 enum SoundName {THRUST, SHOOT};
+
+const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 600;
 
 // estructura simple con una cadena de caracteres del archivo, y entero de final y columnas
 typedef struct {
@@ -56,7 +71,12 @@ public:
 	void render();
 	void update();
 	void handleEvents();
-	bool checkCollision();
+	Texture* getArrayTexture(TextureName key) { return arrayTexture[key].get(); }
+	Texture* getArrayText(TextName key) { return arrayText[key].get(); }
+	SoundEffect* getArraySound(SoundName key) { return arraySound[key].get(); }
+	GameStateMachine* getStateMachine();
+	
+
 	
 private:
 	SDL_Renderer* renderer;
@@ -64,6 +84,7 @@ private:
 	std::unique_ptr<Texture> arrayTexture[NUM_TEXTURES];
 	std::unique_ptr<Texture> arrayText[NUM_TEXTS];
 	std::unique_ptr<SoundEffect> arraySound[NUM_SOUNDS];
+	GameStateMachine* stateMachine = nullptr;
 };
 
 #endif GAME_H_

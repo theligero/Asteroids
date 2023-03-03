@@ -1,19 +1,6 @@
 #include "Game.h"
-#include "../components/Transform.h"
-#include "../components/Image.h"
-#include "../components/ShowAtOpposideSide.h"
-#include "../components/FighterCtrl.h"
-#include "../components/Health.h"
-#include "../sdlutils/Font.h"
-#include "../components/DeAcceleration.h"
-#include "../components/DisableOnExit.h"
-#include "../components/FramedImage.h"
-#include "../components/Gun.h"
-#include "../components/Follow.h"
-#include <iostream>
 
-const int WINDOW_WIDTH = 800;
-const int WINDOW_HEIGHT = 600;
+#include <iostream>
 
 Game::Game()
 {
@@ -43,12 +30,21 @@ Game::Game()
 		const std::string soundDesc = SOUND_DESCR[i];
 		arraySound[i] = std::make_unique<SoundEffect>("resources/sound/" + soundDesc);
 	}
+
+	stateMachine = new GameStateMachine();
+	stateMachine->changeState(new PlayState(this));
 }
 
 Game::~Game()
 {
 	Manager::close();
 	for (auto& e : arrayTexture) {
+		e.reset();
+	}
+	for (auto& e : arrayText) {
+		e.reset();
+	}
+	for (auto& e : arraySound) {
 		e.reset();
 	}
 	SDL_DestroyRenderer(renderer);
@@ -61,38 +57,27 @@ void Game::run()
 	// crear manager
 	auto& man = *Manager::instance();
 	
-	auto fighter = man.addEntity();
-	fighter->addComponent<Transform>(TRANSFORM, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
-	fighter->addComponent<DeAcceleration>(DEACCELERATION);
-	fighter->addComponent<Health>(HEALTH, WINDOW_WIDTH, WINDOW_HEIGHT, arrayTexture[HEART].get());
-	fighter->addComponent<Image>(IMAGE, arrayText[PAUSE].get());
-	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL, arraySound[THRUST].get());
-	fighter->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
-	fighter->addComponent<Gun>(GUN, arraySound[SHOOT].get(), arrayTexture[FIRE].get(), WINDOW_WIDTH, WINDOW_HEIGHT);
-	fighter->getComponent<Transform>(TRANSFORM)->getPos();
 	
-
-	auto asteroid = man.addEntity(_grp_ASTEROIDS);
-	asteroid->addComponent<Transform>(TRANSFORM, Vector2D(250, 250), Vector2D(0, 0), 25, 25, 0);
-	asteroid->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
-	asteroid->addComponent<FramedImage>(IMAGE, arrayTexture[ASTEROID].get(), TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
-	asteroid->addComponent<Follow>(FOLLOW, fighter);
 	//asteroid->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
-	Manager::instance()->render();
+	stateMachine->render();
 	SDL_RenderPresent(renderer);
 }
 
 void Game::update()
 {
-	Manager::instance()->update();
-	InputHandler::instance()->refresh();
+	stateMachine->update();
 }
 
 void Game::handleEvents()
 {
+}
+
+GameStateMachine* Game::getStateMachine()
+{
+	return stateMachine;
 }

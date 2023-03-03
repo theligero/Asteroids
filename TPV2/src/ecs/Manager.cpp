@@ -56,6 +56,15 @@ void Manager::update()
 	}
 }
 
+void Manager::update(grpId_type gId)
+{
+	auto& ents = getEntities(gId);
+	auto n = ents.size();
+	for (auto i = 0u; i < n; i++) {
+		ents[i]->update();
+	}
+}
+
 void Manager::render()
 {
 	for (auto& ents : entsByGroup_) {
