@@ -3,9 +3,7 @@
 
 #include "GameState.h"
 #include "PlayState.h"
-#include "MenuButton.h"
-#include "Game.h"
-#include "FileNotFoundError.h"
+#include "../game/game.h"
 
 class Game;
 

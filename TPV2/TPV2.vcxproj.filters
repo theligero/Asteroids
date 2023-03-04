@@ -49,6 +49,12 @@
     <Filter Include="Source Files\game">
       <UniqueIdentifier>{00dbf376-a698-478a-9766-be20ecd66aa3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\states">
+      <UniqueIdentifier>{707d602c-227e-4820-8509-a9dcaba6d400}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\states">
+      <UniqueIdentifier>{c36a087c-aaf3-43c5-99e5-930c2db9a5fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\json\JSONValue.h">
@@ -156,6 +162,24 @@
     <ClInclude Include="src\game\AsteroidsManager.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
+    <ClInclude Include="src\states\MainMenuState.h">
+      <Filter>Header Files\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\states\PauseState.h">
+      <Filter>Header Files\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\states\PlayState.h">
+      <Filter>Header Files\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\states\EndState.h">
+      <Filter>Header Files\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\states\GameState.h">
+      <Filter>Header Files\states</Filter>
+    </ClInclude>
+    <ClInclude Include="src\states\GameStateMachine.h">
+      <Filter>Header Files\states</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -235,6 +259,24 @@
     </ClCompile>
     <ClCompile Include="src\game\AsteroidsManager.cpp">
       <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\states\PlayState.cpp">
+      <Filter>Source Files\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\states\EndState.cpp">
+      <Filter>Source Files\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\states\GameState.cpp">
+      <Filter>Source Files\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\states\GameStateMachine.cpp">
+      <Filter>Source Files\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\states\MainMenuState.cpp">
+      <Filter>Source Files\states</Filter>
+    </ClCompile>
+    <ClCompile Include="src\states\PauseState.cpp">
+      <Filter>Source Files\states</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

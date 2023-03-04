@@ -1,14 +1,17 @@
 #include "Game.h"
-
 #include <iostream>
 
 Game::Game()
 {
+#ifdef SDLUTILS
+	SDLUtils::init("Asteroids v1.0", WINDOW_WIDTH, WINDOW_HEIGHT);
+	window = sdlutils().window();
+	renderer = sdlutils().renderer();
+#else
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("Asteroids v1.0", SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	int mixOpenAudio = Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 	assert(mixOpenAudio == 0);
 	int mixInit_ret = Mix_Init(
@@ -17,7 +20,11 @@ Game::Game()
 	SoundEffect::setNumberofChannels(8); // we start with 8 channels
 	int ttfInit_r = TTF_Init();
 	assert(ttfInit_r == 0);
+#endif
+
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	Font f("resources/fonts/ARIAL.ttf", 18);
+
 	for (int i = 0; i < NUM_TEXTURES; ++i) {
 		const TextureDescription& textureDesc = TEXTURE_DESCR[i];
 		arrayTexture[i] = std::make_unique<Texture>(renderer, "resources/images/" + textureDesc.filename);

@@ -4,40 +4,40 @@
 EndState::EndState(Game* g)
 {
 	game = g;
-	backToMenu = new MenuButton({ 50,50 }, 150, 50, game->getArrayTex(RESUME), goToMenu, game);
+	// backToMenu = new MenuButton({ 50,50 }, 150, 50, game->getArrayTex(RESUME), goToMenu, game);
 }
 
 EndState::~EndState()
 {
-	delete(backToMenu);
-	delete(this);
+	// delete(backToMenu);
+	// delete(this);
 }
 
 void EndState::update()
 {
-	backToMenu->update();
+	// backToMenu->update();
 }
 
 void EndState::render()
 {
-	backToMenu->render();
+	// backToMenu->render();
 }
 
 void EndState::handleEvent()
 {
-	SDL_Event ev;
+	//SDL_Event ev;
 
-	while (SDL_PollEvent(&ev)) {
-		switch (ev.type) {
-		case SDL_MOUSEBUTTONDOWN:
-			switch (ev.button.button) {
-			case SDL_BUTTON_LEFT:
-				backToMenu->handleEvent();
-				break;
-			}
-			break;
-		}
-	}
+	//while (SDL_PollEvent(&ev)) {
+	//	switch (ev.type) {
+	//	case SDL_MOUSEBUTTONDOWN:
+	//		switch (ev.button.button) {
+	//		case SDL_BUTTON_LEFT:
+	//			backToMenu->handleEvent();
+	//			break;
+	//		}
+	//		break;
+	//	}
+	//}
 }
 
 bool EndState::onEnter()

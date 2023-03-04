@@ -4,6 +4,7 @@
 #include "GameState.h"
 #include "PauseState.h"
 #include "../game/game.h"
+#include "../game/AsteroidsManager.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/Texture.h"
@@ -33,8 +34,8 @@ public:
 	virtual bool onExit();
 
 	void enterPause();
-	
 private:
+	AsteroidsManager* asteroidManager = nullptr;
 };
 
 #endif /*PLAYSTATE_H_*/

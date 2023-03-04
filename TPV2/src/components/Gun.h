@@ -16,7 +16,9 @@
 class Gun : public Component
 {
 public:
-	Gun(SoundEffect* soundHandle, Texture* t, int w, int h) : WindowWidth(w), WindowHeight(h), shootSound(soundHandle), bulletTexture(t), tr(nullptr) { clock = new VirtualTimer(); }
+	Gun(SoundEffect* soundHandle, Texture* t, int w, int h) : 
+		WindowWidth(w), WindowHeight(h), shootSound(soundHandle), 
+		bulletTexture(t), tr(nullptr) { clock = new VirtualTimer(); }
 	virtual ~Gun() {}
 	void initComponent() override;
 	void update() override;

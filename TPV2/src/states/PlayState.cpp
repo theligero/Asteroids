@@ -6,6 +6,7 @@ PlayState::PlayState(Game* g)
 {
 	game = g;
 	auto& man = *Manager::instance();
+
 	auto fighter = man.addEntity();
 	fighter->addComponent<Transform>(TRANSFORM, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
 	fighter->addComponent<DeAcceleration>(DEACCELERATION);
@@ -16,22 +17,15 @@ PlayState::PlayState(Game* g)
 	fighter->addComponent<FighterCtrl>(FIGHTER_CTRL, game->getArraySound(THRUST), game);
 	fighter->getComponent<Transform>(TRANSFORM)->getPos();
 
-
-	auto asteroid = man.addEntity(_grp_ASTEROIDS);
-	asteroid->addComponent<Transform>(TRANSFORM, Vector2D(250, 250), Vector2D(0, 0), 25, 25, 0);
-	asteroid->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
-	asteroid->addComponent<FramedImage>(IMAGE, game->getArrayTexture(ASTEROID), TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
-	asteroid->addComponent<Follow>(FOLLOW, fighter);
-	
-
+	asteroidManager = new AsteroidsManager(man.instance(), game->getArrayTexture(ASTEROID_GOLD), 
+		game->getArrayTexture(ASTEROID), fighter);
 }
 
 void PlayState::update()
 {
 	Manager::instance()->update();
 	InputHandler::instance()->refresh();
-
-	
+	asteroidManager->addAsteroidFrequently();
 }
 
 void PlayState::render()

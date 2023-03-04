@@ -4,7 +4,6 @@
 #include "GameState.h"
 #include "PlayState.h"
 
-
 class Game;
 
 class PauseState : public GameState

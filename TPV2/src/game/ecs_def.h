@@ -1,6 +1,8 @@
 #ifndef ECS_DEF_H_
 #define ECS_DEF_H_
 
+#define SDLUTILS
+
 #include <cstdint>
 
 namespace ecs {
