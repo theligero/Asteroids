@@ -6,10 +6,10 @@ PauseState::PauseState(Game* g)
 	game = g;
 
 	auto& man = *Manager::instance();
-	auto pause = man.addEntity(_grp_PAUSE);
-	pause->addComponent<Transform>(TRANSFORM, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
-	pause->addComponent<Image>(IMAGE, game->getArrayText(PAUSE));
-	pause->addComponent<FighterCtrl>(FIGHTER_CTRL, game->getArraySound(THRUST), game);
+	pauseText = man.addEntity(_grp_PAUSE);
+	pauseText->addComponent<Transform>(TRANSFORM, Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
+	pauseText->addComponent<Image>(IMAGE, game->getArrayText(PAUSE));
+	pauseText->addComponent<PauseCtrl>(PAUSE_CTRL, game, false);
 
 }
 
@@ -34,6 +34,7 @@ bool PauseState::onEnter()
 
 bool PauseState::onExit()
 {
+	pauseText->setAlive(false);
 	std::cout << "saliendo de PauseState\n";
 	return true;
 }

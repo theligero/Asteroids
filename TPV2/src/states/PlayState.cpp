@@ -8,6 +8,8 @@ PlayState::PlayState(Game* g)
 	game = g;
 	auto& man = *Manager::instance();
 
+	std::cout << "Nueva partida"; 
+
 	fighter = man.addEntity();
 	fighter->addComponent<Transform>(TRANSFORM, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
 	fighter->addComponent<DeAcceleration>(DEACCELERATION);
@@ -27,10 +29,12 @@ void PlayState::update()
 	Manager::instance()->update();
 	InputHandler::instance()->refresh();
 	checkCollision();
-	if (!fighter->isAlive()) 
-		game->getStateMachine()->pushState(new PauseState(game, "YOU LOSE"));
-	else if (Manager::instance()->getEntities(_grp_ASTEROIDS).size() == 0) 
-		game->getStateMachine()->pushState(new PauseState(game, "YOU WIN"));
+	if (!fighter->isAlive()){
+		game->getStateMachine()->pushState(new EndState(game, false));
+	}
+	else if (Manager::instance()->getEntities(_grp_ASTEROIDS).size() == 0) {
+		game->getStateMachine()->pushState(new EndState(game, true));
+	}
 	else 
 		asteroidManager->addAsteroidFrequently();
 	Manager::instance()->refresh();

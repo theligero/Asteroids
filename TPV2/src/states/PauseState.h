@@ -6,6 +6,7 @@
 #include <iostream>
 
 class Game;
+class Entity;
 
 class PauseState : public GameState
 {
@@ -21,7 +22,7 @@ public:
 	static void backToGame(Game* game);
 
 private:
-
+	Entity* pauseText;
 };
 
 #endif /*MAINMENUSTATE_H_*/

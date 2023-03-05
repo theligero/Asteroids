@@ -2,23 +2,26 @@
 #define ENDSTATE_H_
 
 #include "GameState.h"
+#include <iostream>
+
+class Game;
+class Entity;
 
 class EndState : public GameState
 {
-private:
-	
 public:
-	EndState(Game* g);
-	virtual ~EndState();
+	EndState(Game* g, bool win);
 
 	virtual void update();
 	virtual void render();
-	virtual void handleEvent();
 
 	virtual bool onEnter();
 	virtual bool onExit();
+	static void backToMenu(Game* game);
 
-	static void goToMenu(Game* game);
+private:
+	Entity* endText;
 };
+
 
 #endif /*ENDSTATE_H_*/

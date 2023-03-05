@@ -15,7 +15,7 @@ void AsteroidsManager::createAsteroids(int n)
 		#ifdef SDLUTILS
 			bool goldOrNot = (sdlutils().rand().nextInt(0, 10) < 3) ? true : false;
 			aux->addComponent<Transform>(TRANSFORM, Vector2D(rand() % WINDOW_WIDTH, rand() % WINDOW_HEIGHT),
-				Vector2D((rand() % 2), (rand() % 2)), 25, 25, 0);
+				Vector2D((rand() % 2) * 0.05, (rand() % 2) * 0.05), 25, 25, 0);
 		#else
 			bool goldOrNot = ((rand() % 10) + 1 <= 3) ? true : false;
 			aux->addComponent<Transform>(TRANSFORM, Vector2D(rand() % WINDOW_WIDTH, rand() % WINDOW_HEIGHT),

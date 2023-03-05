@@ -19,11 +19,11 @@
 #include "../states/PlayState.h"
 
 const int NUM_TEXTURES = 6;
-const int NUM_TEXTS = 1;
+const int NUM_TEXTS = 3;
 const int NUM_SOUNDS = 4;
 
 enum TextureName { ASTEROID, ASTEROID_GOLD, FIGHTER, FIGHTER2, FIRE, HEART};
-enum TextName { PAUSE };
+enum TextName { PAUSE, WIN, LOSE };
 enum SoundName { THRUST, SHOOT, FIGHTER_EXPLOSION, ASTEROID_EXPLOSION };
 
 const int WINDOW_WIDTH = 800;
@@ -52,7 +52,9 @@ const TextureDescription TEXTURE_DESCR[NUM_TEXTURES] = {
 };
 
 const TextDescription TEXT_DESCRIP[NUM_TEXTS] = {
-	{"PAUSE", build_sdlcolor(0x112233ff), build_sdlcolor(0xffffffff)}
+	{"Press 'ESC' to resume the game.", build_sdlcolor(0x112233ff), build_sdlcolor(0xffffffff)},
+	{"YOU WIN", build_sdlcolor(0x112233ff), build_sdlcolor(0xffffffff)},
+	{"YOU LOSE", build_sdlcolor(0x112233ff), build_sdlcolor(0xffffffff)}
 };
 
 const std::string SOUND_DESCR[NUM_SOUNDS] = {

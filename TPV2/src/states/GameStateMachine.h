@@ -3,6 +3,7 @@
 
 #include <stack>
 #include "GameState.h"
+#include "../ecs/Manager.h"
 
 class GameState;
 

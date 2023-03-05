@@ -25,8 +25,6 @@ Entity* Manager::addEntity(grpId_type gId)
 	return e;
 }
 
-
-
 void Manager::refresh()
 {
 	for (grpId_type gId = 0; gId < maxGroupId; gId++) {

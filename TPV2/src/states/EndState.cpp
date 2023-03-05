@@ -1,58 +1,56 @@
 #include "EndState.h"
-#include "MainMenuState.h"
+#include "PlayState.h"
 
-EndState::EndState(Game* g)
+EndState::EndState(Game* g, bool win)
 {
 	game = g;
-	// backToMenu = new MenuButton({ 50,50 }, 150, 50, game->getArrayTex(RESUME), goToMenu, game);
+
+	auto& man = *Manager::instance();
+
+	auto pruebatext = man.addEntity(_grp_PAUSE);
+	pruebatext->addComponent<Transform>(TRANSFORM, Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
+	pruebatext->addComponent<Image>(IMAGE, game->getArrayText(PAUSE));
+	pruebatext->addComponent<PauseCtrl>(PAUSE_CTRL, game, false);
+
+	endText = man.addEntity(_grp_PAUSE);
+	endText->addComponent<Transform>(TRANSFORM, Vector2D(250, 400), Vector2D(0, 0), 300, 100, 0);
+	if (win) {
+		endText->addComponent<Image>(IMAGE, game->getArrayText(WIN));
+	}
+	else {
+		endText->addComponent<Image>(IMAGE, game->getArrayText(LOSE));
+	}
+	
+
 }
 
-EndState::~EndState()
-{
-	// delete(backToMenu);
-	// delete(this);
-}
 
 void EndState::update()
 {
-	// backToMenu->update();
+	Manager::instance()->update(_grp_PAUSE);
+	InputHandler::instance()->refresh();
 }
 
 void EndState::render()
 {
-	// backToMenu->render();
+	Manager::instance()->render();
 }
 
-void EndState::handleEvent()
-{
-	//SDL_Event ev;
 
-	//while (SDL_PollEvent(&ev)) {
-	//	switch (ev.type) {
-	//	case SDL_MOUSEBUTTONDOWN:
-	//		switch (ev.button.button) {
-	//		case SDL_BUTTON_LEFT:
-	//			backToMenu->handleEvent();
-	//			break;
-	//		}
-	//		break;
-	//	}
-	//}
-}
 
 bool EndState::onEnter()
 {
-	std::cout << "entrando en EndState\n";
+	std::cout << "entrando en PauseState\n";
 	return true;
 }
 
 bool EndState::onExit()
 {
-	std::cout << "saliendo de EndState\n";
+	std::cout << "saliendo de PauseState\n";
 	return true;
 }
 
-void EndState::goToMenu(Game* game)
+void EndState::backToMenu(Game* game)
 {
-	game->getStateMachine()->changeState(new MainMenuState(game));
+	game->getStateMachine()->popState();
 }

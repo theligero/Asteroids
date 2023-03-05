@@ -13,7 +13,6 @@ void FighterCtrl::initComponent()
 
 void FighterCtrl::update()
 {
-	if (gun != nullptr) {
 		if (InputHandler::instance()->isKeyDown(SDLK_w)) {
 			Vector2D newDir = tr->getDir() + Vector2D(0, -1).rotate(tr->getRot()) * thrust;
 			if (newDir.magnitude() > speedLimit) newDir.normalize()* speedLimit;
@@ -25,15 +24,8 @@ void FighterCtrl::update()
 		else if (InputHandler::instance()->isKeyDown(SDLK_d))
 			tr->setRot(tr->getRot() + 5.0f);
 		if (InputHandler::instance()->isKeyDown(SDLK_SPACE)) {
-			game->getStateMachine()->pushState(new PauseState(game));
+			game->getStateMachine()->pushState(new PauseState(game, false));
 		}
-	}
-	else {
-		if (InputHandler::instance()->isKeyDown(SDLK_SPACE)) {
-			game->getStateMachine()->popState();
-		}
-	}
-	
 
 
 	// std::cout << "rotation: " << tr->getRot() << std::endl;

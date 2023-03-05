@@ -20,6 +20,7 @@ namespace ecs {
 		GENERATIONS,
 		FOLLOW,
 		DISABLE_ON_EXIT,
+		PAUSE_CTRL,
 		// do not remove this
 		LAST_CMP_ID
 	};

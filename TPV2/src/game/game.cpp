@@ -23,7 +23,7 @@ Game::Game()
 #endif
 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-	Font f("resources/fonts/ARIAL.ttf", 18);
+	Font f("resources/fonts/ARIAL.ttf", 50);
 
 	for (int i = 0; i < NUM_TEXTURES; ++i) {
 		const TextureDescription& textureDesc = TEXTURE_DESCR[i];

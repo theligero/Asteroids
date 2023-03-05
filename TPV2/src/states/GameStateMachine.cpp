@@ -13,6 +13,7 @@ void GameStateMachine::pushState(GameState* state)
 
 void GameStateMachine::changeState(GameState* state)
 {
+
     if (!gameStack.empty() && gameStack.top()->onExit())
     {
         delete gameStack.top();

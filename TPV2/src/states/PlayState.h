@@ -20,6 +20,7 @@
 #include "../components/FramedImage.h"
 #include "../components/Gun.h"
 #include "../components/Follow.h"
+#include "../components/PauseCtrl.h"
 #include <iostream>
 
 
