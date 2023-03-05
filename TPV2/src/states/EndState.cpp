@@ -40,13 +40,13 @@ void EndState::render()
 
 bool EndState::onEnter()
 {
-	std::cout << "entrando en PauseState\n";
+	std::cout << "entrando en EndState\n";
 	return true;
 }
 
 bool EndState::onExit()
 {
-	std::cout << "saliendo de PauseState\n";
+	std::cout << "saliendo de EndState\n";
 	return true;
 }
 

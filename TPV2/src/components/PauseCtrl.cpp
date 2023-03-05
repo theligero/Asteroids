@@ -15,7 +15,6 @@ void PauseCtrl::update()
 	}
 	else {
 		if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE)) {
-			Manager::instance()->killEveryEntity();
 			game->getStateMachine()->changeState(new PauseState(game));
 		}
 	}

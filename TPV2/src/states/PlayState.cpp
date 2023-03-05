@@ -30,10 +30,11 @@ void PlayState::update()
 	InputHandler::instance()->refresh();
 	checkCollision();
 	if (!fighter->isAlive()){
-		game->getStateMachine()->pushState(new EndState(game, false));
+		game->getStateMachine()->changeState(new EndState(game, false));
+		auto& man = *Manager::instance();
 	}
 	else if (Manager::instance()->getEntities(_grp_ASTEROIDS).size() == 0) {
-		game->getStateMachine()->pushState(new EndState(game, true));
+		game->getStateMachine()->changeState(new EndState(game, true));
 	}
 	else 
 		asteroidManager->addAsteroidFrequently();

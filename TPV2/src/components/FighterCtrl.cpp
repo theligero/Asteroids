@@ -24,7 +24,7 @@ void FighterCtrl::update()
 		else if (InputHandler::instance()->isKeyDown(SDLK_d))
 			tr->setRot(tr->getRot() + 5.0f);
 		if (InputHandler::instance()->isKeyDown(SDLK_SPACE)) {
-			game->getStateMachine()->pushState(new PauseState(game, false));
+			game->getStateMachine()->pushState(new PauseState(game));
 		}
 
 
