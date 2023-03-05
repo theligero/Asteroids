@@ -3,6 +3,7 @@
 
 #include "GameState.h"
 #include "PlayState.h"
+#include <iostream>
 
 class Game;
 
@@ -10,6 +11,7 @@ class PauseState : public GameState
 {
 public:
 	PauseState(Game* g);
+	PauseState(Game* g, std::string message) : PauseState(g) { std::cout << message << std::endl; }
 
 	virtual void update();
 	virtual void render();

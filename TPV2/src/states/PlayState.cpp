@@ -8,7 +8,7 @@ PlayState::PlayState(Game* g)
 	game = g;
 	auto& man = *Manager::instance();
 
-	auto fighter = man.addEntity();
+	fighter = man.addEntity();
 	fighter->addComponent<Transform>(TRANSFORM, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
 	fighter->addComponent<DeAcceleration>(DEACCELERATION);
 	fighter->addComponent<Health>(HEALTH, WINDOW_WIDTH, WINDOW_HEIGHT, game->getArrayTexture(HEART));
@@ -27,11 +27,13 @@ void PlayState::update()
 	Manager::instance()->update();
 	InputHandler::instance()->refresh();
 	checkCollision();
-	Manager::instance()->refresh();
-	if (Manager::instance()->getEntities(_grp_ASTEROIDS).size() == 0)
-		game->getStateMachine()->popState();
-	else
+	if (!fighter->isAlive()) 
+		game->getStateMachine()->pushState(new PauseState(game, "YOU LOSE"));
+	else if (Manager::instance()->getEntities(_grp_ASTEROIDS).size() == 0) 
+		game->getStateMachine()->pushState(new PauseState(game, "YOU WIN"));
+	else 
 		asteroidManager->addAsteroidFrequently();
+	Manager::instance()->refresh();
 }
 
 void PlayState::render()
@@ -48,20 +50,36 @@ bool PlayState::onEnter()
 
 bool PlayState::onExit()
 {
+	delete asteroidManager;
+	Manager::instance()->close();
 	std::cout << "Saliendo de PlayState\n";
 	return true;
 }
 
 void PlayState::checkCollision()
 {
-	for (auto& e : Manager::instance()->getEntities(_grp_BULLETS)) {
-		auto bullTr = e->getComponent<Transform>(TRANSFORM);
-		for (auto& i : Manager::instance()->getEntities(_grp_ASTEROIDS)) {
-			auto astTr = i->getComponent<Transform>(TRANSFORM);
+	for (auto& i : Manager::instance()->getEntities(_grp_ASTEROIDS)) {
+		auto astTr = i->getComponent<Transform>(TRANSFORM);
+		for (auto& e : Manager::instance()->getEntities(_grp_BULLETS)) {
+			auto bullTr = e->getComponent<Transform>(TRANSFORM);
 			if (Collisions::collidesWithRotation(bullTr->getPos(), bullTr->getW(), bullTr->getH(), bullTr->getRot(),
-					astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
+				astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
 				e->setAlive(false);
 				asteroidManager->onCollision(i);
+			}
+		}
+		auto playerTr = fighter->getComponent<Transform>(TRANSFORM);
+		if (Collisions::collidesWithRotation(playerTr->getPos(), playerTr->getW(), playerTr->getH(), playerTr->getRot(),
+			astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
+			asteroidManager->destroyAllAsteroids();
+			for (auto& a : Manager::instance()->getEntities(_grp_BULLETS)) a->setAlive(false);
+			auto playerHealth = fighter->getComponent<Health>(HEALTH);
+			playerHealth->decreaseLives();
+			playerTr->setPos(Vector2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+			playerTr->setRot(0);
+			asteroidManager->createAsteroids(10);
+			if (playerHealth->getLives() <= 0) {
+				fighter->setAlive(false);
 			}
 		}
 	}

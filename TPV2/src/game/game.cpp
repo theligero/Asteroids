@@ -61,11 +61,7 @@ Game::~Game()
 
 void Game::run()
 {
-	// crear manager
-	auto& man = *Manager::instance();
-	
-	
-	//asteroid->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WINDOW_WIDTH, WINDOW_HEIGHT);
+
 }
 
 void Game::render()

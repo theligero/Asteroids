@@ -11,6 +11,7 @@ public:
 		pos(p), dir(d), width(w), height(h), rotation(r) {}
 	virtual ~Transform() {}
 	inline Vector2D& getPos() { return pos; }
+	inline void setPos(const Vector2D& p) { pos = p; }
 	inline Vector2D& getDir() { return dir; }
 	inline Vector2D& getCenter() { return center; }
 	inline float& getRot() { return rotation; }

@@ -37,6 +37,7 @@ public:
 
 	void enterPause();
 private:
+	Entity* fighter = nullptr;
 	AsteroidsManager* asteroidManager = nullptr;
 };
 
