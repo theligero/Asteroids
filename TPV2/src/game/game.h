@@ -20,11 +20,11 @@
 
 const int NUM_TEXTURES = 6;
 const int NUM_TEXTS = 1;
-const int NUM_SOUNDS = 2;
+const int NUM_SOUNDS = 4;
 
 enum TextureName { ASTEROID, ASTEROID_GOLD, FIGHTER, FIGHTER2, FIRE, HEART};
 enum TextName { PAUSE };
-enum SoundName {THRUST, SHOOT};
+enum SoundName { THRUST, SHOOT, FIGHTER_EXPLOSION, ASTEROID_EXPLOSION };
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -57,7 +57,9 @@ const TextDescription TEXT_DESCRIP[NUM_TEXTS] = {
 
 const std::string SOUND_DESCR[NUM_SOUNDS] = {
 	{"thrust.wav"},
-	{"fire.wav"}
+	{"fire.wav"},
+	{"explosion.wav"},
+	{"explosion1.wav"}
 };
 
 class Manager;

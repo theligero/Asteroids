@@ -15,8 +15,8 @@ class Texture;
 class AsteroidsManager
 {
 public:
-	AsteroidsManager(Manager* m, Texture* gold, Texture* ast, Entity* f) : 
-		man(m), goldAsteroid(gold), normalAsteroid(ast), fighter(f) { 
+	AsteroidsManager(Manager* m, Texture* gold, Texture* ast, Entity* f, SoundEffect* s) : 
+		man(m), goldAsteroid(gold), normalAsteroid(ast), fighter(f), explosion(s) { 
 		createAsteroids(10); 
 	#ifdef SDLUTILS
 		lastTime = sdlutils().currRealTime(); 
@@ -33,6 +33,7 @@ private:
 #ifndef SDLUTILS
 	VirtualTimer* clock;
 #endif
+	SoundEffect* explosion;
 	Entity* fighter;
 	Texture* normalAsteroid;
 	Texture* goldAsteroid;

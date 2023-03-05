@@ -19,7 +19,7 @@ PlayState::PlayState(Game* g)
 	fighter->getComponent<Transform>(TRANSFORM)->getPos();
 
 	asteroidManager = new AsteroidsManager(man.instance(), game->getArrayTexture(ASTEROID_GOLD), 
-		game->getArrayTexture(ASTEROID), fighter);
+		game->getArrayTexture(ASTEROID), fighter, game->getArraySound(ASTEROID_EXPLOSION));
 }
 
 void PlayState::update()
@@ -75,7 +75,9 @@ void PlayState::checkCollision()
 			for (auto& a : Manager::instance()->getEntities(_grp_BULLETS)) a->setAlive(false);
 			auto playerHealth = fighter->getComponent<Health>(HEALTH);
 			playerHealth->decreaseLives();
+			game->getArraySound(FIGHTER_EXPLOSION)->play(0, 1);
 			playerTr->setPos(Vector2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+			playerTr->resetDir();
 			playerTr->setRot(0);
 			asteroidManager->createAsteroids(10);
 			if (playerHealth->getLives() <= 0) {

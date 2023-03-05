@@ -60,8 +60,7 @@ void AsteroidsManager::onCollision(Entity* a)
 				auto vel = aTr->getDir().rotate(r) * 1.1f;
 
 				aux = man->addEntity(_grp_ASTEROIDS);
-				aux->addComponent<Transform>(TRANSFORM, pos,
-					vel, 25, 25, r);
+				aux->addComponent<Transform>(TRANSFORM, pos, vel, 3* aTr->getW() / 4, 3 * aTr->getW() / 4, r);
 				aux->addComponent<FramedImage>(IMAGE, goldAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
 				aux->addComponent<Follow>(FOLLOW, fighter);
 				aux->addComponent<Generations>(GENERATIONS, aGr->getGenerations() - 1);
@@ -69,4 +68,5 @@ void AsteroidsManager::onCollision(Entity* a)
 		}
 	}
 	a->setAlive(false);
+	explosion->play(0, 2);
 }
