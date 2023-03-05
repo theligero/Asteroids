@@ -22,11 +22,6 @@ void Entity::setAlive(const bool& al)
 	alive = al;
 }
 
-inline bool Entity::hasComponent(cmpId_type cId)
-{
-	return cmps[cId] != nullptr;
-}
-
 inline void Entity::update()
 {
 	auto n = currCmps.size();

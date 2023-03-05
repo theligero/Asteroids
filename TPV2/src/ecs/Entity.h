@@ -43,7 +43,9 @@ public:
 	inline T* getComponent(cmpId_type cId) {
 		return static_cast<T*>(cmps[cId]);
 	}
-	inline bool hasComponent(cmpId_type cId);
+	inline bool hasComponent(cmpId_type cId) {
+		return cmps[cId] != nullptr;
+	}
 	inline virtual void update();
 	inline virtual void render();
 

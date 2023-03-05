@@ -49,24 +49,24 @@ void AsteroidsManager::destroyAllAsteroids()
 
 void AsteroidsManager::onCollision(Entity* a)
 {
-	//if (a->hasComponent(GENERATIONS)) {
-	//	auto aGr = a->getComponent<Generations>(GENERATIONS);
-	//	if (aGr->getGenerations() > 0) {
-	//		auto aTr = a->getComponent<Transform>(TRANSFORM);
-	//		Entity* aux;
-	//		for (int i = 0; i < 2; ++i) {
-	//			auto r = sdlutils().rand().nextInt(0, 360);
-	//			auto pos = aTr->getPos() + aTr->getDir().rotate(r) * 2 * std::max(aTr->getW(), aTr->getH());
-	//			auto vel = aTr->getDir().rotate(r) * 1.1f;
+	if (a->hasComponent(GENERATIONS)) {
+		auto aGr = a->getComponent<Generations>(GENERATIONS);
+		if (aGr->getGenerations() > 0) {
+			auto aTr = a->getComponent<Transform>(TRANSFORM);
+			Entity* aux;
+			for (int i = 0; i < 2; ++i) {
+				auto r = sdlutils().rand().nextInt(0, 360);
+				auto pos = aTr->getPos() + aTr->getDir().rotate(r) * 2 * std::max(aTr->getW(), aTr->getH());
+				auto vel = aTr->getDir().rotate(r) * 1.1f;
 
-	//			aux = man->addEntity(_grp_ASTEROIDS);
-	//			aux->addComponent<Transform>(TRANSFORM, pos,
-	//				vel, 25, 25, r);
-	//			aux->addComponent<FramedImage>(IMAGE, goldAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
-	//			aux->addComponent<Follow>(FOLLOW, fighter);
-	//			aux->addComponent<Generations>(GENERATIONS, aGr->getGenerations() - 1);
-	//		}
-	//	}
-	//}
+				aux = man->addEntity(_grp_ASTEROIDS);
+				aux->addComponent<Transform>(TRANSFORM, pos,
+					vel, 25, 25, r);
+				aux->addComponent<FramedImage>(IMAGE, goldAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
+				aux->addComponent<Follow>(FOLLOW, fighter);
+				aux->addComponent<Generations>(GENERATIONS, aGr->getGenerations() - 1);
+			}
+		}
+	}
 	a->setAlive(false);
 }
