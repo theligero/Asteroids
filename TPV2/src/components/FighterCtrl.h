@@ -1,13 +1,14 @@
 #ifndef FIGHTER_CTRL_H_
 #define FIGHTER_CTRL_H_
 
-#include "../ecs/Component.h"
-#include "../sdlutils/InputHandler.h"
 #include "Transform.h"
 #include "Gun.h"
+#include "../ecs/Component.h"
 #include "../game/game.h"
-#include "../states/PauseState.h"
+#include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SoundEffect.h"
+#include "../states/PauseState.h"
+
 
 class FighterCtrl : public Component
 {

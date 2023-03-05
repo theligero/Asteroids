@@ -1,6 +1,7 @@
 #include "PlayState.h"
 #include "EndState.h"
 #include <typeinfo>
+#include "../utils/Collisions.h"
 
 PlayState::PlayState(Game* g)
 {
@@ -25,14 +26,18 @@ void PlayState::update()
 {
 	Manager::instance()->update();
 	InputHandler::instance()->refresh();
-	asteroidManager->addAsteroidFrequently();
+	checkCollision();
+	Manager::instance()->refresh();
+	if (Manager::instance()->getEntities(_grp_ASTEROIDS).size() == 0)
+		game->getStateMachine()->popState();
+	else
+		asteroidManager->addAsteroidFrequently();
 }
 
 void PlayState::render()
 {
 	Manager::instance()->render();
 }
-
 
 
 bool PlayState::onEnter()
@@ -45,6 +50,21 @@ bool PlayState::onExit()
 {
 	std::cout << "Saliendo de PlayState\n";
 	return true;
+}
+
+void PlayState::checkCollision()
+{
+	for (auto& e : Manager::instance()->getEntities(_grp_BULLETS)) {
+		auto bullTr = e->getComponent<Transform>(TRANSFORM);
+		for (auto& i : Manager::instance()->getEntities(_grp_ASTEROIDS)) {
+			auto astTr = i->getComponent<Transform>(TRANSFORM);
+			if (Collisions::collidesWithRotation(bullTr->getPos(), bullTr->getW(), bullTr->getH(), bullTr->getRot(),
+					astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
+				e->setAlive(false);
+				asteroidManager->onCollision(i);
+			}
+		}
+	}
 }
 
 

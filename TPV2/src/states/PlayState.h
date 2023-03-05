@@ -33,6 +33,8 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 
+	void checkCollision();
+
 	void enterPause();
 private:
 	AsteroidsManager* asteroidManager = nullptr;

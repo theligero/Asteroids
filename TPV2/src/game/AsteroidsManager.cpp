@@ -1,25 +1,22 @@
 #include "AsteroidsManager.h"
+#include "Game.h"
 #include "../components/Transform.h"
 #include "../components/ShowAtOpposideSide.h"
 #include "../components/FramedImage.h"
 #include "../components/Follow.h"
-#include "Game.h"
 
 void AsteroidsManager::createAsteroids(int n)
 {
 	if (man->getEntities(_grp_ASTEROIDS).size() + n <= MAX_ASTEROIDS) {
 		Entity* aux;
 		for (int i = 0; i < n; ++i) {
-		#ifdef SDLUTILS
-			bool goldOrNot = (sdlutils().rand().nextInt(0, 10) < 3) ? true : false;
-		#else
-			bool goldOrNot = ((rand() % 10) + 1 <= 3) ? true : false;
-		#endif
 			aux = man->addEntity(_grp_ASTEROIDS);
 		#ifdef SDLUTILS
+			bool goldOrNot = (sdlutils().rand().nextInt(0, 10) < 3) ? true : false;
 			aux->addComponent<Transform>(TRANSFORM, Vector2D(rand() % WINDOW_WIDTH, rand() % WINDOW_HEIGHT),
 				Vector2D((rand() % 2), (rand() % 2)), 25, 25, 0);
 		#else
+			bool goldOrNot = ((rand() % 10) + 1 <= 3) ? true : false;
 			aux->addComponent<Transform>(TRANSFORM, Vector2D(rand() % WINDOW_WIDTH, rand() % WINDOW_HEIGHT),
 				Vector2D((rand() % 2) * 0.05f, (rand() % 2) * 0.05f), 25, 25, 0);
 		#endif
@@ -50,4 +47,5 @@ void AsteroidsManager::destroyAllAsteroids()
 
 void AsteroidsManager::onCollision(Entity* a)
 {
+	a->setAlive(false);
 }

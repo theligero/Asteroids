@@ -18,12 +18,12 @@ public:
 	AsteroidsManager(Manager* m, Texture* gold, Texture* ast, Entity* f) : 
 		man(m), goldAsteroid(gold), normalAsteroid(ast), fighter(f) { 
 		createAsteroids(10); 
-#ifdef SDLUTILS
+	#ifdef SDLUTILS
 		lastTime = sdlutils().currRealTime(); 
-#else
+	#else
 		lastTime = clock->currTime();
-#endif
-		}
+	#endif
+	}
 	virtual ~AsteroidsManager() {}
 	void createAsteroids(int n);
 	void addAsteroidFrequently();
