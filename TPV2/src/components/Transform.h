@@ -7,6 +7,7 @@
 class Transform : public Component 
 {
 public:
+	constexpr static cmpId_type id = TRANSFORM;
 	Transform(Vector2D p, Vector2D d, float w, float h, float r) : 
 		pos(p), dir(d), width(w), height(h), rotation(r) {}
 	virtual ~Transform() {}
@@ -21,7 +22,7 @@ public:
 	inline float& getH() { return height; }
 
 	void initComponent() override;
-	void update() override;
+	//void update() override;
 private:
 	Vector2D pos;
 	Vector2D dir;

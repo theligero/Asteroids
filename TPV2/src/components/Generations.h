@@ -5,9 +5,11 @@
 
 const int MAX_GENERATIONS = 3;
 const int MIN_GENERATIONS = 1;
+
 class Generations : public Component
 {
 public:
+	constexpr static cmpId_type id = GENERATIONS;
 	Generations(int newGenerations) : generationsLeft(newGenerations){ }
 	virtual ~Generations() { }
 

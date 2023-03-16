@@ -10,6 +10,8 @@ const float deAcceleration = 0.9991;
 class DeAcceleration : public Component
 {
 public:
+
+	constexpr static cmpId_type id = DEACCELERATION;
 	DeAcceleration() { timer = new VirtualTimer(); lastTime = timer->currTime(); }
 	virtual ~DeAcceleration() { delete timer; }
 

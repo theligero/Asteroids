@@ -8,9 +8,10 @@
 class Image : public Component
 {
 public:
+	constexpr static cmpId_type id = IMAGE;
 	Image(Texture* t) : tex(t), tr(nullptr) {}
 	virtual ~Image() {}
-	void render() override;
+	//void render() override;
 	void initComponent() override;
 
 protected:

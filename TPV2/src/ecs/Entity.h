@@ -12,48 +12,23 @@ using namespace ecs;
 class Entity
 {
 public:
-	Entity();
+	Entity(grpId_type gId);
+	Entity(const Entity&) = delete;
+	Entity& operator = (const Entity&) = delete;
 	virtual ~Entity();
 	void setContext(Manager* man);
 	inline bool& isAlive() { return alive; }
-	void setAlive(const bool& al);
-	template <typename T, typename ...Ts>
-	inline T* addComponent(cmpId_type cId, Ts&& ...args) {
-		T* c = new T(std::forward<Ts>(args)...);
-
-		removeComponent(cId);
-
-		currCmps.push_back(c);
-		cmps[cId] = c;
-
-		c->setContext(this, mngr);
-		c->initComponent();
-
-		return c;
-	}
-	inline void removeComponent(cmpId_type cId) {
-		if (cmps[cId] != nullptr) {
-			auto it = std::find(currCmps.begin(), currCmps.end(), cmps[cId]);
-			currCmps.erase(it);
-			delete cmps[cId];
-			cmps[cId] = nullptr;
-		}
-	}
-	template <typename T>
-	inline T* getComponent(cmpId_type cId) {
-		return static_cast<T*>(cmps[cId]);
-	}
-	inline bool hasComponent(cmpId_type cId) {
-		return cmps[cId] != nullptr;
-	}
 	inline virtual void update();
 	inline virtual void render();
 
 private:
+	friend Manager;
+	
 	bool alive;
 	Manager* mngr;
 	std::vector<Component*> currCmps;
 	std::array<Component*, ecs::maxComponentId> cmps;
+	grpId_type gId_;
 };
 
 #endif /*ENTITY_H_*/

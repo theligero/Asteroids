@@ -16,9 +16,9 @@ void Follow::initComponent()
 	tr = ent->getComponent<Transform>(TRANSFORM);
 }
 
-void Follow::update()
-{
-		Vector2D newDir2 = (followedTr->getPos() - tr->getPos()).normalize() * FOLLOWING_SPEED;
-		newDir2.rotate(newDir2.angle(followedTr->getPos() - tr->getPos()) > 0 ? 1.0f : -1.0f);
-		tr->getDir().set(newDir2);
-}
+//void Follow::update()
+//{
+//		Vector2D newDir2 = (followedTr->getPos() - tr->getPos()).normalize() * FOLLOWING_SPEED;
+//		newDir2.rotate(newDir2.angle(followedTr->getPos() - tr->getPos()) > 0 ? 1.0f : -1.0f);
+//		tr->getDir().set(newDir2);
+//}

@@ -7,11 +7,12 @@
 class DisableOnExit : public Component
 {
 public:
+	constexpr static cmpId_type id = DISABLE_ON_EXIT;
 	DisableOnExit(int w, int h) : WindowWidth(w), WindowHeight(h) {}
 	virtual ~DisableOnExit() {}
 
 	void initComponent() override;
-	void update() override;
+	//void update() override;
 private:
 	Transform* tr = nullptr;
 	int WindowWidth;
