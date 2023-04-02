@@ -3,6 +3,8 @@
 
 #define SDLUTILS
 
+//#define PARTE_2
+
 #include <cstdint>
 
 namespace ecs {

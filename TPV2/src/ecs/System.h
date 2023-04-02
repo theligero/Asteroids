@@ -1,7 +1,19 @@
 #ifndef SYSTEM_H_
 #define SYSTEM_H_
 
-class Message;
+#include "../game/ecs_def.h"
+
+struct Message {
+	ecs::msgId_type id;
+	// _m_STAR_EATEN
+	struct {
+		Entity* e;
+	} star_eaten_data;
+	// _m_ADD_STARS
+	struct {
+		unsigned int n;
+	} add_stars_data;
+};
 
 class Manager;
 

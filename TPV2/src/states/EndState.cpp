@@ -14,14 +14,9 @@ EndState::EndState(Game* g, bool win)
 
 	endText = man.addEntity(_grp_PAUSE);
 	endText->addComponent<Transform>(TRANSFORM, Vector2D(250, 400), Vector2D(0, 0), 300, 100, 0);
-	if (win) {
-		endText->addComponent<Image>(IMAGE, game->getArrayText(WIN));
-	}
-	else {
-		endText->addComponent<Image>(IMAGE, game->getArrayText(LOSE));
-	}
-	
 
+	if (win) endText->addComponent<Image>(IMAGE, game->getArrayText(WIN));
+	else endText->addComponent<Image>(IMAGE, game->getArrayText(LOSE));
 }
 
 

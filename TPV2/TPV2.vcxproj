@@ -28,6 +28,7 @@
     <ClInclude Include="src\components\Gun.h" />
     <ClInclude Include="src\components\Health.h" />
     <ClInclude Include="src\components\Image.h" />
+    <ClInclude Include="src\components\PauseCtrl.h" />
     <ClInclude Include="src\components\ShowAtOpposideSide.h" />
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\ecs\Component.h" />
@@ -78,6 +79,7 @@
     <ClCompile Include="src\components\Gun.cpp" />
     <ClCompile Include="src\components\Health.cpp" />
     <ClCompile Include="src\components\Image.cpp" />
+    <ClCompile Include="src\components\PauseCtrl.cpp" />
     <ClCompile Include="src\components\ShowAtOpposideSide.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
@@ -134,7 +136,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">

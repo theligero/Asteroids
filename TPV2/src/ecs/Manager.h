@@ -11,17 +11,17 @@ class Manager : public Singleton<Manager>
 public:
 	virtual ~Manager();
 
-	Entity* addEntity(grpId_type gId = _grp_GENERAL);
-	inline const auto& getEntities(grpId_type gId = _grp_GENERAL) { return entsByGroup_[gId]; }
-	inline void setHandler(hdlrId_type hId, Entity* e) {
+	Entity* addEntity(ecs::grpId_type gId = _grp_GENERAL);
+	inline const auto& getEntities(ecs::grpId_type gId = _grp_GENERAL) { return entsByGroup_[gId]; }
+	inline void setHandler(ecs::hdlrId_type hId, Entity* e) {
 		hdlrs_[hId] = e;
 	}
-	inline Entity* getHandler(hdlrId_type hId) {
+	inline Entity* getHandler(ecs::hdlrId_type hId) {
 		return hdlrs_[hId];
 	}
 	void refresh();
 	void update();
-	void update(grpId_type gId);
+	void update(ecs::grpId_type gId);
 	void render();
 
 	template <typename T, typename ...Ts>
@@ -74,7 +74,7 @@ private:
 	friend Singleton<Manager>;
 	Manager();
 	//std::vector<Entity*> ents_;
-	std::array<std::vector<Entity*>, maxGroupId> entsByGroup_;
+	std::array<std::vector<Entity*>, ecs::maxGroupId> entsByGroup_;
 	std::array < Entity*, maxHdlrId> hdlrs_;
 	std::array < System*, maxSystemId> sys_;
 };

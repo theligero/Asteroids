@@ -12,9 +12,10 @@ using namespace ecs;
 class Entity
 {
 public:
-	Entity(grpId_type gId);
+	Entity();
+	Entity(ecs::grpId_type gId);
 	Entity(const Entity&) = delete;
-	Entity& operator = (const Entity&) = delete;
+	Entity& operator=(const Entity&) = delete;
 	virtual ~Entity();
 	void setContext(Manager* man);
 	inline bool& isAlive() { return alive; }
@@ -22,13 +23,15 @@ public:
 	inline virtual void render();
 
 private:
-	friend Manager;
-	
-	bool alive;
+#ifndef PARTE_2
 	Manager* mngr;
+#else
+	friend Manager;
+#endif
 	std::vector<Component*> currCmps;
 	std::array<Component*, ecs::maxComponentId> cmps;
-	grpId_type gId_;
+	bool alive;
+	ecs::grpId_type gId;
 };
 
 #endif /*ENTITY_H_*/
