@@ -3,32 +3,39 @@
 MainMenuState::MainMenuState(Game* g)
 {
 	game = g;
+	auto& man = *Manager::instance();
 
-	//MenuButton* jugar = new MenuButton({ 50,50 }, 150, 50, game->getArrayTex(PLAY), beginGame, game);
-	//MenuButton* cargar = new MenuButton({ 50,200 }, 150, 50, game->getArrayTex(LOAD), loadGame, game);
+	jugarSolo = man.addEntity();
+	jugarSolo->addComponent<Transform>(TRANSFORM, Vector2D(WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 - 75), Vector2D(), 200, 100, 0);
+	jugarSolo->addComponent<Image>(IMAGE, game->getArrayTexture(PLAY));
+	
+
+	jugarCoop = man.addEntity();
+	jugarCoop->addComponent<Transform>(TRANSFORM, Vector2D(WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 + 75), Vector2D(), 200, 100, 0);
+	jugarCoop->addComponent<Image>(IMAGE, game->getArrayTexture(COOP));
+	
+	// MenuButton* jugarSolo = new MenuButton({ 50,50 }, 150, 50, game->getArrayTexture(PLAY), beginGame, game);
+	// MenuButton* jugarCoop = new MenuButton({ 50,200 }, 150, 50, game->getArrayTexture(COOP), loadGame, game);
 	//MenuButton* salir = new MenuButton({ 50,400 }, 150, 50, game->getArrayTex(EXIT), endGame, game);
 
-	//sceneObjects.push_back(jugar);
-	//sceneObjects.push_back(cargar);
+	// menuButtons.push_back(jugarSolo);
+	// menuButtons.push_back(jugarCoop);
 	//sceneObjects.push_back(salir);
 }
 
 MainMenuState::~MainMenuState()
 {
-	//for (auto e : sceneObjects) {
-	//	delete(e);
-	//}
+
 }
 
 void MainMenuState::update()
 {
-	//for (auto it : sceneObjects) {
-	//	it->update();
-	//}
+	Manager::instance()->update();
 }
 
 void MainMenuState::render()
 {
+	Manager::instance()->render();
 	//for (auto it : sceneObjects) {
 	//	it->render();
 	//}

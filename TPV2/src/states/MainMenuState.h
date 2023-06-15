@@ -26,7 +26,8 @@ public:
 	static void endGame(Game* game);
 	static void loadGame(Game* game);
 private:
-	
+	Entity* jugarSolo = nullptr;
+	Entity* jugarCoop = nullptr;
 	};
 
 #endif /*MAINMENUSTATE_H_*/

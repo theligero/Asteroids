@@ -39,7 +39,7 @@ Game::Game()
 	}
 
 	stateMachine = new GameStateMachine();
-	stateMachine->changeState(new PlayState(this));
+	stateMachine->changeState(new MainMenuState(this));
 }
 
 Game::~Game()
