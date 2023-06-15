@@ -8,12 +8,11 @@
 class Follow : public Component
 {
 public:
-	constexpr static cmpId_type id = FOLLOW;
 	Follow(Entity* followed) : followedEntity(followed) { }
 	virtual ~Follow() { }
 
 	void initComponent() override;
-	//void update() override;
+	void update() override;
 private:
 	Entity* followedEntity;
 	Transform* followedTr;

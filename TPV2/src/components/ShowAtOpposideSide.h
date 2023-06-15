@@ -7,12 +7,11 @@
 class ShowAtOpposideSide : public Component
 {
 public:
-	constexpr static cmpId_type id = SHOW_AT_OPPOSIDE_SIDE;
 	ShowAtOpposideSide(int w, int h) : WindowWidth(w), WindowHeight(h) {}
 	virtual ~ShowAtOpposideSide() {}
 
 	void initComponent() override;
-	//void update() override;
+	void update() override;
 private:
 	Transform* tr;
 	int WindowWidth;

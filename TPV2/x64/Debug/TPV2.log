@@ -1,1 +1,26 @@
-﻿
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  AsteroidsManager.cpp
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\game\AsteroidsManager.cpp(17,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\game\AsteroidsManager.cpp(18,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\game\AsteroidsManager.cpp(63,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\game\AsteroidsManager.cpp(64,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\ilige\Downloads\Asteroids\TPV2\src\game\AsteroidsManager.cpp(67): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D&,Vector2D&,float,float,int&>(ecs::cmpId_type,Vector2D &,Vector2D &,float &&,float &&,int &)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+  TPV2.vcxproj -> C:\Users\ilige\Downloads\Asteroids\bin\AsteroidsDebug.exe

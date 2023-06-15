@@ -16,13 +16,12 @@
 class Gun : public Component
 {
 public:
-	constexpr static cmpId_type id = GUN;
 	Gun(SoundEffect* soundHandle, Texture* t, int w, int h) : 
 		WindowWidth(w), WindowHeight(h), shootSound(soundHandle), 
 		bulletTexture(t), tr(nullptr) { clock = new VirtualTimer(); }
 	virtual ~Gun() {}
 	void initComponent() override;
-	//void update() override;
+	void update() override;
 private:
 	Transform* tr;
 	Texture* bulletTexture;

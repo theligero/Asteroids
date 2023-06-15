@@ -13,12 +13,11 @@
 class FighterCtrl : public Component
 {
 public:
-	constexpr static cmpId_type id = FIGHTER_CTRL;
 	FighterCtrl(SoundEffect* soundHandle, Game* g) : tr(nullptr), thrustSound(soundHandle), game(g) { InputHandler::instance(); }
 	virtual ~FighterCtrl() { InputHandler::close(); }
 
 	void initComponent() override;
-	//void update() override;
+	void update() override;
 private:
 	Transform* tr;
 	Gun* gun;

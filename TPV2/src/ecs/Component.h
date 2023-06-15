@@ -5,8 +5,9 @@ class Entity;
 
 class Manager;
 
-struct Component
+class Component
 {
+public:
 	Component() : ent(), mngr() {}
 	virtual ~Component() {}
 	inline void setContext(Entity* e, Manager* m) {
@@ -14,8 +15,8 @@ struct Component
 		mngr = m;
 	}
 
-	/*virtual void update() {}
-	virtual void render() {}*/
+	virtual void update() {}
+	virtual void render() {}
 	virtual void initComponent() {}
 protected:
 	Entity* ent;
