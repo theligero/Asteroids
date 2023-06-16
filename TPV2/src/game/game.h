@@ -15,6 +15,7 @@
 #include "../components/FramedImage.h"
 #include "../components/Gun.h"
 #include "../components/Follow.h"
+#include "../components/Clickable.h"
 #include "../states/GameStateMachine.h"
 #include "../states/PlayState.h"
 #include "../states/MainMenuState.h"
@@ -23,7 +24,7 @@ const int NUM_TEXTURES = 8;
 const int NUM_TEXTS = 3;
 const int NUM_SOUNDS = 4;
 
-enum TextureName { ASTEROID, ASTEROID_GOLD, FIGHTER, FIGHTER2, FIRE, HEART, PLAY, COOP};
+enum TextureName { ASTEROID, ASTEROID_GOLD, FIGHTER, FIGHTER2, FIRE, HEART, SOLO, COOP};
 enum TextName { PAUSE, WIN, LOSE };
 enum SoundName { THRUST, SHOOT, FIGHTER_EXPLOSION, ASTEROID_EXPLOSION };
 
@@ -50,8 +51,8 @@ const TextureDescription TEXTURE_DESCR[NUM_TEXTURES] = {
 	{"fighter2.png", 1, 1},
 	{"fire.png", 1, 1},
 	{"heart.png", 1, 1},
-	{"jugarButton.png", 1, 1},
-	{"cargarButton.png", 1, 1}
+	{"soloButton.png", 1, 1},
+	{"co-opButton.png", 1, 1}
 };
 
 const TextDescription TEXT_DESCRIP[NUM_TEXTS] = {

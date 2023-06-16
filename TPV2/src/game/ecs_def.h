@@ -21,6 +21,7 @@ namespace ecs {
 		FOLLOW,
 		DISABLE_ON_EXIT,
 		PAUSE_CTRL,
+		CLICKABLE,
 		// do not remove this
 		LAST_CMP_ID
 	};

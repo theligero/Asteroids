@@ -1,14 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  MainMenuState.cpp
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
-          with
-          [
-              _Ty=int
-          ]
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\states\MainMenuState.cpp(9): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
-          with
-          [
-              T=Transform
-          ]
+  Clickable.cpp
+     Creando biblioteca C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\bin\AsteroidsDebug.lib y objeto C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\bin\AsteroidsDebug.exp
   TPV2.vcxproj -> C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\bin\AsteroidsDebug.exe
