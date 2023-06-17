@@ -1,1 +1,97 @@
-﻿
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  DeAcceleration.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  DisableOnExit.cpp
+  FighterCtrl.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  Follow.cpp
+  Gun.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\Gun.cpp(28,75): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D&,Vector2D&,int,int,float&>(Vector2D &,Vector2D &,int &&,int &&,float &)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+  Health.cpp
+  Image.cpp
+  PauseCtrl.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  ShowAtOpposideSide.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\ShowAtOpposideSide.cpp(16,21): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\ShowAtOpposideSide.cpp(21,21): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Entity.cpp
+  Manager.cpp
+  AsteroidsManager.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\game\AsteroidsManager.cpp(17,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\game\AsteroidsManager.cpp(18,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\game\AsteroidsManager.cpp(63,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\game\AsteroidsManager.cpp(64,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20,52): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\game\AsteroidsManager.cpp(67,86): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D&,Vector2D&,float,float,int&>(Vector2D &,Vector2D &,float &&,float &&,int &)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+  Game.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\game\Game.cpp(59,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  main.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  EndState.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\states\EndState.cpp(11,85): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+  GameStateMachine.cpp
+  MainMenuState.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  PauseState.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\states\PauseState.cpp(10,84): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+  PlayState.cpp
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\TPV2\src\states\PlayState.cpp(14,80): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+  Generando código...
+  TPV2.vcxproj -> C:\UNI\Entrega extraordinaria TPV 2\Quepasa\Asteroids\Asteroids\bin\AsteroidsDebug.exe

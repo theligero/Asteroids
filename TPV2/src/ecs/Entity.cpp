@@ -1,8 +1,7 @@
 #include "Entity.h"
 
-Entity::Entity(grpId_type gId) : mngr(nullptr), cmps(), currCmps(), alive()
+Entity::Entity() : mngr(nullptr), cmps(), currCmps(), alive()
 {
-	gId_ = gId;
 	currCmps.reserve(ecs::maxComponentId);
 }
 
@@ -18,7 +17,12 @@ void Entity::setContext(Manager* man)
 	mngr = man;
 }
 
-inline void Entity::update()
+void Entity::setAlive(const bool& al)
+{
+	alive = al;
+}
+
+void Entity::update()
 {
 	auto n = currCmps.size();
 	for (auto i = 0u; i < n; ++i) {
@@ -26,7 +30,7 @@ inline void Entity::update()
 	}
 }
 
-inline void Entity::render()
+void Entity::render()
 {
 	auto n = currCmps.size();
 	for (auto i = 0u; i < n; ++i) {

@@ -2,7 +2,10 @@
 #define TRANSFORM_H_
 
 #include "../ecs/Component.h"
+#include "../game/ecs_def.h"
 #include "../utils/Vector2D.h"
+
+using namespace ecs;
 
 class Transform : public Component 
 {
@@ -22,7 +25,7 @@ public:
 	inline float& getH() { return height; }
 
 	void initComponent() override;
-	//void update() override;
+	void update() override;
 private:
 	Vector2D pos;
 	Vector2D dir;

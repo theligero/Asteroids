@@ -3,7 +3,7 @@
 
 void DisableOnExit::initComponent()
 {
-	tr = ent->getComponent<Transform>(TRANSFORM);
+	tr = ent->getComponent<Transform>();
 }
 
 void DisableOnExit::update()

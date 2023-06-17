@@ -11,14 +11,14 @@ const int UPDATE_STEP = 300;
 
 void Follow::initComponent()
 {
-	followedTr = followedEntity->getComponent<Transform>(TRANSFORM);
+	followedTr = followedEntity->getComponent<Transform>();
 	assert(followedTr != nullptr);
-	tr = ent->getComponent<Transform>(TRANSFORM);
+	tr = ent->getComponent<Transform>();
 }
 
-//void Follow::update()
-//{
-//		Vector2D newDir2 = (followedTr->getPos() - tr->getPos()).normalize() * FOLLOWING_SPEED;
-//		newDir2.rotate(newDir2.angle(followedTr->getPos() - tr->getPos()) > 0 ? 1.0f : -1.0f);
-//		tr->getDir().set(newDir2);
-//}
+void Follow::update()
+{
+		Vector2D newDir2 = (followedTr->getPos() - tr->getPos()).normalize() * FOLLOWING_SPEED;
+		newDir2.rotate(newDir2.angle(followedTr->getPos() - tr->getPos()) > 0 ? 1.0f : -1.0f);
+		tr->getDir().set(newDir2);
+}

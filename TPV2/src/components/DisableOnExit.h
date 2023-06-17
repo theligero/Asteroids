@@ -12,7 +12,7 @@ public:
 	virtual ~DisableOnExit() {}
 
 	void initComponent() override;
-	//void update() override;
+	void update() override;
 private:
 	Transform* tr = nullptr;
 	int WindowWidth;

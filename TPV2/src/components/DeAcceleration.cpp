@@ -4,7 +4,7 @@
 
 void DeAcceleration::initComponent()
 {
-	tr = ent->getComponent<Transform>(TRANSFORM);
+	tr = ent->getComponent<Transform>();
 }
 
 void DeAcceleration::update()

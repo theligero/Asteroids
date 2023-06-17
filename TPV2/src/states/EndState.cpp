@@ -8,15 +8,15 @@ EndState::EndState(Game* g, bool win)
 	auto& man = *Manager::instance();
 
 	auto pruebatext = man.addEntity(_grp_PAUSE);
-	pruebatext->addComponent<Transform>(TRANSFORM, Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
-	pruebatext->addComponent<Image>(IMAGE, game->getArrayText(PAUSE));
-	pruebatext->addComponent<PauseCtrl>(PAUSE_CTRL, game, false);
+	pruebatext->addComponent<Transform>(Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
+	pruebatext->addComponent<Image>(game->getArrayText(PAUSE));
+	pruebatext->addComponent<PauseCtrl>(game, false);
 
 	endText = man.addEntity(_grp_PAUSE);
-	endText->addComponent<Transform>(TRANSFORM, Vector2D(250, 400), Vector2D(0, 0), 300, 100, 0);
+	endText->addComponent<Transform>(Vector2D(250, 400), Vector2D(0, 0), 300, 100, 0);
 
-	if (win) endText->addComponent<Image>(IMAGE, game->getArrayText(WIN));
-	else endText->addComponent<Image>(IMAGE, game->getArrayText(LOSE));
+	if (win) endText->addComponent<Image>(game->getArrayText(WIN));
+	else endText->addComponent<Image>(game->getArrayText(LOSE));
 }
 
 

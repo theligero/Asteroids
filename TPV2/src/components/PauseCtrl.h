@@ -11,6 +11,7 @@
 class PauseCtrl : public Component
 {
 public:
+	constexpr static cmpId_type id = ecs::PAUSE_CTRL;
 	PauseCtrl(Game* g, bool pause = true) : tr(nullptr), game(g), isPaused(pause) { InputHandler::instance(); }
 	virtual ~PauseCtrl() { InputHandler::close(); }
 

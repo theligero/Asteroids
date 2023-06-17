@@ -15,12 +15,12 @@ private:
 	Texture* tex;
 	Transform* tr;
 public:
-	constexpr static cmpId_type id = HEALTH;
+	constexpr static cmpId_type id = ecs::HEALTH;
 	Health(int w, int h, Texture* t) : window_Width(w), window_Height(h), tex(t) {}
 	int getLives() { return livesCount; }
 	void decreaseLives();
 	void resetLives() { livesCount = MAX_LIVES; }
-	//void render() override;
+	void render() override;
 	void initComponent() override;
 };
 

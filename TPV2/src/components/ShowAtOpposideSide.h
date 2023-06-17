@@ -4,6 +4,8 @@
 #include "../ecs/Component.h"
 #include "Transform.h"
 
+
+
 class ShowAtOpposideSide : public Component
 {
 public:
@@ -12,7 +14,7 @@ public:
 	virtual ~ShowAtOpposideSide() {}
 
 	void initComponent() override;
-	//void update() override;
+	void update() override;
 private:
 	Transform* tr;
 	int WindowWidth;

@@ -2,6 +2,9 @@
 #define GENERATIONS_H_
 
 #include "../ecs/Component.h"
+#include "../game/ecs_def.h"
+
+using namespace ecs;
 
 const int MAX_GENERATIONS = 3;
 const int MIN_GENERATIONS = 1;
