@@ -45,7 +45,7 @@ void AsteroidsManager::addAsteroidFrequently()
 void AsteroidsManager::destroyAllAsteroids()
 {
 	for (auto& e : man->getEntities(_grp_ASTEROIDS)) {
-		e->setAlive(false);
+		man->setAlive(e, false);
 	}
 }
 
@@ -72,6 +72,6 @@ void AsteroidsManager::onCollision(Entity* a)
 			}
 		}
 	}
-	a->setAlive(false);
+	man->setAlive(a, false);
 	explosion->play(0, 2);
 }

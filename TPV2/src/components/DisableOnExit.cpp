@@ -13,6 +13,6 @@ void DisableOnExit::update()
 
 	if (!(tr->getPos().getX() > 0 && tr->getPos().getX() < tr->getW() + WindowWidth &&
 		tr->getPos().getY() > 0 && tr->getPos().getY() < tr->getH() + WindowHeight)) {
-		ent->setAlive(false);
+		mngr->setAlive(ent, false);
 	}
 }

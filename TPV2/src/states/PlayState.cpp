@@ -29,7 +29,7 @@ void PlayState::update()
 	Manager::instance()->update();
 	InputHandler::instance()->refresh();
 	checkCollision();
-	if (!fighter->isAlive()){
+	if (!man->isAlive(fighter)){
 		game->getStateMachine()->changeState(new EndState(game, false));
 		auto& man = *Manager::instance();
 	}
@@ -69,7 +69,7 @@ void PlayState::checkCollision()
 			auto bullTr = man->getComponent<Transform>(e);
 			if (Collisions::collidesWithRotation(bullTr->getPos(), bullTr->getW(), bullTr->getH(), bullTr->getRot(),
 				astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
-				e->setAlive(false);
+				man->setAlive(e, false);
 				asteroidManager->onCollision(i);
 			}
 		}
@@ -77,7 +77,7 @@ void PlayState::checkCollision()
 		if (Collisions::collidesWithRotation(playerTr->getPos(), playerTr->getW(), playerTr->getH(), playerTr->getRot(),
 			astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
 			asteroidManager->destroyAllAsteroids();
-			for (auto& a : Manager::instance()->getEntities(_grp_BULLETS)) a->setAlive(false);
+			for (auto& a : Manager::instance()->getEntities(_grp_BULLETS)) man->setAlive(a, false);
 			auto playerHealth = man->getComponent<Health>(fighter);
 			playerHealth->decreaseLives();
 			game->getArraySound(FIGHTER_EXPLOSION)->play(0, 1);
@@ -86,7 +86,7 @@ void PlayState::checkCollision()
 			playerTr->setRot(0);
 			asteroidManager->createAsteroids(10);
 			if (playerHealth->getLives() <= 0) {
-				fighter->setAlive(false);
+				man->setAlive(fighter, false);
 			}
 		}
 	}

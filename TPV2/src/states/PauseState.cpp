@@ -34,7 +34,7 @@ bool PauseState::onEnter()
 
 bool PauseState::onExit()
 {
-	pauseText->setAlive(false);
+	man->setAlive(pauseText, false);
 	std::cout << "saliendo de PauseState\n";
 	return true;
 }

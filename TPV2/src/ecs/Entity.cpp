@@ -18,11 +18,6 @@ void Entity::setContext(Manager* man)
 	mngr = man;
 }
 
-void Entity::setAlive(const bool& al)
-{
-	alive = al;
-}
-
 void Entity::update()
 {
 	auto n = currCmps.size();

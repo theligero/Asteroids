@@ -19,10 +19,7 @@ public:
 	Entity(const Entity&) = delete;
 	Entity& operator=(const Entity&) = delete;
 	virtual ~Entity();
-	void setContext(Manager* man);
-	inline bool& isAlive() { return alive; }
-	void setAlive(const bool& al);
-	
+	void setContext(Manager* man);	
 	void update();
 	void render();
 

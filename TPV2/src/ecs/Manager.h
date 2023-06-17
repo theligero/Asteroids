@@ -61,6 +61,15 @@ public:
 		constexpr cmpId_type cId = T::id;
 		return static_cast<T*>(e->cmps[cId]);
 	}
+	inline void setAlive(Entity *e, const bool& al) {
+		e->alive = al;
+	}
+	inline bool& isAlive(Entity* e) {
+		return e->alive; 
+	}
+	inline grpId_type groupId(Entity* e) {
+		return e->gId_;
+	}
 private:
 	
 	

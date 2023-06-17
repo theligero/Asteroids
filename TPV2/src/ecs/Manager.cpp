@@ -19,7 +19,7 @@ Manager::~Manager()
 Entity* Manager::addEntity(grpId_type gId)
 {
 	Entity* e = new Entity(gId);
-	e->setAlive(true);
+	setAlive(e, true);
 	e->setContext(this);
 	entsByGroup_[gId].push_back(e);
 	return e;
@@ -31,8 +31,8 @@ void Manager::refresh()
 		auto& grpEnts = entsByGroup_[gId];
 		grpEnts.erase(
 			std::remove_if(grpEnts.begin(), grpEnts.end(),
-				[](Entity* e) {
-					if (e->isAlive()) {
+				[this](Entity* e) {
+					if (this->isAlive(e)) {
 						return false;
 					}
 					else {
