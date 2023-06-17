@@ -37,6 +37,26 @@ namespace ecs {
 	};
 
 	constexpr grpId_type maxGroupId = _LAST_GRP_ID;
+
+	using sysId_type = uint8_t;
+	enum sysId : sysId_type {
+		_sys_ASTEROIDS = 0,
+		_sys_COLLISIONS,
+		_sys_BULLET,
+		_sys_FIGHTER,
+		_sys_GAME_CTRL,
+		_sys_RENDER,
+
+		// do not remove this
+		_LAST_SYS_ID
+	};
+	constexpr sysId_type maxSystemId = _LAST_SYS_ID;
+
+	using msgId_type = uint8_t;
+	enum msgId : msgId_type {
+		_m_STAR_EATEN, //
+		_m_ADD_STARS
+	};
 }
 
 #endif /*ECS_DEF_H_*/

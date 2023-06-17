@@ -3,10 +3,13 @@
 
 #include "Entity.h"
 #include "../game/ecs_def.h"
+#include "System.h"
 #include "../utils/Singleton.h"
 #include <vector>
 
 class Entity;
+
+class System;
 
 class Manager : public Singleton<Manager>
 {
@@ -61,20 +64,58 @@ public:
 		constexpr cmpId_type cId = T::id;
 		return static_cast<T*>(e->cmps[cId]);
 	}
+
 	inline void setAlive(Entity *e, const bool& al) {
 		e->alive = al;
 	}
+
 	inline bool& isAlive(Entity* e) {
 		return e->alive; 
 	}
+
 	inline grpId_type groupId(Entity* e) {
 		return e->gId_;
 	}
+
+	template<typename T, typename ...Ts>
+	inline T* addSystem(Ts &&... args) {
+		constexpr sysId_type sId = T::id;
+		removeSystem<T>();
+		System* s = new T(std::forward<Ts>(args)...);
+		s->setContext(this);
+		s->initSystem();
+		sys_[sId] = s;
+		return static_cast<T*>(s);
+	}
+
+	template<typename T>
+	inline T* getSystem() {
+		constexpr sysId_type sId = T::id;
+		return static_cast<T*>(sys_[sId]);
+	}
+
+	template<typename T>
+	inline void removeSystem() {
+		constexpr sysId_type sId = T::id;
+		if (sys_[sId] != nullptr) {
+			delete sys_[sId];
+			sys_[sId] = nullptr;
+		}
+	}
+
+	inline void send(const Message& m) {
+		for (System* s : sys_) {
+			if (s != nullptr)
+				s->receive(m);
+		}
+	}
+
 private:
 	
 	
 	//std::vector<Entity*> ents_;
 	std::array<std::vector<Entity*>, maxGroupId> entsByGroup_;
+	std::array<System*, maxSystemId> sys_;
 };
 
 #endif /*MANAGER_H_*/

@@ -2,6 +2,7 @@
 #define SYSTEM_H_
 
 #include "../game/ecs_def.h"
+class Entity;
 
 struct Message {
 	ecs::msgId_type id;

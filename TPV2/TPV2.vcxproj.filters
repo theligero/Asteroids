@@ -183,6 +183,9 @@
     <ClInclude Include="src\components\PauseCtrl.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="src\ecs\System.h">
+      <Filter>Header Files\ecs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -283,6 +286,9 @@
     </ClCompile>
     <ClCompile Include="src\components\PauseCtrl.cpp">
       <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ecs\System.cpp">
+      <Filter>Source Files\ecs</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
