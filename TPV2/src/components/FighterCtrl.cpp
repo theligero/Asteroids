@@ -6,9 +6,9 @@ const float speedLimit = 3.0f;
 
 void FighterCtrl::initComponent()
 {
-	tr = ent->getComponent<Transform>();
+	tr = mngr->getComponent<Transform>(ent);
 	assert(tr != nullptr);
-	gun = ent->getComponent<Gun>();
+	gun = mngr->getComponent<Gun>(ent);
 }
 
 void FighterCtrl::update()

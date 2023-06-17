@@ -1,11 +1,13 @@
 #ifndef COMPONENT_H_
 #define COMPONENT_H_
 
+
+
 class Entity;
 
 class Manager;
 
-class Component
+struct Component
 {
 public:
 	Component() : ent(), mngr() {}

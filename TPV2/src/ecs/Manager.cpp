@@ -18,7 +18,7 @@ Manager::~Manager()
 
 Entity* Manager::addEntity(grpId_type gId)
 {
-	Entity* e = new Entity();
+	Entity* e = new Entity(gId);
 	e->setAlive(true);
 	e->setContext(this);
 	entsByGroup_[gId].push_back(e);

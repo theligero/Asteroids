@@ -3,6 +3,7 @@
 
 #include "GameState.h"
 #include "PlayState.h"
+#include "../ecs/Manager.h"
 #include <iostream>
 
 class Game;
@@ -23,6 +24,7 @@ public:
 
 private:
 	Entity* pauseText;
+	Manager* man;
 };
 
 #endif /*MAINMENUSTATE_H_*/

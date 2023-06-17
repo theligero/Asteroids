@@ -26,6 +26,17 @@ namespace ecs {
 	};
 
 	constexpr cmpId_type maxComponentId = LAST_CMP_ID;
+
+	using grpId_type = uint8_t;
+	enum grpId : grpId_type {
+		_grp_GENERAL,
+		_grp_ASTEROIDS,
+		_grp_BULLETS,
+		_grp_PAUSE,
+		_LAST_GRP_ID
+	};
+
+	constexpr grpId_type maxGroupId = _LAST_GRP_ID;
 }
 
 #endif /*ECS_DEF_H_*/

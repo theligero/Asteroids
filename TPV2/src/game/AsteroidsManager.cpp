@@ -16,20 +16,20 @@ void AsteroidsManager::createAsteroids(int n)
 			bool goldOrNot = (sdlutils().rand().nextInt(0, 10) < 3) ? true : false;
 			float x = (sdlutils().rand().nextInt(0, 2) == 0) ? 25 : WINDOW_WIDTH - 25;
 			float y = (sdlutils().rand().nextInt(0, 2) == 0) ? 25 : WINDOW_HEIGHT - 25;
-			aux->addComponent<Transform>(Vector2D(x, y),
+			man->addComponent<Transform>(aux, Vector2D(x, y),
 				Vector2D((rand() % 2), (rand() % 2)), 25, 25, 0);
 		#else
 			bool goldOrNot = ((rand() % 10) + 1 <= 3) ? true : false;
 			aux->addComponent<Transform>(Vector2D(rand() % WINDOW_WIDTH, rand() % WINDOW_HEIGHT),
 				Vector2D((rand() % 2) * 0.05f, (rand() % 2) * 0.05f), 25, 25, 0);
 		#endif
-			aux->addComponent<ShowAtOpposideSide>(WINDOW_WIDTH, WINDOW_HEIGHT);
-			aux->addComponent<Generations>(2);
+			man->addComponent<ShowAtOpposideSide>(aux, WINDOW_WIDTH, WINDOW_HEIGHT);
+			man->addComponent<Generations>(aux, 2);
 			if (goldOrNot) {
-				aux->addComponent<FramedImage>(goldAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
-				aux->addComponent<Follow>(fighter);
+				man->addComponent<FramedImage>(aux, goldAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
+				man->addComponent<Follow>(aux, fighter);
 			}
-			else aux->addComponent<FramedImage>(normalAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
+			else man->addComponent<FramedImage>(aux, normalAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
 		}
 	}
 }
@@ -51,12 +51,12 @@ void AsteroidsManager::destroyAllAsteroids()
 
 void AsteroidsManager::onCollision(Entity* a)
 {
-	if (a->hasComponent<Generations>()) {
-		auto aGr = a->getComponent<Generations>();
+	if (man->hasComponent<Generations>(a)) {
+		auto aGr = man->getComponent<Generations>(a);
 		if (aGr->getGenerations() > 0) {
-			auto aTr = a->getComponent<Transform>();
-			auto aImg = a->getComponent<Image>();
-			auto aFol = a->getComponent<Follow>();
+			auto aTr = man->getComponent<Transform>(a);
+			auto aImg = man->getComponent<Image>(a);
+			auto aFol = man->getComponent<Follow>(a);
 			Entity* aux;
 			for (int i = 0; i < 2; ++i) {
 				auto r = sdlutils().rand().nextInt(0, 360);
@@ -64,11 +64,11 @@ void AsteroidsManager::onCollision(Entity* a)
 				auto vel = aTr->getDir().rotate(r) * 1.1f;
 
 				aux = man->addEntity(_grp_ASTEROIDS);
-				aux->addComponent<Transform>(pos, vel, 3* aTr->getW() / 4, 3 * aTr->getW() / 4, r);
-				aux->addComponent<FramedImage>(aImg->getTexture(), TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
-				if (aFol != nullptr) aux->addComponent<Follow>(fighter);
-				aux->addComponent<Generations>(aGr->getGenerations() - 1);
-				aux->addComponent<ShowAtOpposideSide>(WINDOW_WIDTH, WINDOW_HEIGHT);
+				man->addComponent<Transform>(aux, pos, vel, 3* aTr->getW() / 4, 3 * aTr->getW() / 4, r);
+				man->addComponent<FramedImage>(aux, aImg->getTexture(), TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
+				if (aFol != nullptr) man->addComponent<Follow>(aux, fighter);
+				man->addComponent<Generations>(aux, aGr->getGenerations() - 1);
+				man->addComponent<ShowAtOpposideSide>(aux, WINDOW_WIDTH, WINDOW_HEIGHT);
 			}
 		}
 	}

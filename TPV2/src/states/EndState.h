@@ -2,6 +2,7 @@
 #define ENDSTATE_H_
 
 #include "GameState.h"
+#include "../ecs/Manager.h"
 #include <iostream>
 
 class Game;
@@ -21,6 +22,7 @@ public:
 
 private:
 	Entity* endText;
+	Manager* man;
 };
 
 

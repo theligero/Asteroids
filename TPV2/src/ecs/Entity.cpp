@@ -1,7 +1,8 @@
 #include "Entity.h"
 
-Entity::Entity() : mngr(nullptr), cmps(), currCmps(), alive()
+Entity::Entity(grpId_type gId) : mngr(nullptr), cmps(), currCmps(), alive()
 {
+	gId_ = gId;
 	currCmps.reserve(ecs::maxComponentId);
 }
 

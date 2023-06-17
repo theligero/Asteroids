@@ -6,21 +6,21 @@
 PlayState::PlayState(Game* g)
 {
 	game = g;
-	auto& man = *Manager::instance();
+	man = Manager::instance();
 
 	std::cout << "Nueva partida"; 
 
-	fighter = man.addEntity();
-	fighter->addComponent<Transform>(Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
-	fighter->addComponent<DeAcceleration>();
-	fighter->addComponent<Health>(WINDOW_WIDTH, WINDOW_HEIGHT, game->getArrayTexture(HEART));
-	fighter->addComponent<Image>(game->getArrayTexture(FIGHTER));
-	fighter->addComponent<ShowAtOpposideSide>(WINDOW_WIDTH, WINDOW_HEIGHT);
-	fighter->addComponent<Gun>(game->getArraySound(SHOOT), game->getArrayTexture(FIRE), WINDOW_WIDTH, WINDOW_HEIGHT);
-	fighter->addComponent<FighterCtrl>(game->getArraySound(THRUST), game);
-	fighter->getComponent<Transform>()->getPos();
+	fighter = man->addEntity();
+	man->addComponent<Transform>(fighter, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
+	man->addComponent<DeAcceleration>(fighter);
+	man->addComponent<Health>(fighter, WINDOW_WIDTH, WINDOW_HEIGHT, game->getArrayTexture(HEART));
+	man->addComponent<Image>(fighter, game->getArrayTexture(FIGHTER));
+	man->addComponent<ShowAtOpposideSide>(fighter, WINDOW_WIDTH, WINDOW_HEIGHT);
+	man->addComponent<Gun>(fighter, game->getArraySound(SHOOT), game->getArrayTexture(FIRE), WINDOW_WIDTH, WINDOW_HEIGHT);
+	man->addComponent<FighterCtrl>(fighter, game->getArraySound(THRUST), game);
+	man->getComponent<Transform>(fighter)->getPos();
 
-	asteroidManager = new AsteroidsManager(man.instance(), game->getArrayTexture(ASTEROID_GOLD), 
+	asteroidManager = new AsteroidsManager(man->instance(), game->getArrayTexture(ASTEROID_GOLD), 
 		game->getArrayTexture(ASTEROID), fighter, game->getArraySound(ASTEROID_EXPLOSION));
 }
 
@@ -63,22 +63,22 @@ bool PlayState::onExit()
 
 void PlayState::checkCollision()
 {
-	for (auto& i : Manager::instance()->getEntities(_grp_ASTEROIDS)) {
-		auto astTr = i->getComponent<Transform>();
-		for (auto& e : Manager::instance()->getEntities(_grp_BULLETS)) {
-			auto bullTr = e->getComponent<Transform>();
+	for (auto& i :man->getEntities(_grp_ASTEROIDS)) {
+		auto astTr = man->getComponent<Transform>(i);
+		for (auto& e : man->getEntities(_grp_BULLETS)) {
+			auto bullTr = man->getComponent<Transform>(e);
 			if (Collisions::collidesWithRotation(bullTr->getPos(), bullTr->getW(), bullTr->getH(), bullTr->getRot(),
 				astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
 				e->setAlive(false);
 				asteroidManager->onCollision(i);
 			}
 		}
-		auto playerTr = fighter->getComponent<Transform>();
+		auto playerTr = man->getComponent<Transform>(fighter);
 		if (Collisions::collidesWithRotation(playerTr->getPos(), playerTr->getW(), playerTr->getH(), playerTr->getRot(),
 			astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
 			asteroidManager->destroyAllAsteroids();
 			for (auto& a : Manager::instance()->getEntities(_grp_BULLETS)) a->setAlive(false);
-			auto playerHealth = fighter->getComponent<Health>();
+			auto playerHealth = man->getComponent<Health>(fighter);
 			playerHealth->decreaseLives();
 			game->getArraySound(FIGHTER_EXPLOSION)->play(0, 1);
 			playerTr->setPos(Vector2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));

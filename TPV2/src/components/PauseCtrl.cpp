@@ -2,7 +2,7 @@
 
 void PauseCtrl::initComponent()
 {
-	tr = ent->getComponent<Transform>();
+	tr = mngr->getComponent<Transform>(ent);
 	assert(tr != nullptr);
 }
 

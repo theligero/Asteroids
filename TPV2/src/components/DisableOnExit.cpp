@@ -1,9 +1,10 @@
 #include "DisableOnExit.h"
 #include "../ecs/Entity.h"
+#include "../ecs/Manager.h"
 
 void DisableOnExit::initComponent()
 {
-	tr = ent->getComponent<Transform>();
+	tr = mngr->getComponent<Transform>(ent);
 }
 
 void DisableOnExit::update()

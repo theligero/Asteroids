@@ -5,18 +5,18 @@ EndState::EndState(Game* g, bool win)
 {
 	game = g;
 
-	auto& man = *Manager::instance();
+	man = Manager::instance();
 
-	auto pruebatext = man.addEntity(_grp_PAUSE);
-	pruebatext->addComponent<Transform>(Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
-	pruebatext->addComponent<Image>(game->getArrayText(PAUSE));
-	pruebatext->addComponent<PauseCtrl>(game, false);
+	auto pruebatext = man->addEntity(_grp_PAUSE);
+	man->addComponent<Transform>(pruebatext, Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
+	man->addComponent<Image>(pruebatext, game->getArrayText(PAUSE));
+	man->addComponent<PauseCtrl>(pruebatext, game, false);
 
-	endText = man.addEntity(_grp_PAUSE);
-	endText->addComponent<Transform>(Vector2D(250, 400), Vector2D(0, 0), 300, 100, 0);
+	endText = man->addEntity(_grp_PAUSE);
+	man->addComponent<Transform>(endText, Vector2D(250, 400), Vector2D(0, 0), 300, 100, 0);
 
-	if (win) endText->addComponent<Image>(game->getArrayText(WIN));
-	else endText->addComponent<Image>(game->getArrayText(LOSE));
+	if (win) man->addComponent<Image>(endText, game->getArrayText(WIN));
+	else man->addComponent<Image>(endText, game->getArrayText(LOSE));
 }
 
 

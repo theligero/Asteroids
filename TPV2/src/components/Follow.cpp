@@ -1,5 +1,6 @@
 #include "Follow.h"
 #include "../ecs/Entity.h"
+#include "../ecs/Manager.h"
 #include <iostream>
 
 #ifdef SDLUTILS
@@ -11,9 +12,9 @@ const int UPDATE_STEP = 300;
 
 void Follow::initComponent()
 {
-	followedTr = followedEntity->getComponent<Transform>();
+	followedTr = mngr->getComponent<Transform>(followedEntity);
 	assert(followedTr != nullptr);
-	tr = ent->getComponent<Transform>();
+	tr = mngr->getComponent<Transform>(ent);
 }
 
 void Follow::update()

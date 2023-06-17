@@ -40,6 +40,7 @@ public:
 private:
 	Entity* fighter = nullptr;
 	AsteroidsManager* asteroidManager = nullptr;
+	Manager* man;
 };
 
 #endif /*PLAYSTATE_H_*/

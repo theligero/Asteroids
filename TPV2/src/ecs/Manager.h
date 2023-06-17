@@ -2,19 +2,11 @@
 #define MANAGER_H_
 
 #include "Entity.h"
+#include "../game/ecs_def.h"
 #include "../utils/Singleton.h"
 #include <vector>
 
-using grpId_type = uint8_t;
-enum grpId : grpId_type {
-	_grp_GENERAL,
-	_grp_ASTEROIDS,
-	_grp_BULLETS,
-	_grp_PAUSE,
-	_LAST_GRP_ID
-};
-
-constexpr grpId_type maxGroupId = _LAST_GRP_ID;
+class Entity;
 
 class Manager : public Singleton<Manager>
 {
@@ -29,6 +21,46 @@ public:
 	void update();
 	void update(grpId_type gId);
 	void render();
+
+	template <typename T, typename ...Ts>
+	inline T* addComponent(Entity *e, Ts&& ...args) {
+		T* c = new T(std::forward<Ts>(args)...);
+
+		constexpr cmpId_type cId = T::id;
+
+		removeComponent<T>(e);
+
+		e->currCmps.push_back(c);
+		e->cmps[cId] = c;
+
+		c->setContext(e, this);
+		c->initComponent();
+
+		return c;
+	}
+
+	template <typename T>
+	inline void removeComponent(Entity* e) {
+		constexpr cmpId_type cId = T::id;
+		if (e->cmps[cId] != nullptr) {
+			auto it = std::find(e->currCmps.begin(), e->currCmps.end(), e->cmps[cId]);
+			e->currCmps.erase(it);
+			delete e->cmps[cId];
+			e->cmps[cId] = nullptr;
+		}
+	}
+
+	template <typename T>
+	inline bool hasComponent(Entity* e) {
+		constexpr cmpId_type cId = T::id;
+		return e->cmps[cId] != nullptr;
+	}
+
+	template <typename T>
+	inline T* getComponent(Entity* e) {
+		constexpr cmpId_type cId = T::id;
+		return static_cast<T*>(e->cmps[cId]);
+	}
 private:
 	
 	

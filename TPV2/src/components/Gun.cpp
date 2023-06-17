@@ -5,7 +5,7 @@
 
 void Gun::initComponent()
 {
-	tr = ent->getComponent<Transform>();
+	tr = mngr->getComponent<Transform>(ent);
 	assert(tr != nullptr);
 	clock->reset();
 }
@@ -25,9 +25,9 @@ void Gun::update()
 	#else
 		Vector2D bulletV = Vector2D(0.0f, -1.0f).rotate(tr->getRot()) * 0.09f;
 	#endif
-		newBullet->addComponent<Transform>(bulletP, bulletV, 5, 20, tr->getRot());
-		newBullet->addComponent<Image>(bulletTexture);
-		newBullet->addComponent<DisableOnExit>(WindowWidth, WindowHeight);
+		mngr->addComponent<Transform>(newBullet, bulletP, bulletV, 5, 20, tr->getRot());
+		mngr->addComponent<Image>(newBullet, bulletTexture);
+		mngr->addComponent<DisableOnExit>(newBullet, WindowWidth, WindowHeight);
 		shootSound->play();
 		clock->reset();
 	}
