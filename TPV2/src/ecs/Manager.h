@@ -11,6 +11,7 @@ enum grpId : grpId_type {
 	_grp_ASTEROIDS,
 	_grp_BULLETS,
 	_grp_PAUSE,
+	_grp_BUTTON,
 	_LAST_GRP_ID
 };
 

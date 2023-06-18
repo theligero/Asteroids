@@ -10,14 +10,14 @@ void Clickable::initComponent()
 	assert(tr != nullptr);
 }
 
-bool Clickable::inTheRightX() const
+bool Clickable::inTheRightX(const int& x) const
 {
-	return mouseX >= tr->getPos().getX() && mouseX <= tr->getPos().getX() - tr->getW();
+	return x >= tr->getPos().getX() && x <= tr->getPos().getX() + tr->getW();
 }
 
-bool Clickable::inTheRightY() const
+bool Clickable::inTheRightY(const int& y) const
 {
-	return mouseY >= tr->getPos().getY() && mouseY <= tr->getPos().getY() + tr->getH();
+	return y >= tr->getPos().getY() && y <= tr->getPos().getY() + tr->getH();
 }
 
 void Clickable::update()
@@ -32,11 +32,23 @@ void Clickable::update()
 	//mouseX = x; mouseY = y;
 	// mouseX += relativeX; mouseY += relativeY;
 	//SDL_GetMouseState(&mouseX, &mouseY);
-	std::cout << mouseX << ", " << mouseY << std::endl;
-	if (inTheRightX() && inTheRightY()) {
-		std::cout << "estoy dentro de un botón" << std::endl;
-	}
+	//std::cout << mouseX << ", " << mouseY << std::endl;
+	//if (inTheRightX() && inTheRightY()) {
+	//	std::cout << "estoy dentro de un botón" << std::endl;
+	//}
 
+	//SDL_Event ev;
+
+
+	//if (SDL_PollEvent(&ev)) {
+	//	if (SDL_MOUSEMOTION == ev.type) SDL_GetMouseState(&mouseX, &mouseY);
+	//	if (inTheRightX() && inTheRightY()) {
+	//		if (SDL_MOUSEBUTTONDOWN == ev.type && SDL_BUTTON_LEFT == ev.button.button)
+	//			std::cout << "he hecho click" << std::endl;
+	//	}
+	//}
+
+	// std::cout << mouseX << ", " << mouseY << std::endl;
 
 	//SDL_Event ev;
 

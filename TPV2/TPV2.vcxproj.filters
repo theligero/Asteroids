@@ -186,6 +186,9 @@
     <ClInclude Include="src\components\Clickable.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="src\states\CoopState.h">
+      <Filter>Header Files\states</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -289,6 +292,9 @@
     </ClCompile>
     <ClCompile Include="src\components\Clickable.cpp">
       <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\states\CoopState.cpp">
+      <Filter>Source Files\states</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

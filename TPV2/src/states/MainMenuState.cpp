@@ -5,73 +5,52 @@ MainMenuState::MainMenuState(Game* g)
 	game = g;
 
 	sdlutils().showCursor(); 
-	// SDL_SetRelativeMouseMode(SDL_TRUE);
 
 	auto& man = *Manager::instance();
 
-	jugarSolo = man.addEntity();
-	jugarSolo->addComponent<Transform>(TRANSFORM, Vector2D(WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 - 75), Vector2D(), 200, 100, 0);
+	jugarSolo = man.addEntity(_grp_BUTTON);
+	auto trSolo = jugarSolo->addComponent<Transform>(TRANSFORM, Vector2D(WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 - 75), Vector2D(), 200, 100, 0);
 	jugarSolo->addComponent<Image>(IMAGE, game->getArrayTexture(SOLO));
 	jugarSolo->addComponent<Clickable>(CLICKABLE);
 	
-	jugarCoop = man.addEntity();
-	jugarCoop->addComponent<Transform>(TRANSFORM, Vector2D(WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 + 75), Vector2D(), 200, 100, 0);
+	jugarCoop = man.addEntity(_grp_BUTTON);
+	auto trCoop = jugarCoop->addComponent<Transform>(TRANSFORM, Vector2D(WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 + 75), Vector2D(), 200, 100, 0);
 	jugarCoop->addComponent<Image>(IMAGE, game->getArrayTexture(COOP));
 	jugarCoop->addComponent<Clickable>(CLICKABLE);
-	
-	// MenuButton* jugarSolo = new MenuButton({ 50,50 }, 150, 50, game->getArrayTexture(PLAY), beginGame, game);
-	// MenuButton* jugarCoop = new MenuButton({ 50,200 }, 150, 50, game->getArrayTexture(COOP), loadGame, game);
-	//MenuButton* salir = new MenuButton({ 50,400 }, 150, 50, game->getArrayTex(EXIT), endGame, game);
-
-	// menuButtons.push_back(jugarSolo);
-	// menuButtons.push_back(jugarCoop);
-	//sceneObjects.push_back(salir);
-}
-
-MainMenuState::~MainMenuState()
-{
-
 }
 
 void MainMenuState::update()
 {
-	Manager::instance()->update();
+	auto& man = *Manager::instance();
+
+	man.update();
+
+	SDL_Event ev;
+
+	if (SDL_PollEvent(&ev)) {
+		if (SDL_MOUSEMOTION == ev.type) SDL_GetMouseState(&mouseX, &mouseY);
+		if (SDL_MOUSEBUTTONDOWN == ev.type) {
+			if (SDL_BUTTON_LEFT == ev.button.button) {
+				for (auto& e : man.getEntities(_grp_BUTTON)) {
+					auto i = e->getComponent<Clickable>(CLICKABLE);
+					if (i->inTheRightX(mouseX) && i->inTheRightY(mouseY)) {
+						if (e == jugarSolo) beginSoloGame(game);
+						else if (e == jugarCoop) beginCoopGame(game);
+					}
+				}
+			}
+		}
+	}
 }
 
 void MainMenuState::render()
 {
 	Manager::instance()->render();
-	//for (auto it : sceneObjects) {
-	//	it->render();
-	//}
 }
 
 void MainMenuState::handleEvent()
-{	
-	// Manager::instance()->handleEvent();
-	
-	//SDL_Event ev;
+{
 
-	//while (SDL_PollEvent(&ev)) {
-	//	switch (ev.type) {
-	//	case SDL_MOUSEBUTTONDOWN:
-	//		switch (ev.button.button) {
-	//		case SDL_BUTTON_LEFT:
-	//			//std::cout << "click " << name << "\n";
-	//			//checkBounds();
-	//			for (auto it : sceneObjects) {
-	//					auto objeto = dynamic_cast<MenuButton*>(it);
-	//					objeto->handleEvent();
-	//					if (objeto->getPressed()) {
-	//						std::cout << "hola bitch \n";
-	//						break;
-	//					}
-	//			}
-	//			break;
-	//		}
-	//		break;
-	//	}
-	//}
 }
 
 bool MainMenuState::onEnter()
@@ -82,14 +61,27 @@ bool MainMenuState::onEnter()
 
 bool MainMenuState::onExit()
 {
+	auto& man = *Manager::instance();
+
+	for (auto& e : man.getEntities(_grp_BUTTON)) {
+		e->setAlive(false);
+	}
+
+	sdlutils().hideCursor();
+
 	std::cout << "saliendo de MenuState\n";
 	return true;
 }
 
-void MainMenuState::beginGame(Game* game)
+void MainMenuState::beginSoloGame(Game* game)
 {
 	game->getStateMachine()->changeState(new PlayState(game));
 	//std::cout << "hola";
+}
+
+void MainMenuState::beginCoopGame(Game* game)
+{
+	game->getStateMachine()->changeState(new CoopState(game));
 }
 
 void MainMenuState::endGame(Game* game)

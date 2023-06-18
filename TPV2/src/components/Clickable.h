@@ -10,19 +10,17 @@ class Clickable : public Component
 {
 private:
 	Transform* tr;
-	int mouseX;
-	int mouseY;
+	int mouseX = 0;
+	int mouseY = 0;
 public:
-	Clickable() : Component(), tr(nullptr) {
-		SDL_GetMouseState(&mouseX, &mouseY);
-	}
+	Clickable() : tr(nullptr) {}
 	virtual ~Clickable() {}
 
 	void initComponent() override;
 	void update() override;
 
-	bool inTheRightX() const;
-	bool inTheRightY() const;
+	bool inTheRightX(const int& x) const;
+	bool inTheRightY(const int& y) const;
 };
 
 #endif /*CLICKABLE_H_*/
