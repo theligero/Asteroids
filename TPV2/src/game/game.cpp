@@ -4,7 +4,7 @@
 Game::Game()
 {
 #ifdef SDLUTILS
-	SDLUtils::init("Asteroids v1.0", WINDOW_WIDTH, WINDOW_HEIGHT);
+	SDLUtils::init("Asteroids v3.0", WINDOW_WIDTH, WINDOW_HEIGHT);
 	window = sdlutils().window();
 	renderer = sdlutils().renderer();
 #else

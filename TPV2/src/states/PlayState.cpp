@@ -8,7 +8,7 @@ PlayState::PlayState(Game* g)
 	game = g;
 	auto& man = *Manager::instance();
 
-	std::cout << "Nueva partida"; 
+	//std::cout << "Nueva partida"; 
 
 	fighter = man.addEntity();
 	fighter->addComponent<Transform>(TRANSFORM, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
@@ -55,8 +55,14 @@ bool PlayState::onEnter()
 
 bool PlayState::onExit()
 {
+	auto& man = *Manager::instance();
+
+	for (auto& e : man.getEntities()) {
+		e->setAlive(false);
+	}
+
 	delete asteroidManager;
-	Manager::instance()->close();
+	man.close();
 	std::cout << "Saliendo de PlayState\n";
 	return true;
 }

@@ -12,6 +12,7 @@ enum grpId : grpId_type {
 	_grp_BULLETS,
 	_grp_PAUSE,
 	_grp_BUTTON,
+	_grp_FIGHTER,
 	_LAST_GRP_ID
 };
 

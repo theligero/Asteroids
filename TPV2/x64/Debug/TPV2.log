@@ -1,86 +1,15 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  FighterCtrl.cpp
+  CoopState.cpp
 C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-  PauseCtrl.cpp
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-  AsteroidsManager.cpp
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(17,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(18,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(63,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(64,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\states\CoopState.cpp(29,61): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
           with
           [
               _Ty=int
           ]
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
+C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\states\CoopState.cpp(29): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
           with
           [
               T=Transform
           ]
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(67): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D&,Vector2D&,float,float,int&>(ecs::cmpId_type,Vector2D &,Vector2D &,float &&,float &&,int &)" que se está compilando
-          with
-          [
-              T=Transform
-          ]
-  Game.cpp
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\game\Game.cpp(59,2): warning C4551: la llamada a la función no tiene lista de argumentos
-  main.cpp
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-  EndState.cpp
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
-          with
-          [
-              _Ty=int
-          ]
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\states\EndState.cpp(11): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
-          with
-          [
-              T=Transform
-          ]
-  MainMenuState.cpp
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
-          with
-          [
-              _Ty=int
-          ]
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\states\MainMenuState.cpp(12): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
-          with
-          [
-              T=Transform
-          ]
-  PauseState.cpp
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
-          with
-          [
-              _Ty=int
-          ]
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\states\PauseState.cpp(10): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
-          with
-          [
-              T=Transform
-          ]
-  PlayState.cpp
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\ecs\Entity.h(22,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
-          with
-          [
-              _Ty=int
-          ]
-C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\TPV2\src\states\PlayState.cpp(14): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Entity::addComponent<Transform,Vector2D,Vector2D,int,int,int>(ecs::cmpId_type,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
-          with
-          [
-              T=Transform
-          ]
-  Generando código...
-  LINK : no se encontró C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\bin\AsteroidsDebug.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
-     Creando biblioteca C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\bin\AsteroidsDebug.lib y objeto C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\bin\AsteroidsDebug.exp
   TPV2.vcxproj -> C:\Users\ilige\OneDrive\Documentos\2º Videojuegos\TPV2\Asteroids\bin\AsteroidsDebug.exe

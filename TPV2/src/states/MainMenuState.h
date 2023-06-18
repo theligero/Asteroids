@@ -34,6 +34,6 @@ private:
 	Entity* title = nullptr;
 	Entity* jugarSolo = nullptr;
 	Entity* jugarCoop = nullptr;
-	};
+};
 
 #endif /*MAINMENUSTATE_H_*/
