@@ -6,22 +6,30 @@ CoopState::CoopState(Game* g)
 	game = g;
 	auto& man = *Manager::instance();
 
+	SDLNet_Init();
+
 	for (int i = 0; i < 2; ++i) {
 		username[i] = new char[MAX_CHARACTERS];
 	}
+
+	// std::cin.ignore();
+	std::cout << "Introduzca su nombre de usuario: ";
+	std::cin.getline(username[chosenFighter], MAX_CHARACTERS + 1);
+	std::cout << "Tu nombre de usuario es: " << username[chosenFighter] << std::endl;
 
 	char a;
 	std::cout << "Quieres ser el host o el invitado? [H/I]: ";
 	std::cin >> a;
 	std::cout << std::endl;
 
-	if (a == 'H' || a == 'h') chosenFighter = HOST;
-	else chosenFighter = GUEST;
-
-	std::cin.ignore();
-	std::cout << "Introduzca su nombre de usuario: ";
-	std::cin.getline(username[chosenFighter], MAX_CHARACTERS + 1);
-	std::cout << "Tu nombre de usuario es: " << username[chosenFighter] << std::endl;
+	if (a == 'H' || a == 'h') {
+		chosenFighter = HOST;
+		iAmAHost();
+	}
+	else {
+		chosenFighter = GUEST;
+		iAmAGuest();
+	}
 
 	for (int i = 0; i < 2; ++i) {
 		fighter[i] = man.addEntity(_grp_FIGHTER);
@@ -85,4 +93,37 @@ void CoopState::checkCollision()
 			}
 		}
 	}
+}
+
+void CoopState::iAmAHost()
+{
+	SDLNet_ResolveHost(&ip, nullptr, 1234);
+
+	server = SDLNet_TCP_Open(&ip);
+
+	//auto fighterTr = fighter[chosenFighter]->getComponent<Transform>(TRANSFORM);
+
+	std::cout << "Esperando al otro jugador...\n";
+
+	while (true) {
+		client = SDLNet_TCP_Accept(server);
+		if (client) {
+			std::cout << "conectado!" << std::endl;
+			// SDLNet_TCP_Send(client, &fighterTr, 255);
+		}
+	}
+
+	//SDLNet_TCP_Close(server);
+}
+
+void CoopState::iAmAGuest()
+{
+	std::string host;
+
+	std::cin.ignore();
+	std::cout << "Introduzca la IP del host: ";
+	std::cin >> host;
+	std::cout << std::endl;
+
+	SDLNet_ResolveHost(&ip, host.c_str(), 1234);
 }

@@ -16,6 +16,9 @@ enum whichFighter { HOST, GUEST };
 class CoopState : public GameState
 {
 private:
+	TCPsocket server;
+	TCPsocket client;
+	IPaddress ip;
 	Entity** fighter = new Entity*[2];
 	char** username = new char*[2];
 	whichFighter chosenFighter;
@@ -30,6 +33,9 @@ public:
 	virtual bool onExit();
 
 	void checkCollision();
+
+	void iAmAHost();
+	void iAmAGuest();
 };
 
 #endif /*COOPSTATE_H_*/
