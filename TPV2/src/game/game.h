@@ -20,11 +20,11 @@
 #include "../states/PlayState.h"
 #include "../states/MainMenuState.h"
 
-const int NUM_TEXTURES = 8;
+const int NUM_TEXTURES = 9;
 const int NUM_TEXTS = 3;
 const int NUM_SOUNDS = 4;
 
-enum TextureName { ASTEROID, ASTEROID_GOLD, FIGHTER, FIGHTER2, FIRE, HEART, SOLO, COOP};
+enum TextureName { ASTEROID, ASTEROID_GOLD, FIGHTER, FIGHTER2, FIRE, HEART, SOLO, COOP, TITLE};
 enum TextName { PAUSE, WIN, LOSE };
 enum SoundName { THRUST, SHOOT, FIGHTER_EXPLOSION, ASTEROID_EXPLOSION };
 
@@ -52,7 +52,8 @@ const TextureDescription TEXTURE_DESCR[NUM_TEXTURES] = {
 	{"fire.png", 1, 1},
 	{"heart.png", 1, 1},
 	{"soloButton.png", 1, 1},
-	{"co-opButton.png", 1, 1}
+	{"co-opButton.png", 1, 1},
+	{"Asteroids_arcade_logo.png", 1, 1}
 };
 
 const TextDescription TEXT_DESCRIP[NUM_TEXTS] = {

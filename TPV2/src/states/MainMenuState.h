@@ -31,6 +31,7 @@ public:
 	static void endGame(Game* game);
 	static void loadGame(Game* game);
 private:
+	Entity* title = nullptr;
 	Entity* jugarSolo = nullptr;
 	Entity* jugarCoop = nullptr;
 	};

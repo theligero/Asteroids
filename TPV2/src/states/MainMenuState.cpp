@@ -8,6 +8,10 @@ MainMenuState::MainMenuState(Game* g)
 
 	auto& man = *Manager::instance();
 
+	title = man.addEntity();
+	title->addComponent<Transform>(TRANSFORM, Vector2D(WINDOW_WIDTH / 2 - 300, WINDOW_HEIGHT / 8), Vector2D(), 600, 100, 0);
+	title->addComponent<Image>(IMAGE, game->getArrayTexture(TITLE));
+
 	jugarSolo = man.addEntity(_grp_BUTTON);
 	auto trSolo = jugarSolo->addComponent<Transform>(TRANSFORM, Vector2D(WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 - 75), Vector2D(), 200, 100, 0);
 	jugarSolo->addComponent<Image>(IMAGE, game->getArrayTexture(SOLO));
@@ -66,6 +70,8 @@ bool MainMenuState::onExit()
 	for (auto& e : man.getEntities(_grp_BUTTON)) {
 		e->setAlive(false);
 	}
+
+	title->setAlive(false);
 
 	sdlutils().hideCursor();
 
