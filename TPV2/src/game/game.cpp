@@ -61,7 +61,10 @@ Game::~Game()
 
 void Game::run()
 {
-
+	while (true) {
+		update();
+		render();
+	}
 }
 
 void Game::render()

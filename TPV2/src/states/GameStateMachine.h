@@ -25,6 +25,8 @@ public:
 	void update();
 	// renderizado
 	void render();
+
+
 };
 
 #endif /*GAMESTATEMACHINE_H_*/

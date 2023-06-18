@@ -7,15 +7,17 @@ EndState::EndState(Game* g, bool win)
 
 	man = Manager::instance();
 
-	auto pruebatext = man->addEntity(_grp_PAUSE);
-	man->addComponent<Transform>(pruebatext, Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
-	man->addComponent<Image>(pruebatext, game->getArrayText(PAUSE));
-	man->addComponent<PauseCtrl>(pruebatext, game, false);
+	win_ = win;
+
+	infoText = man->addEntity(_grp_PAUSE);
+	man->addComponent<Transform>(infoText, Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
+	man->addComponent<Image>(infoText, game->getArrayText(PAUSE));
+	man->addComponent<PauseCtrl>(infoText, game, false);
 
 	endText = man->addEntity(_grp_PAUSE);
 	man->addComponent<Transform>(endText, Vector2D(250, 400), Vector2D(0, 0), 300, 100, 0);
 
-	if (win) man->addComponent<Image>(endText, game->getArrayText(WIN));
+	if (win_) man->addComponent<Image>(endText, game->getArrayText(WIN));
 	else man->addComponent<Image>(endText, game->getArrayText(LOSE));
 }
 
@@ -41,11 +43,13 @@ bool EndState::onEnter()
 
 bool EndState::onExit()
 {
+	man->setAlive(endText, false);
+	man->setAlive(infoText, false);
 	std::cout << "saliendo de EndState\n";
 	return true;
 }
 
-void EndState::backToMenu(Game* game)
+void EndState::backToGame(Game* game)
 {
-	game->getStateMachine()->popState();
+	game->getStateMachine()->changeState(new PlayState(game));
 }

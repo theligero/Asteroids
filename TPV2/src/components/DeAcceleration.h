@@ -7,7 +7,7 @@
 
 const float deAcceleration = 0.9991;
 
-class DeAcceleration : public Component
+struct DeAcceleration : public Component
 {
 public:
 	constexpr static cmpId_type id = DEACCELERATION;

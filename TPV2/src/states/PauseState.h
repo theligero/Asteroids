@@ -20,7 +20,7 @@ public:
 
 	virtual bool onEnter();
 	virtual bool onExit();
-	static void backToGame(Game* game);
+	void backToGame(Game* game) override;
 
 private:
 	Entity* pauseText;

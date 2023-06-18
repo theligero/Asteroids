@@ -15,6 +15,8 @@ public:
 
 	virtual bool onEnter() = 0;
 	virtual bool onExit() = 0;
+
+	virtual void backToGame(Game* game) {};
 };
 
 #endif /*GAMESTATE_H_*/

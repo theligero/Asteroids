@@ -31,7 +31,6 @@ void PlayState::update()
 	checkCollision();
 	if (!man->isAlive(fighter)){
 		game->getStateMachine()->changeState(new EndState(game, false));
-		auto& man = *Manager::instance();
 	}
 	else if (Manager::instance()->getEntities(_grp_ASTEROIDS).size() == 0) {
 		game->getStateMachine()->changeState(new EndState(game, true));
@@ -39,6 +38,7 @@ void PlayState::update()
 	else 
 		asteroidManager->addAsteroidFrequently();
 	Manager::instance()->refresh();
+	
 }
 
 void PlayState::render()
@@ -56,7 +56,7 @@ bool PlayState::onEnter()
 bool PlayState::onExit()
 {
 	delete asteroidManager;
-	Manager::instance()->close();
+	//Manager::instance()->close();
 	std::cout << "Saliendo de PlayState\n";
 	return true;
 }

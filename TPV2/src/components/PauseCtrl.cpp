@@ -8,15 +8,7 @@ void PauseCtrl::initComponent()
 
 void PauseCtrl::update()
 {
-	if (isPaused) {
-		if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE)) {
-			game->getStateMachine()->popState();
-		}
+	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE)) {
+		game->getStateMachine()->currentState()->backToGame(game);
 	}
-	else {
-		if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE)) {
-			game->getStateMachine()->changeState(new PauseState(game));
-		}
-	}
-	
 }

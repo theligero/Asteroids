@@ -9,7 +9,7 @@ PauseState::PauseState(Game* g)
 	pauseText = man->addEntity(_grp_PAUSE);
 	man->addComponent<Transform>(pauseText, Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
 	man->addComponent<Image>(pauseText, game->getArrayText(PAUSE));
-	man->addComponent<PauseCtrl>(pauseText, game, false);
+	man->addComponent<PauseCtrl>(pauseText, game, true);
 
 }
 

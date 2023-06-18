@@ -18,11 +18,13 @@ public:
 
 	virtual bool onEnter();
 	virtual bool onExit();
-	static void backToMenu(Game* game);
+	void backToGame(Game* game) override;
 
 private:
 	Entity* endText;
+	Entity* infoText;
 	Manager* man;
+	bool win_;
 };
 
 

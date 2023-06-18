@@ -7,7 +7,7 @@
 
 using namespace ecs;
 
-class Transform : public Component 
+struct Transform : public Component 
 {
 public:
 	constexpr static cmpId_type id = TRANSFORM;
