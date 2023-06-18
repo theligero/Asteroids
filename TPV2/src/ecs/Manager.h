@@ -103,11 +103,29 @@ public:
 		}
 	}
 
-	inline void send(const Message& m) {
-		for (System* s : sys_) {
-			if (s != nullptr)
-				s->receive(m);
+	inline void send(const Message& m, bool delay = false) {
+		
+		if (!delay) {
+			for (System* s : sys_) {
+				if (s != nullptr)
+					s->receive(m);
+			}
 		}
+		else {
+			msgs_.emplace_back(m);
+		}
+	}
+
+	inline void flushMessages() {
+		std::swap(msgs_, aux_msgs_);
+		for (auto& m : aux_msgs_) {
+			for (System* s : sys_) {
+				if (s != nullptr) {
+					s->receive(m);
+				}
+			}
+		}
+		aux_msgs_.clear();
 	}
 
 private:
@@ -116,6 +134,8 @@ private:
 	//std::vector<Entity*> ents_;
 	std::array<std::vector<Entity*>, maxGroupId> entsByGroup_;
 	std::array<System*, maxSystemId> sys_;
+	std::vector<Message> msgs_;
+	std::vector<Message> aux_msgs_;
 };
 
 #endif /*MANAGER_H_*/
