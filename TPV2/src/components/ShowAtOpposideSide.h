@@ -6,13 +6,14 @@
 
 
 
-class ShowAtOpposideSide : public Component
+struct ShowAtOpposideSide : public Component
 {
 public:
 	constexpr static cmpId_type id = SHOW_AT_OPPOSIDE_SIDE;
-	ShowAtOpposideSide(int w, int h) : WindowWidth(w), WindowHeight(h) {}
+	ShowAtOpposideSide(int w, int h) : WindowWidth(w), WindowHeight(h), tr(nullptr) {}
 	virtual ~ShowAtOpposideSide() {}
-
+	inline int getWindowWidth() { return WindowWidth; }
+	inline int getWindowHeight() { return WindowHeight; }
 	void initComponent() override;
 	void update() override;
 private:

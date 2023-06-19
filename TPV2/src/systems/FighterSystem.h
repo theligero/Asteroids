@@ -2,9 +2,21 @@
 #define FIGHTER_SYSTEM_H_
 
 #include "../ecs/System.h"
+#include "../sdlutils/VirtualTimer.h"
+//#include "../game/game.h"
+
+class Game;
+class SoundEffect;
+class Transform;
+class DeAcceleration;
+class ShowAtOpposideSide;
+class Gun;
+class FighterCtrl;
+
 
 class FighterSystem : public System {
 public:
+	FighterSystem(Game* g) : active_(true), game(g), fighter(nullptr), hitSound(nullptr) {}
 	constexpr static ecs::sysId_type id = ecs::_sys_FIGHTER;
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
@@ -17,6 +29,12 @@ public:
 	// mensaje con las características físicas de la bala. Recuerda que se puede disparar
 	// sólo una bala cada 0.25sec.
 	void update() override;
+	//Se encarga de mover el caza
+	void fighterMovement();
+	//Se encarga de procesar el input del jugador con respecto al caza
+	void fighterInput();
+	//Se encarga de realizar los disparos
+	void fighterAttack();
 private:
 	// Para reaccionar al mensaje de que ha habido un choque entre el fighter y un
 	// un asteroide. Poner el caza en el centro con velocidad (0,0) y rotación 0. No
@@ -29,6 +47,16 @@ private:
 	// Indica si el sistema está activo o no (modificar el valor en onRoundOver y
 	// onRoundStart, y en update no hacer nada si no está activo)
 	bool active_;
+
+	Game* game;
+	Entity* fighter;
+	SoundEffect* hitSound;
+
+	Transform* tr;
+	FighterCtrl* fc;
+	DeAcceleration* da;
+	ShowAtOpposideSide* saos;
+	Gun* g;
 };
 
 

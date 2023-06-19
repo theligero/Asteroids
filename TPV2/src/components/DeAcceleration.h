@@ -5,21 +5,19 @@
 #include "../sdlutils/VirtualTimer.h"
 #include "Transform.h"
 
-const float deAcceleration = 0.9991;
+
 
 struct DeAcceleration : public Component
 {
+	const float deAcceleration = 0.9991;
 public:
 	constexpr static cmpId_type id = DEACCELERATION;
-	DeAcceleration() { timer = new VirtualTimer(); lastTime = timer->currTime(); }
-	virtual ~DeAcceleration() { delete timer; }
-
+	DeAcceleration() : tr(nullptr) { };
+	virtual ~DeAcceleration() { }
 	void initComponent() override;
 	void update() override;
 private:
 	Transform* tr;
-	VirtualTimer* timer;
-	Uint32 lastTime;
 };
 
 #endif /*DEACCELERATION_H_*/

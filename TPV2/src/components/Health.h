@@ -6,8 +6,10 @@
 #include "Transform.h"
 
 const int MAX_LIVES = 3;
+const int MIN_LIVES = 3;
 
-class Health : public Component
+
+struct Health : public Component
 {
 private:
 	int livesCount = MAX_LIVES;
@@ -21,7 +23,7 @@ public:
 	void decreaseLives();
 	inline Texture* getTexture() { return tex; }
 	void resetLives() { livesCount = MAX_LIVES; }
-	void render() override;
+	//void render() override;
 	void initComponent() override;
 };
 

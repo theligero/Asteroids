@@ -2,7 +2,10 @@
 #define SYSTEM_H_
 
 #include "../game/ecs_def.h"
+#include "../utils/Vector2D.h"
 class Entity;
+class Texture;
+class Vector2D;
 
 struct Message {
 	ecs::msgId_type id;
@@ -16,7 +19,20 @@ struct Message {
 	// _m_WIN_GAME / _m_LOSE_GAME
 	struct {
 		bool win;
+		bool pause;
 	} end_game_data;
+	// _m_BULLET_SHOT
+	struct {
+		ecs::grpId_type gId;
+		Vector2D pos;
+		Vector2D vel;
+		Texture* bulletTexture;
+		int windowWidth;
+		int windowHeight;
+		float width;
+		float height;
+		float rot;
+	} shot_bullet_data;
 	
 
 };

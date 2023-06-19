@@ -13,7 +13,7 @@
 #include "../ecs/Manager.h"
 
 
-class Gun : public Component
+struct Gun : public Component
 {
 public:
 	constexpr static cmpId_type id = ecs::GUN;
@@ -21,6 +21,12 @@ public:
 		WindowWidth(w), WindowHeight(h), shootSound(soundHandle), 
 		bulletTexture(t), tr(nullptr) { clock = new VirtualTimer(); }
 	virtual ~Gun() {}
+	inline SoundEffect* getSound() { return shootSound; }
+	inline Uint32 getLastTime() { return lastTime; }
+	inline VirtualTimer* getClock() { return clock; }
+	inline int getWindowWidth() { return WindowWidth; }
+	inline int getWindowHeight() { return WindowHeight; }
+	inline Texture* getBulletTexture() { return bulletTexture; }
 	void initComponent() override;
 	void update() override;
 private:

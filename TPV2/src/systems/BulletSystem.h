@@ -8,6 +8,7 @@ class Entity;
 
 class BulletSystem : public System {
 public:
+	BulletSystem() : active_(true) {}
 	constexpr static ecs::sysId_type id = ecs::_sys_BULLET;
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
