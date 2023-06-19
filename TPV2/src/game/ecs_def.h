@@ -30,9 +30,12 @@ namespace ecs {
 	using grpId_type = uint8_t;
 	enum grpId : grpId_type {
 		_grp_GENERAL,
+		_grp_FIGHTER,
 		_grp_ASTEROIDS,
 		_grp_BULLETS,
-		_grp_PAUSE,
+		_grp_INFO,
+		_grp_WIN,
+		_grp_LOSE,
 		_LAST_GRP_ID
 	};
 
@@ -54,8 +57,9 @@ namespace ecs {
 
 	using msgId_type = uint8_t;
 	enum msgId : msgId_type {
-		_m_STAR_EATEN, //
-		_m_ADD_STARS
+		_m_PAUSE_GAME, //
+		_m_STÄRT_GAME,
+		_m_END_GAME
 	};
 }
 

@@ -10,7 +10,7 @@ PlayState::PlayState(Game* g)
 
 	std::cout << "Nueva partida"; 
 
-	fighter = man->addEntity();
+	fighter = man->addEntity(_grp_FIGHTER);
 	man->addComponent<Transform>(fighter, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
 	man->addComponent<DeAcceleration>(fighter);
 	man->addComponent<Health>(fighter, WINDOW_WIDTH, WINDOW_HEIGHT, game->getArrayTexture(HEART));
@@ -20,8 +20,7 @@ PlayState::PlayState(Game* g)
 	man->addComponent<FighterCtrl>(fighter, game->getArraySound(THRUST), game);
 	man->getComponent<Transform>(fighter)->getPos();
 
-	asteroidManager = new AsteroidsManager(man->instance(), game->getArrayTexture(ASTEROID_GOLD), 
-		game->getArrayTexture(ASTEROID), fighter, game->getArraySound(ASTEROID_EXPLOSION));
+	asteroidManager = new AsteroidsManager(man->instance(), game->getArrayTexture(ASTEROID_GOLD), game->getArrayTexture(ASTEROID), fighter, game->getArraySound(ASTEROID_EXPLOSION));
 }
 
 void PlayState::update()

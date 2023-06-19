@@ -6,14 +6,19 @@ class Entity;
 
 struct Message {
 	ecs::msgId_type id;
-	// _m_STAR_EATEN
+	// _m_STÄRT_GAME
 	struct {
-		Entity* e;
-	} star_eaten_data;
-	// _m_ADD_STARS
+	} start_game_data;
+	// _m_PAUSE_GAME
 	struct {
-		unsigned int n;
-	} add_stars_data;
+		
+	} pause_game_data;
+	// _m_WIN_GAME / _m_LOSE_GAME
+	struct {
+		bool win;
+	} end_game_data;
+	
+
 };
 
 class Manager;

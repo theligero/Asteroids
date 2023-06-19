@@ -1,12 +1,58 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  DeAcceleration.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  DisableOnExit.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
   FighterCtrl.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
 C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  Follow.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  FramedImage.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  Generations.cpp
+  Gun.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Manager.h(30,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\UNI\TPV2\Asteroids\TPV2\src\components\Gun.cpp(28,81): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Manager::addComponent<Transform,Vector2D&,Vector2D&,int,int,float&>(Entity *,Vector2D &,Vector2D &,int &&,int &&,float &)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+  Health.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  Image.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
   PauseCtrl.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
 C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  ShowAtOpposideSide.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\ShowAtOpposideSide.cpp(17,21): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\components\ShowAtOpposideSide.cpp(22,21): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Transform.cpp
+  Entity.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  Manager.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  System.cpp
   AsteroidsManager.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
@@ -56,10 +102,11 @@ C:\UNI\TPV2\Asteroids\TPV2\src\states\EndState.cpp(13,88): message : Vea la refe
           [
               T=Transform
           ]
-  GameState.cpp
   GameStateMachine.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  Generando código...
+  Compilando...
   MainMenuState.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
@@ -92,5 +139,15 @@ C:\UNI\TPV2\Asteroids\TPV2\src\states\PlayState.cpp(14,85): message : Vea la ref
           [
               T=Transform
           ]
+  AsteroidsSystem.cpp
+  BulletSystem.cpp
+  CollisionsSystem.cpp
+  FighterSystem.cpp
+  GameCtrlSystem.cpp
+  RenderSystem.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(8,36): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
   Generando código...
+     Creando biblioteca C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.lib y objeto C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.exp
   TPV2.vcxproj -> C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.exe

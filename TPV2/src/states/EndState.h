@@ -21,6 +21,8 @@ public:
 	void backToGame(Game* game) override;
 
 private:
+	grpId_type chooseWinLose(bool end);
+
 	Entity* endText;
 	Entity* infoText;
 	Manager* man;

@@ -19,6 +19,7 @@ public:
 	Health(int w, int h, Texture* t) : window_Width(w), window_Height(h), tex(t) {}
 	int getLives() { return livesCount; }
 	void decreaseLives();
+	inline Texture* getTexture() { return tex; }
 	void resetLives() { livesCount = MAX_LIVES; }
 	void render() override;
 	void initComponent() override;

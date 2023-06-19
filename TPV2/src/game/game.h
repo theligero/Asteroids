@@ -74,9 +74,15 @@ public:
 	void render();
 	void update();
 	void handleEvents();
-	Texture* getArrayTexture(TextureName key) { return arrayTexture[key].get(); }
-	Texture* getArrayText(TextName key) { return arrayText[key].get(); }
-	SoundEffect* getArraySound(SoundName key) { return arraySound[key].get(); }
+	Texture* getArrayTexture(TextureName key) { 
+		return arrayTexture[key].get(); 
+	}
+	Texture* getArrayText(TextName key) { 
+		return arrayText[key].get(); 
+	}
+	SoundEffect* getArraySound(SoundName key) { 
+		return arraySound[key].get(); 
+	}
 	GameStateMachine* getStateMachine();
 	
 

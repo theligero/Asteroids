@@ -6,7 +6,7 @@ PauseState::PauseState(Game* g)
 	game = g;
 
 	man = Manager::instance();
-	pauseText = man->addEntity(_grp_PAUSE);
+	pauseText = man->addEntity(_grp_INFO);
 	man->addComponent<Transform>(pauseText, Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
 	man->addComponent<Image>(pauseText, game->getArrayText(PAUSE));
 	man->addComponent<PauseCtrl>(pauseText, game, true);
@@ -15,7 +15,7 @@ PauseState::PauseState(Game* g)
 
 void PauseState::update()
 {
-	Manager::instance()->update(_grp_PAUSE);
+	Manager::instance()->update(_grp_INFO);
 	InputHandler::instance()->refresh();
 }
 

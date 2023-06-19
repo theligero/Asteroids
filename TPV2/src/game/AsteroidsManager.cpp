@@ -26,7 +26,7 @@ void AsteroidsManager::createAsteroids(int n)
 			man->addComponent<ShowAtOpposideSide>(aux, WINDOW_WIDTH, WINDOW_HEIGHT);
 			man->addComponent<Generations>(aux, 2);
 			if (goldOrNot) {
-				man->addComponent<FramedImage>(aux, goldAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
+				FramedImage *c = man->addComponent<FramedImage>(aux, goldAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
 				man->addComponent<Follow>(aux, fighter);
 			}
 			else man->addComponent<FramedImage>(aux, normalAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
@@ -55,7 +55,7 @@ void AsteroidsManager::onCollision(Entity* a)
 		auto aGr = man->getComponent<Generations>(a);
 		if (aGr->getGenerations() > 0) {
 			auto aTr = man->getComponent<Transform>(a);
-			auto aImg = man->getComponent<Image>(a);
+			auto aImg = man->getComponent<FramedImage>(a);
 			auto aFol = man->getComponent<Follow>(a);
 			Entity* aux;
 			for (int i = 0; i < 2; ++i) {
