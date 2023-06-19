@@ -13,6 +13,7 @@ public:
 	inline Vector2D& getPos() { return pos; }
 	inline void setPos(const Vector2D& p) { pos = p; }
 	inline Vector2D& getDir() { return dir; }
+	inline void setDir(const Vector2D& d) { dir = d; }
 	inline void resetDir() { dir = Vector2D(0, 0); }
 	inline Vector2D& getCenter() { return center; }
 	inline float& getRot() { return rotation; }
