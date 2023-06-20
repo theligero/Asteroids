@@ -78,10 +78,10 @@ void RenderSystem::update()
 				auto tr = man->getComponent<Transform>(e);
 				winText->render(getTrRect(tr), tr->getRot());
 			}
-			for (auto e : man->getEntities(ecs::_grp_INFO)) {
-				auto tr = man->getComponent<Transform>(e);
-				infoText->render(getTrRect(tr), tr->getRot());
-			}
+		}
+		for (auto e : man->getEntities(ecs::_grp_INFO)) {
+			auto tr = man->getComponent<Transform>(e);
+			infoText->render(getTrRect(tr), tr->getRot());
 		}
 		
 		break;

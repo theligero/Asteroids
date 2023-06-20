@@ -20,7 +20,7 @@ PlayState::PlayState(Game* g)
 	man->addComponent<FighterCtrl>(fighter, game->getArraySound(THRUST), game);
 	man->getComponent<Transform>(fighter)->getPos();
 
-	asteroidManager = new AsteroidsManager(man->instance(), game->getArrayTexture(ASTEROID_GOLD), game->getArrayTexture(ASTEROID), fighter, game->getArraySound(ASTEROID_EXPLOSION));
+	//asteroidManager = new AsteroidsManager(man->instance(), game->getArrayTexture(ASTEROID_GOLD), game->getArrayTexture(ASTEROID), fighter, game->getArraySound(ASTEROID_EXPLOSION));
 }
 
 void PlayState::update()
@@ -35,7 +35,7 @@ void PlayState::update()
 		game->getStateMachine()->changeState(new EndState(game, true));
 	}
 	else 
-		asteroidManager->addAsteroidFrequently();
+		//asteroidManager->addAsteroidFrequently();
 	Manager::instance()->refresh();
 	
 }
@@ -54,7 +54,7 @@ bool PlayState::onEnter()
 
 bool PlayState::onExit()
 {
-	delete asteroidManager;
+	//delete asteroidManager;
 	//Manager::instance()->close();
 	std::cout << "Saliendo de PlayState\n";
 	return true;
@@ -69,13 +69,13 @@ void PlayState::checkCollision()
 			if (Collisions::collidesWithRotation(bullTr->getPos(), bullTr->getW(), bullTr->getH(), bullTr->getRot(),
 				astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
 				man->setAlive(e, false);
-				asteroidManager->onCollision(i);
+				//asteroidManager->onCollision(i);
 			}
 		}
 		auto playerTr = man->getComponent<Transform>(fighter);
 		if (Collisions::collidesWithRotation(playerTr->getPos(), playerTr->getW(), playerTr->getH(), playerTr->getRot(),
 			astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
-			asteroidManager->destroyAllAsteroids();
+			//asteroidManager->destroyAllAsteroids();
 			for (auto& a : Manager::instance()->getEntities(_grp_BULLETS)) man->setAlive(a, false);
 			auto playerHealth = man->getComponent<Health>(fighter);
 			playerHealth->decreaseLives();
@@ -83,7 +83,7 @@ void PlayState::checkCollision()
 			playerTr->setPos(Vector2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
 			playerTr->resetDir();
 			playerTr->setRot(0);
-			asteroidManager->createAsteroids(10);
+			//asteroidManager->createAsteroids(10);
 			if (playerHealth->getLives() <= 0) {
 				man->setAlive(fighter, false);
 			}

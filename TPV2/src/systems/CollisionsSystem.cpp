@@ -3,6 +3,7 @@
 #include "AsteroidsSystem.h"
 #include "../ecs/Manager.h"
 #include "../components/Transform.h"
+#include "../components/Health.h"
 #include "../utils/Collisions.h"
 
 void CollisionsSystem::receive(const Message& m)
@@ -48,12 +49,13 @@ void CollisionsSystem::update()
 			auto playerTr = man->getComponent<Transform>(fighter);
 			if (Collisions::collidesWithRotation(playerTr->getPos(), playerTr->getW(), playerTr->getH(), playerTr->getRot(),
 				astTr->getPos(), astTr->getW(), astTr->getH(), astTr->getRot())) {
-				Message m1;
+				/*Message m1;
 				m1.id = _m_START_GAME;
 				m1.start_game_data.pause = false;
-				man->send(m1, true);
+				man->send(m1, true);*/
 				Message m2;
 				m2.id = _m_FIGHTER_HIT;
+				m2.fighter_hit_data.fighterHealth = man->getComponent<Health>(fighter);
 				man->send(m2);
 			}
 		}

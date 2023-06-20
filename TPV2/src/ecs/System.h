@@ -6,6 +6,7 @@
 class Entity;
 class Texture;
 class Vector2D;
+class Health;
 
 struct Message {
 	ecs::msgId_type id;
@@ -35,7 +36,10 @@ struct Message {
 		Entity* bulletHit;
 		Entity* asteroidHit;
 	} asteroid_collision_data;
-	
+	// _m_FIGHTER_HIT
+	struct {
+		Health* fighterHealth;
+	}fighter_hit_data;
 
 };
 

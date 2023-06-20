@@ -4,7 +4,7 @@
 #include "GameState.h"
 #include "PauseState.h"
 #include "../game/game.h"
-#include "../game/AsteroidsManager.h"
+
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/Texture.h"
@@ -39,7 +39,7 @@ public:
 	void enterPause();
 private:
 	Entity* fighter = nullptr;
-	AsteroidsManager* asteroidManager = nullptr;
+	//AsteroidsManager* asteroidManager = nullptr;
 	Manager* man;
 };
 

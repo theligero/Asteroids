@@ -38,8 +38,35 @@ Game::Game()
 		arraySound[i] = std::make_unique<SoundEffect>("resources/sound/" + soundDesc);
 	}
 
-	stateMachine = new GameStateMachine();
-	stateMachine->changeState(new PlayState(this));
+	/*stateMachine = new GameStateMachine();
+	stateMachine->changeState(new PlayState(this));*/
+	mngr_ = Manager::instance();
+	inputHdlr = InputHandler::instance();
+
+	asteroidSys = new AsteroidsSystem(this);
+	asteroidSys->setContext(mngr_);
+	asteroidSys->initSystem();
+
+	bulletSys = new BulletSystem();
+	bulletSys->setContext(mngr_);
+	bulletSys->initSystem();
+
+	collisionSys = new CollisionsSystem();
+	collisionSys->setContext(mngr_);
+	collisionSys->initSystem();
+
+	fighterSys = new FighterSystem(this);
+	fighterSys->setContext(mngr_);
+	fighterSys->initSystem();
+
+	gameCtrlSys = new GameCtrlSystem();
+	gameCtrlSys->setContext(mngr_);
+	gameCtrlSys->initSystem();
+
+	renderSys = new RenderSystem(this);
+	renderSys->setContext(mngr_);
+	renderSys->initSystem();
+
 }
 
 Game::~Game()
@@ -62,8 +89,18 @@ Game::~Game()
 void Game::run()
 {
 	while (true) {
-		update();
-		render();
+		//Sistemas update
+		asteroidSys->update();
+		bulletSys->update();
+		collisionSys->update();
+		fighterSys->update();
+		gameCtrlSys->update();
+		renderSys->update();
+		//refresh de singletons
+		inputHdlr->refresh();
+		mngr_->refresh();
+		//Flush de mensajes
+		mngr_->flushMessages();
 	}
 }
 

@@ -9,10 +9,10 @@
 void AsteroidsSystem::receive(const Message& m)
 {
 	switch (m.id) {
-	case _m_START_GAME:
+	case _m_START_GAME: //Si viene de pausa (no crea asteroides) o no(crea asteroides)
 		onRoundStart(m.start_game_data.pause);
 		break;
-	case _m_PAUSE_GAME:
+	case _m_PAUSE_GAME://si entra en pausa(solo desactiva) o no(elimina todo y desactiva)
 		onRoundOver(m.end_game_data.pause);
 		break;
 	case _m_END_GAME:
@@ -107,10 +107,13 @@ void AsteroidsSystem::onCollision_AsteroidBullet(Entity* a)
 	asteroidDestroyed->play(0, 2);
 	if (numOfAsteroids_ <= 0) {
 		Message m;
+		m.id = _m_NO_MORE_ASTEROIDS;
+		man->send(m);
+		/*Message m;
 		m.id = _m_END_GAME;
 		m.end_game_data.win = true;
 		m.end_game_data.pause = false;
-		man->send(m);
+		man->send(m);*/
 	}
 }
 
@@ -121,6 +124,7 @@ void AsteroidsSystem::onRoundOver(bool pause)
 		for (auto e : man->getEntities(ecs::_grp_ASTEROIDS)) {
 			man->setAlive(e, false);
 		}
+		numOfAsteroids_ = 0;
 	}
 	
 	active_ = false;

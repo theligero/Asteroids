@@ -17,6 +17,12 @@
 #include "../components/Follow.h"
 #include "../states/GameStateMachine.h"
 #include "../states/PlayState.h"
+#include "../systems/AsteroidsSystem.h"
+#include "../systems/BulletSystem.h"
+#include "../systems/CollisionsSystem.h"
+#include "../systems/FighterSystem.h"
+#include "../systems/GameCtrlSystem.h"
+#include "../systems/RenderSystem.h"
 
 const int NUM_TEXTURES = 6;
 const int NUM_TEXTS = 3;
@@ -94,6 +100,14 @@ private:
 	std::unique_ptr<Texture> arrayText[NUM_TEXTS];
 	std::unique_ptr<SoundEffect> arraySound[NUM_SOUNDS];
 	GameStateMachine* stateMachine = nullptr;
+	Manager* mngr_;
+	InputHandler* inputHdlr;
+	AsteroidsSystem* asteroidSys;
+	BulletSystem* bulletSys;
+	CollisionsSystem* collisionSys;
+	FighterSystem* fighterSys;
+	GameCtrlSystem* gameCtrlSys;
+	RenderSystem* renderSys;
 };
 
 #endif GAME_H_

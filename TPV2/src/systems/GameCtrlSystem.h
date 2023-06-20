@@ -4,8 +4,11 @@
 #include "../ecs/System.h"
 #include <SDL_stdinc.h>
 
+class Health;
+
 class GameCtrlSystem : public System {
 public:
+	GameCtrlSystem() : infoText(nullptr), winText(nullptr), loseText(nullptr), winner_(0), state_(0) {}
 	constexpr static ecs::sysId_type id = ecs::_sys_GAME_CTRL;
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
@@ -20,12 +23,16 @@ private:
 	// un asteroide. Tiene que avisar que ha acabado la ronda, quitar una vida
 	// al fighter, y si no hay más vidas avisar que ha acabado el juego (y quien
 	// es el ganador).
-	void onCollision_FighterAsteroid();
+	void onCollision_FighterAsteroid(Health* ftrHealth);
 	// Para gestionar el mensaje de que no hay más asteroides. Tiene que avisar que
 	// ha acabado la ronda y además que ha acabado el juego (y quien es el ganador)
 	void onAsteroidsExtinction();
-	Uint8 winner_; // 0 - None, 1 - Asteroids, 2- Fighter
-	Uint8 state_; // El estado actual del juego (en lugar del componente State)
+	Uint8 winner_; // 0 - None, 1 - Asteroid, 2- Fighter
+	Uint8 state_; // 0 - Play, 1 - Pause, 2 - End
+
+	Entity* infoText;
+	Entity* winText;
+	Entity* loseText;
 };
 
 #endif /*GAME_CTRL_SYSTEM_H_*/

@@ -131,21 +131,21 @@ void FighterSystem::fighterAttack()
 
 void FighterSystem::onCollision_FighterAsteroid()
 {
-	Health* h = man->getComponent<Health>(fighter);
+	//Health* h = man->getComponent<Health>(fighter);
 	Transform* tr = man->getComponent<Transform>(fighter);
-	h->decreaseLives();
 	hitSound->play(0, 1);
 	tr->setPos(Vector2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
 	tr->resetDir();
 	tr->setRot(0);
-	if (h->getLives() <= 0) {
+	//h->decreaseLives();
+	/*if (h->getLives() <= 0) {
 		onRoundOver();
 		Message m;
 		m.id = _m_END_GAME;
 		m.end_game_data.win =false;
 		m.end_game_data.pause = false;
 		man->send(m);
-	}
+	}*/
 
 }
 //Fin juego o pausa
