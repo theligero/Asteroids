@@ -109,7 +109,7 @@ void RenderSystem::onRoundOver()
 	winner_ = 0;
 	state_ = 1;
 }
-//Empieza el juego de cero o se vuelve después de pausar START
+//Empieza el juego de cero o se vuelve después de pausar. START
 void RenderSystem::onGameStart() 
 {
 	winner_ = 0;

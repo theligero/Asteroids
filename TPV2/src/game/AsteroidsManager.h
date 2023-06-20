@@ -8,8 +8,8 @@
 #include "../sdlutils/VirtualTimer.h"
 #endif
 
-const int MAX_ASTEROIDS = 30;
-const int INI_ASTEROIDS = 10;
+//const int MAX_ASTEROIDS = 30;
+//const int INI_ASTEROIDS = 10;
 
 class Texture;
 

@@ -3,9 +3,99 @@
 C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  FighterCtrl.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
+  PauseCtrl.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+  AsteroidsManager.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(11,53): error C2065: 'MAX_ASTEROIDS': identificador no declarado
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(17,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(18,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(20,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(63,44): error C2065: 'MAX_ASTEROIDS': identificador no declarado
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(65,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.cpp(66,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Game.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\Game.cpp(59,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  main.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+  EndState.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
   GameStateMachine.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  MainMenuState.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
+  PauseState.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
+  PlayState.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
+  AsteroidsSystem.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\Transform.h(10,18): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\Transform.h(10,8): message : vea la declaración de 'Transform'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\ShowAtOpposideSide.h(9,27): warning C4099: 'ShowAtOpposideSide': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\ShowAtOpposideSide.h(9,8): message : vea la declaración de 'ShowAtOpposideSide'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\Gun.h(16,12): warning C4099: 'Gun': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\Gun.h(16,8): message : vea la declaración de 'Gun'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(10,23): warning C4099: 'DeAcceleration': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(10,8): message : vea la declaración de 'DeAcceleration'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\FighterCtrl.h(14,20): warning C4099: 'FighterCtrl': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\FighterCtrl.h(14,8): message : vea la declaración de 'FighterCtrl'
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\AsteroidsSystem.cpp(60,11): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\AsteroidsSystem.cpp(61,11): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\AsteroidsSystem.cpp(63,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\AsteroidsSystem.cpp(63,21): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\AsteroidsSystem.cpp(93,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\AsteroidsSystem.cpp(94,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Manager.h(30,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\AsteroidsSystem.cpp(63,51): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Manager::addComponent<Transform,Vector2D,Vector2D,int,int,int>(Entity *,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Manager.h(30,32): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\AsteroidsSystem.cpp(97,92): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Manager::addComponent<Transform,Vector2D&,Vector2D&,float,float,int&>(Entity *,Vector2D &,Vector2D &,float &&,float &&,int &)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
   BulletSystem.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
@@ -19,7 +109,6 @@ C:\UNI\TPV2\Asteroids\TPV2\src\systems\BulletSystem.cpp(54,62): message : Vea la
           [
               T=Transform
           ]
-  CollisionsSystem.cpp
   FighterSystem.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
@@ -32,25 +121,14 @@ C:\UNI\TPV2\Asteroids\TPV2\src\components\ShowAtOpposideSide.h(9,27): warning C4
 C:\UNI\TPV2\Asteroids\TPV2\src\components\ShowAtOpposideSide.h(9,8): message : vea la declaración de 'ShowAtOpposideSide'
 C:\UNI\TPV2\Asteroids\TPV2\src\components\Gun.h(16,12): warning C4099: 'Gun': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\UNI\TPV2\Asteroids\TPV2\src\components\Gun.h(16,8): message : vea la declaración de 'Gun'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
 C:\UNI\TPV2\Asteroids\TPV2\src\components\FighterCtrl.h(14,20): warning C4099: 'FighterCtrl': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\UNI\TPV2\Asteroids\TPV2\src\components\FighterCtrl.h(14,8): message : vea la declaración de 'FighterCtrl'
 C:\UNI\TPV2\Asteroids\TPV2\src\systems\FighterSystem.cpp(67,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\UNI\TPV2\Asteroids\TPV2\src\systems\FighterSystem.cpp(72,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Manager.h(30,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
-          with
-          [
-              _Ty=int
-          ]
-C:\UNI\TPV2\Asteroids\TPV2\src\systems\FighterSystem.cpp(35,90): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Manager::addComponent<Transform,Vector2D,Vector2D,int,int,int>(Entity *,Vector2D &&,Vector2D &&,int &&,int &&,int &&)" que se está compilando
-          with
-          [
-              T=Transform
-          ]
-  GameCtrlSystem.cpp
   RenderSystem.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\game\AsteroidsManager.h(21,19): error C2065: 'INI_ASTEROIDS': identificador no declarado
 C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
   Generando código...
-     Creando biblioteca C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.lib y objeto C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.exp
-  TPV2.vcxproj -> C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.exe

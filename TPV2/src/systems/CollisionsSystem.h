@@ -3,9 +3,11 @@
 
 #include "../ecs/System.h"
 
+class Entity;
+
 class CollisionsSystem : public System {
 public:
-	CollisionsSystem() : active_(false) {}
+	CollisionsSystem() : active_(false), fighter(nullptr) {}
 	constexpr static ecs::sysId_type id = ecs::_sys_COLLISIONS;
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
@@ -22,6 +24,7 @@ private:
 	// Indica si el sistema está activo o no (modificar el valor en onRoundOver y
 	// onRoundStart, y en update no hacer nada si no está activo)
 	bool active_;
+	Entity* fighter;
 };
 
 

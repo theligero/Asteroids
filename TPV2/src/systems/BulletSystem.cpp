@@ -73,5 +73,8 @@ void BulletSystem::onRoundOver(bool pause)
 
 void BulletSystem::onRoundStart()
 {
+	for (auto e : man->getEntities(ecs::_grp_BULLETS)) {
+		man->setAlive(e, false);
+	}
 	active_ = true;
 }

@@ -130,6 +130,9 @@ void AsteroidsSystem::onRoundStart(bool pause)
 {
 	//No vienes de modo Pausa (es inicio de ronda), por tanto creas 10 asteroides.
 	if (!pause) {
+		for (auto e : man->getEntities(ecs::_grp_ASTEROIDS)) {
+			man->setAlive(e, false);
+		}
 		createAsteroids(10);
 	}
 	active_ = true;
