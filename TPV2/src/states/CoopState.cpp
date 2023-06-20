@@ -100,11 +100,6 @@ void CoopState::update()
 	SDLNet_TCP_Send(socket[DIRECTION], &fighterTr->getDir(), sizeof(Vector2D));
 	SDLNet_TCP_Send(socket[ROTATION], &fighterTr->getRot(), sizeof(float));
 
-	// SDLNet_TCP_Send(socket, &fighterTr->getPos(), sizeof(&fighterTr->getPos()) + 1);
-	// SDLNet_TCP_Recv(socket, &aux, sizeof(&aux) + 1);
-
-	// fighter[enemyFighter]->getComponent<Transform>(TRANSFORM)->setPos(aux);
-
 	man.refresh();
 }
 
@@ -154,6 +149,7 @@ void CoopState::iAmAHost()
 	socketSet = SDLNet_AllocSocketSet(NUM_SOCKETS + 1);
 	SDLNet_TCP_AddSocket(socketSet, masterSocket);
 	for (int i = 0; i < NUM_SOCKETS; i++) { socket[i] = nullptr; }
+	std::cout << "Esperando al otro jugador...\n";
 	while (socket[NUM_SOCKETS - 1] == nullptr) {
 		if (SDLNet_CheckSockets(socketSet, SDL_MAX_UINT32) > 0) {
 			// TODO I: PROCESS DATA on masterSocket
@@ -194,25 +190,6 @@ void CoopState::iAmAHost()
 
 		}
 	}
-
-
-	//SDLNet_ResolveHost(&ip, nullptr, 1234);
-
-	//socket = SDLNet_TCP_Open(&ip);
-
-	//auto fighterTr = fighter[chosenFighter]->getComponent<Transform>(TRANSFORM);
-
-	// std::cout << "Esperando al otro jugador...\n";
-
-	//while (!socket) {
-	//	socket = SDLNet_TCP_Accept(socket);
-	//	if (socket) {
-	//		std::cout << "conectado!" << std::endl;
-	//		// SDLNet_TCP_Send(client, &fighterTr, 255);
-	//	}
-	//}
-
-	//SDLNet_TCP_Close(server);
 }
 
 void CoopState::iAmAGuest()
@@ -257,26 +234,4 @@ void CoopState::iAmAGuest()
 		socket[i] = SDLNet_TCP_Open(&ip);
 		SDLNet_TCP_AddSocket(socketSet, socket[i]);
 	}
-
-	// TODO II: SEND/RECEIVE LOOP
-	//while (!done) {
-	//	std::cin.ignore();
-	//	std::cout << "Enter a message: ";
-	//	std::cin.getline(buffer, 255);
-	//	if (strcmp(buffer, "exit") == 0) break;
-	//	int size = strlen(buffer) + 1;
-	//	result = SDLNet_TCP_Send(conn, buffer, size);
-	//	if (result != size) std::cout << "error\n";
-	//	result = SDLNet_TCP_Recv(conn, buffer, 255);
-	//	if (result < 0) std::cout << "error\n";
-	//	else if (result == 0) {
-	//		std::cout << "server closed …"; break;
-	//	}
-	//	else {
-	//		std::cout << buffer << std::endl;
-	//	}
-	//}	
-	
-	// SDLNet_ResolveHost(&ip, host.c_str(), 1234);
-	// socket = SDLNet_TCP_Open(&ip);
 }
