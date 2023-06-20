@@ -24,7 +24,8 @@ void AsteroidsManager::createAsteroids(int n)
 				Vector2D((rand() % 2) * 0.05f, (rand() % 2) * 0.05f), 25, 25, 0);
 		#endif
 			man->addComponent<ShowAtOpposideSide>(aux, WINDOW_WIDTH, WINDOW_HEIGHT);
-			man->addComponent<Generations>(aux, 2);
+			int nGenerations = sdlutils().rand().nextInt(1, 4);
+			man->addComponent<Generations>(aux, nGenerations);
 			if (goldOrNot) {
 				FramedImage *c = man->addComponent<FramedImage>(aux, goldAsteroid, TEXTURE_DESCR[ASTEROID].rows, TEXTURE_DESCR[ASTEROID].cols);
 				man->addComponent<Follow>(aux, fighter);
@@ -47,6 +48,7 @@ void AsteroidsManager::destroyAllAsteroids()
 	for (auto& e : man->getEntities(_grp_ASTEROIDS)) {
 		man->setAlive(e, false);
 	}
+
 }
 
 void AsteroidsManager::onCollision(Entity* a)
@@ -58,7 +60,7 @@ void AsteroidsManager::onCollision(Entity* a)
 			auto aImg = man->getComponent<FramedImage>(a);
 			auto aFol = man->getComponent<Follow>(a);
 			Entity* aux;
-			for (int i = 0; i < 2; ++i) {
+			for (int i = 0; i < 2 && numAsteroids < MAX_ASTEROIDS; ++i) {
 				auto r = sdlutils().rand().nextInt(0, 360);
 				auto pos = aTr->getPos() + aTr->getDir().rotate(r) * 2 * std::max(aTr->getW(), aTr->getH());
 				auto vel = aTr->getDir().rotate(r) * 1.1f;

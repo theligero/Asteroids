@@ -10,7 +10,8 @@ public:
 	constexpr static cmpId_type id = DISABLE_ON_EXIT;
 	DisableOnExit(int w, int h) : WindowWidth(w), WindowHeight(h) {}
 	virtual ~DisableOnExit() {}
-
+	inline int getWindowWidth() { return WindowWidth; }
+	inline int getWindowHeight() { return WindowHeight; }
 	void initComponent() override;
 	void update() override;
 private:

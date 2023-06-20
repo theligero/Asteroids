@@ -1,4 +1,25 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  DeAcceleration.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  GameStateMachine.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+  BulletSystem.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Manager.h(30,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
+          with
+          [
+              _Ty=int
+          ]
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\BulletSystem.cpp(54,62): message : Vea la referencia a la creación de una instancia de la función plantilla "T *Manager::addComponent<Transform,Vector2D&,Vector2D&,int,int,float&>(Entity *,Vector2D &,Vector2D &,int &&,int &&,float &)" que se está compilando
+          with
+          [
+              T=Transform
+          ]
+  CollisionsSystem.cpp
   FighterSystem.cpp
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
@@ -13,8 +34,8 @@ C:\UNI\TPV2\Asteroids\TPV2\src\components\Gun.h(16,12): warning C4099: 'Gun': no
 C:\UNI\TPV2\Asteroids\TPV2\src\components\Gun.h(16,8): message : vea la declaración de 'Gun'
 C:\UNI\TPV2\Asteroids\TPV2\src\components\FighterCtrl.h(14,20): warning C4099: 'FighterCtrl': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\UNI\TPV2\Asteroids\TPV2\src\components\FighterCtrl.h(14,8): message : vea la declaración de 'FighterCtrl'
-C:\UNI\TPV2\Asteroids\TPV2\src\systems\FighterSystem.cpp(54,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\UNI\TPV2\Asteroids\TPV2\src\systems\FighterSystem.cpp(59,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\FighterSystem.cpp(67,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\UNI\TPV2\Asteroids\TPV2\src\systems\FighterSystem.cpp(72,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Manager.h(30,32): warning C4244: 'argumento': conversión de '_Ty' a 'float'; posible pérdida de datos
           with
           [
@@ -25,4 +46,11 @@ C:\UNI\TPV2\Asteroids\TPV2\src\systems\FighterSystem.cpp(35,90): message : Vea l
           [
               T=Transform
           ]
+  GameCtrlSystem.cpp
+  RenderSystem.cpp
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Entity.h(13,16): warning C4099: 'Component': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\UNI\TPV2\Asteroids\TPV2\src\ecs\Component.h(10,8): message : vea la declaración de 'Component'
+C:\UNI\TPV2\Asteroids\TPV2\src\components\DeAcceleration.h(12): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+  Generando código...
+     Creando biblioteca C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.lib y objeto C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.exp
   TPV2.vcxproj -> C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.exe

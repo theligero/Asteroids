@@ -12,7 +12,7 @@
 void FighterSystem::receive(const Message& m)
 {
 	switch (m.id) {
-	case _m_STÄRT_GAME:
+	case _m_START_GAME:
 		onRoundStart();
 		break;
 	case _m_PAUSE_GAME:
@@ -37,7 +37,7 @@ void FighterSystem::initSystem()
 	man->addComponent<Health>(fighter, WINDOW_WIDTH, WINDOW_HEIGHT, game->getArrayTexture(HEART));
 	//man->addComponent<Image>(fighter, game->getArrayTexture(FIGHTER));
 	saos = man->addComponent<ShowAtOpposideSide>(fighter, WINDOW_WIDTH, WINDOW_HEIGHT);
-	g = man->addComponent<Gun>(fighter, game->getArraySound(SHOOT), game->getArrayTexture(FIRE), WINDOW_WIDTH, WINDOW_HEIGHT);
+	g = man->addComponent<Gun>(fighter, game->getArraySound(SHOOT), WINDOW_WIDTH, WINDOW_HEIGHT);
 	fc = man->addComponent<FighterCtrl>(fighter, game->getArraySound(THRUST), game);
 
 }
@@ -117,12 +117,8 @@ void FighterSystem::fighterAttack()
 	#endif
 		Message m;
 		m.id = _m_BULLET_SHOT;
-		m.shot_bullet_data.gId = _grp_BULLETS;
 		m.shot_bullet_data.pos = bulletP;
 		m.shot_bullet_data.vel = bulletV;
-		m.shot_bullet_data.bulletTexture = g->getBulletTexture();
-		m.shot_bullet_data.windowHeight = g->getWindowHeight();
-		m.shot_bullet_data.windowWidth = g->getWindowWidth();
 		m.shot_bullet_data.width = 5;
 		m.shot_bullet_data.height = 20;
 		m.shot_bullet_data.rot = tr->getRot();

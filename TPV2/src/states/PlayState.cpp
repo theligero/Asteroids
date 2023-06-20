@@ -16,7 +16,7 @@ PlayState::PlayState(Game* g)
 	man->addComponent<Health>(fighter, WINDOW_WIDTH, WINDOW_HEIGHT, game->getArrayTexture(HEART));
 	man->addComponent<Image>(fighter, game->getArrayTexture(FIGHTER));
 	man->addComponent<ShowAtOpposideSide>(fighter, WINDOW_WIDTH, WINDOW_HEIGHT);
-	man->addComponent<Gun>(fighter, game->getArraySound(SHOOT), game->getArrayTexture(FIRE), WINDOW_WIDTH, WINDOW_HEIGHT);
+	man->addComponent<Gun>(fighter, game->getArraySound(SHOOT), WINDOW_WIDTH, WINDOW_HEIGHT);
 	man->addComponent<FighterCtrl>(fighter, game->getArraySound(THRUST), game);
 	man->getComponent<Transform>(fighter)->getPos();
 

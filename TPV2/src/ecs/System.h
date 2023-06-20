@@ -11,6 +11,7 @@ struct Message {
 	ecs::msgId_type id;
 	// _m_STÄRT_GAME
 	struct {
+		bool pause;
 	} start_game_data;
 	// _m_PAUSE_GAME
 	struct {
@@ -23,16 +24,17 @@ struct Message {
 	} end_game_data;
 	// _m_BULLET_SHOT
 	struct {
-		ecs::grpId_type gId;
 		Vector2D pos;
 		Vector2D vel;
-		Texture* bulletTexture;
-		int windowWidth;
-		int windowHeight;
 		float width;
 		float height;
 		float rot;
 	} shot_bullet_data;
+	// _m_ASTEROID_DESTROYED
+	struct {
+		Entity* bulletHit;
+		Entity* asteroidHit;
+	} asteroid_collision_data;
 	
 
 };

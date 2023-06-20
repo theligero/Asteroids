@@ -58,10 +58,11 @@ namespace ecs {
 	using msgId_type = uint8_t;
 	enum msgId : msgId_type {
 		_m_PAUSE_GAME, //
-		_m_STÄRT_GAME,
+		_m_START_GAME,
 		_m_END_GAME,
 		_m_FIGHTER_HIT,
-		_m_BULLET_SHOT
+		_m_BULLET_SHOT,
+		_m_ASTEROID_DESTROYED
 	};
 }
 

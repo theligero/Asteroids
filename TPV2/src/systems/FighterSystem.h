@@ -35,6 +35,7 @@ public:
 	void fighterInput();
 	//Se encarga de realizar los disparos
 	void fighterAttack();
+	Entity* getFighter() { return fighter; }
 private:
 	// Para reaccionar al mensaje de que ha habido un choque entre el fighter y un
 	// un asteroide. Poner el caza en el centro con velocidad (0,0) y rotación 0. No

@@ -6,7 +6,7 @@
 void RenderSystem::receive(const Message& m)
 {
 	switch (m.id) {
-	case _m_STÄRT_GAME:
+	case _m_START_GAME:
 		onGameStart();
 		break;
 	case _m_PAUSE_GAME:

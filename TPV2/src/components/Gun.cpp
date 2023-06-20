@@ -26,7 +26,6 @@ void Gun::update()
 		Vector2D bulletV = Vector2D(0.0f, -1.0f).rotate(tr->getRot()) * 0.09f;
 	#endif
 		mngr->addComponent<Transform>(newBullet, bulletP, bulletV, 5, 20, tr->getRot());
-		mngr->addComponent<Image>(newBullet, bulletTexture);
 		mngr->addComponent<DisableOnExit>(newBullet, WindowWidth, WindowHeight);
 		shootSound->play();
 		clock->reset();

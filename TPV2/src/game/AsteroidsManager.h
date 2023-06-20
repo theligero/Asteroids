@@ -9,7 +9,7 @@
 #endif
 
 const int MAX_ASTEROIDS = 30;
-const int NUM_ASTEROIDS = 10;
+const int INI_ASTEROIDS = 10;
 
 class Texture;
 
@@ -18,7 +18,7 @@ class AsteroidsManager
 public:
 	AsteroidsManager(Manager* m, Texture* gold, Texture* ast, Entity* f, SoundEffect* s) : 
 		man(m), goldAsteroid(gold), normalAsteroid(ast), fighter(f), explosion(s) { 
-		createAsteroids(NUM_ASTEROIDS); 
+		createAsteroids(INI_ASTEROIDS); 
 	#ifdef SDLUTILS
 		lastTime = sdlutils().currRealTime(); 
 	#else
