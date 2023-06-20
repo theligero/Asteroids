@@ -3,12 +3,7 @@
 #include "../ecs/Manager.h"
 #include <iostream>
 
-#ifdef SDLUTILS
-const float FOLLOWING_SPEED = 1.0f;
-#else
-const float FOLLOWING_SPEED = 0.01f;
-#endif
-const int UPDATE_STEP = 300;
+
 
 void Follow::initComponent()
 {

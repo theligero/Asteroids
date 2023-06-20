@@ -7,7 +7,7 @@ void BulletSystem::receive(const Message& m)
 {
 	switch (m.id) {
 	case _m_START_GAME: //Si viene de pausa (no crea asteroides) o no(crea asteroides)
-		onRoundStart();
+		onRoundStart(m.start_game_data.pause);
 		break;
 	case _m_PAUSE_GAME:
 		onRoundOver(m.end_game_data.pause);
@@ -71,7 +71,12 @@ void BulletSystem::onRoundOver(bool pause)
 	active_ = false;
 }
 
-void BulletSystem::onRoundStart()
+void BulletSystem::onRoundStart(bool pause)
 {
+	if (!pause) {
+		for (auto e : man->getEntities(ecs::_grp_BULLETS)) {
+			man->setAlive(e, false);
+		}
+	}
 	active_ = true;
 }

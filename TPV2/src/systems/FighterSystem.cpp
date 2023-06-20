@@ -31,6 +31,8 @@ void FighterSystem::receive(const Message& m)
 
 void FighterSystem::initSystem()
 {
+	hitSound = game->getArraySound(FIGHTER_EXPLOSION);
+
 	fighter = man->addEntity(_grp_FIGHTER);
 	tr = man->addComponent<Transform>(fighter, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
 	da = man->addComponent<DeAcceleration>(fighter);
@@ -97,7 +99,6 @@ void FighterSystem::fighterInput()
 		Message m;
 		m.id = _m_PAUSE_GAME;
 		man->send(m);
-		game->getStateMachine()->pushState(new PauseState(game));
 	}
 }
 void FighterSystem::fighterAttack()

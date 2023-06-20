@@ -8,7 +8,7 @@ class Health;
 
 class GameCtrlSystem : public System {
 public:
-	GameCtrlSystem() : infoText(nullptr), winText(nullptr), loseText(nullptr), winner_(0), state_(0) {}
+	GameCtrlSystem() : infoText(nullptr), winText(nullptr), loseText(nullptr), winner_(0), state_(0), fighter(nullptr) {}
 	constexpr static ecs::sysId_type id = ecs::_sys_GAME_CTRL;
 	// Reaccionar a los mensajes recibidos (llamando a métodos correspondientes).
 	void receive(const Message& m) override;
@@ -33,6 +33,7 @@ private:
 	Entity* infoText;
 	Entity* winText;
 	Entity* loseText;
+	Entity* fighter;
 };
 
 #endif /*GAME_CTRL_SYSTEM_H_*/

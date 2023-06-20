@@ -21,14 +21,21 @@ void GameCtrlSystem::receive(const Message& m)
 
 void GameCtrlSystem::initSystem()
 {
+	fighter = man->getSystem<FighterSystem>()->getFighter();
+
 	infoText = man->addEntity(_grp_INFO);
 	man->addComponent<Transform>(infoText, Vector2D(250, 300), Vector2D(0, 0), 300, 100, 0);
 
 	loseText = man->addEntity(_grp_LOSE);
 	man->addComponent<Transform>(loseText, Vector2D(250, 400), Vector2D(0, 0), 300, 100, 0);
 
-	winText = man->addEntity(_grp_LOSE);
+	winText = man->addEntity(_grp_WIN);
 	man->addComponent<Transform>(winText, Vector2D(250, 400), Vector2D(0, 0), 300, 100, 0);
+
+	Message m;
+	m.id = _m_START_GAME;
+	m.start_game_data.pause = false;
+	man->send(m, true);
 }
 
 void GameCtrlSystem::update()
@@ -47,6 +54,7 @@ void GameCtrlSystem::update()
 			m.start_game_data.pause = true;
 			break;
 		case 2:
+			man->getComponent<Health>(fighter)->resetLives();
 			state_ = 0;
 			m.id = ecs::_m_START_GAME;
 			m.start_game_data.pause = false;
@@ -62,16 +70,20 @@ void GameCtrlSystem::onCollision_FighterAsteroid(Health* ftrHealth)
 {
 	ftrHealth->decreaseLives();
 	if (ftrHealth->getLives() <= 0) {
+		Message m;
+		state_ = 2;
+		winner_ = 1;
+		m.id = ecs::_m_END_GAME;
+		m.end_game_data.pause = false;
+		m.end_game_data.win = false;
+		man->send(m);
 	}
-
-	Message m;
-	state_ = 2;
-	winner_ = 1;
-	m.id = ecs::_m_END_GAME;
-	m.end_game_data.pause = false;
-	m.end_game_data.win = false;
-	man->send(m);
-
+	else {
+		Message m1;
+		m1.id = ecs::_m_START_GAME;
+		m1.start_game_data.pause = false;
+		man->send(m1);
+	}
 }
 
 void GameCtrlSystem::onAsteroidsExtinction()

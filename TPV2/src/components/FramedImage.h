@@ -16,7 +16,7 @@ public:
 		tex(t), tr(nullptr) { textFrame.w = t->width() / cols; textFrame.h = t->height() / rows; clock = new VirtualTimer();}
 	virtual ~FramedImage() {}
 	inline Texture* getTexture() { return tex; }
-	inline SDL_Rect getTextFrame() { return textFrame; }
+	inline SDL_Rect& getTextFrame() { return textFrame; }
 	void initComponent() override;
 	void render() override;
 	void update() override;

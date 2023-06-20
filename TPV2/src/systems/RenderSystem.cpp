@@ -25,8 +25,8 @@ void RenderSystem::initSystem()
 	fighterTex = game->getArrayTexture(FIGHTER);
 	bulletTex = game->getArrayTexture(FIRE);
 	infoText = game->getArrayText(PAUSE);
-	loseText = game->getArrayText(WIN);
-	winText = game->getArrayText(LOSE);
+	loseText = game->getArrayText(LOSE);
+	winText = game->getArrayText(WIN);
 }
 
 void RenderSystem::update()
@@ -51,7 +51,11 @@ void RenderSystem::update()
 		for (auto e : man->getEntities(ecs::_grp_ASTEROIDS)) {
 			auto tr = man->getComponent<Transform>(e);
 			auto fI = man->getComponent<FramedImage>(e);
+			fI->getTextFrame().x = fI->getTextFrame().w * int(((SDL_GetTicks() / TIME_PER_FRAME) % 6));
+			fI->getTextFrame().y = fI->getTextFrame().h * int(((SDL_GetTicks() / (TIME_PER_FRAME * 6)) % 5));
 			fI->getTexture()->render(fI->getTextFrame(), getTrRect(tr), tr->getRot());
+			/*fI->getTextFrame().x = fI->getTextFrame().w * int(((SDL_GetTicks() / TIME_PER_FRAME) % 6));
+			fI->getTextFrame().y = fI->getTextFrame().h * int(((SDL_GetTicks() / (TIME_PER_FRAME * 6)) % 5));*/
 		}
 		for (auto e : man->getEntities(ecs::_grp_BULLETS)) {
 			auto tr = man->getComponent<Transform>(e);

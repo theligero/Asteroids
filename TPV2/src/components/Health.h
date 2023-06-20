@@ -22,7 +22,7 @@ public:
 	int getLives() { return livesCount; }
 	void decreaseLives();
 	inline Texture* getTexture() { return tex; }
-	void resetLives() { livesCount = MAX_LIVES; }
+	inline void resetLives() { livesCount = MAX_LIVES; }
 	//void render() override;
 	void initComponent() override;
 };

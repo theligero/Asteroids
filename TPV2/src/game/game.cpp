@@ -43,30 +43,18 @@ Game::Game()
 	mngr_ = Manager::instance();
 	inputHdlr = InputHandler::instance();
 
-	asteroidSys = new AsteroidsSystem(this);
-	asteroidSys->setContext(mngr_);
-	asteroidSys->initSystem();
+	fighterSys = mngr_->addSystem<FighterSystem>(this);
 
-	bulletSys = new BulletSystem();
-	bulletSys->setContext(mngr_);
-	bulletSys->initSystem();
+	asteroidSys = mngr_->addSystem<AsteroidsSystem>(this);
 
-	collisionSys = new CollisionsSystem();
-	collisionSys->setContext(mngr_);
-	collisionSys->initSystem();
+	bulletSys = mngr_->addSystem<BulletSystem>();
 
-	fighterSys = new FighterSystem(this);
-	fighterSys->setContext(mngr_);
-	fighterSys->initSystem();
+	collisionSys = mngr_->addSystem<CollisionsSystem>();
 
-	gameCtrlSys = new GameCtrlSystem();
-	gameCtrlSys->setContext(mngr_);
-	gameCtrlSys->initSystem();
+	gameCtrlSys = mngr_->addSystem<GameCtrlSystem>();
 
-	renderSys = new RenderSystem(this);
-	renderSys->setContext(mngr_);
-	renderSys->initSystem();
-
+	renderSys = mngr_->addSystem<RenderSystem>(this);
+	
 }
 
 Game::~Game()
@@ -95,7 +83,10 @@ void Game::run()
 		collisionSys->update();
 		fighterSys->update();
 		gameCtrlSys->update();
+
+		SDL_RenderClear(renderer);
 		renderSys->update();
+		SDL_RenderPresent(renderer);
 		//refresh de singletons
 		inputHdlr->refresh();
 		mngr_->refresh();

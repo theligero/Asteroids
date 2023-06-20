@@ -58,7 +58,7 @@ const TextureDescription TEXTURE_DESCR[NUM_TEXTURES] = {
 };
 
 const TextDescription TEXT_DESCRIP[NUM_TEXTS] = {
-	{"Press 'ESC' to resume the game.", build_sdlcolor(0x112233ff), build_sdlcolor(0xffffffff)},
+	{"Press 'SPACE' to resume the game.", build_sdlcolor(0x112233ff), build_sdlcolor(0xffffffff)},
 	{"YOU WIN", build_sdlcolor(0x112233ff), build_sdlcolor(0xffffffff)},
 	{"YOU LOSE", build_sdlcolor(0x112233ff), build_sdlcolor(0xffffffff)}
 };

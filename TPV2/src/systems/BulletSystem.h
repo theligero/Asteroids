@@ -32,7 +32,7 @@ private:
 	// balas, y desactivar el sistema.
 	void onRoundOver(bool pause);
 	// Para gestionar el mensaje de que ha empezado una ronda. Activar el sistema.
-	void onRoundStart();
+	void onRoundStart(bool pause);
 	// Indica si el sistema está activo o no (modificar el valor en onRoundOver y
 	// onRoundStart, y en update no hacer nada si no está activo)
 	bool active_;

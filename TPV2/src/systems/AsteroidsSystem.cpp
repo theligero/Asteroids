@@ -39,9 +39,27 @@ void AsteroidsSystem::update()
 	if (active_) {
 		for (auto e : man->getEntities(ecs::_grp_ASTEROIDS)) {
 			Transform* tr = man->getComponent<Transform>(e);
+			ShowAtOpposideSide* saos = man->getComponent<ShowAtOpposideSide>(e);
 			//Actualizamos posición
 			tr->getPos() = tr->getPos() + tr->getDir();
 			tr->getCenter() = tr->getPos() + Vector2D(tr->getW() / 2.0f, tr->getH() / 2.0f);
+			//Aparece por el otro lado de la pantalla
+			if (tr->getPos().getX() > saos->getWindowWidth())
+				tr->getPos().setX(-tr->getW());
+			else if (tr->getPos().getX() < -tr->getW())
+				tr->getPos().setX(saos->getWindowWidth());
+
+			if (tr->getPos().getY() > saos->getWindowHeight())
+				tr->getPos().setY(-tr->getH());
+			else if (tr->getPos().getY() < -tr->getH())
+				tr->getPos().setY(saos->getWindowHeight());
+
+			Follow* f = man->getComponent<Follow>(e);
+			if (f != nullptr) {
+				Vector2D newDir2 = (f->getFollowed()->getPos() - tr->getPos()).normalize() * FOLLOWING_SPEED;
+				newDir2.rotate(newDir2.angle(f->getFollowed()->getPos() - tr->getPos()) > 0 ? 1.0f : -1.0f);
+				tr->getDir().set(newDir2);
+			}
 		}
 		addAsteroidFrequently();
 
