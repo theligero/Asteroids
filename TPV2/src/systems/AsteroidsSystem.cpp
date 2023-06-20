@@ -102,8 +102,16 @@ void AsteroidsSystem::onCollision_AsteroidBullet(Entity* a)
 			}
 		}
 	}
+	--numOfAsteroids_;
 	man->setAlive(a, false);
 	asteroidDestroyed->play(0, 2);
+	if (numOfAsteroids_ <= 0) {
+		Message m;
+		m.id = _m_END_GAME;
+		m.end_game_data.win = true;
+		m.end_game_data.pause = false;
+		man->send(m);
+	}
 }
 
 void AsteroidsSystem::onRoundOver(bool pause)

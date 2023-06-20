@@ -143,6 +143,7 @@ void FighterSystem::onCollision_FighterAsteroid()
 		Message m;
 		m.id = _m_END_GAME;
 		m.end_game_data.win =false;
+		m.end_game_data.pause = false;
 		man->send(m);
 	}
 
