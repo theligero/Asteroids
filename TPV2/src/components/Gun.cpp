@@ -28,6 +28,9 @@ void Gun::update()
 		newBullet->addComponent<Transform>(TRANSFORM, bulletP, bulletV, 5, 20, tr->getRot());
 		newBullet->addComponent<Image>(IMAGE, bulletTexture);
 		newBullet->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WindowWidth, WindowHeight);
+		if (coopState != nullptr) {
+			coopState->sendBullet(newBullet);
+		}
 		shootSound->play();
 		clock->reset();
 	}

@@ -38,7 +38,7 @@ CoopState::CoopState(Game* g)
 		fighter[i]->addComponent<Image>(IMAGE, game->getArrayTexture(FIGHTER));
 		fighter[i]->addComponent<ShowAtOpposideSide>(SHOW_AT_OPPOSIDE_SIDE, WINDOW_WIDTH, WINDOW_HEIGHT);
 		if (i == chosenFighter) {
-			fighter[i]->addComponent<Gun>(GUN, game->getArraySound(SHOOT), game->getArrayTexture(FIRE), WINDOW_WIDTH, WINDOW_HEIGHT);
+			fighter[i]->addComponent<Gun>(GUN, game->getArraySound(SHOOT), game->getArrayTexture(FIRE), this, WINDOW_WIDTH, WINDOW_HEIGHT);
 			fighter[i]->addComponent<FighterCtrl>(FIGHTER_CTRL, game->getArraySound(THRUST), game);
 			fighter[i]->addComponent<DeAcceleration>(DEACCELERATION);
 		}
@@ -62,6 +62,7 @@ void CoopState::update()
 	char buffer[256];
 
 	Vector2D aux;
+	infoTransform tr;
 	float f;
 	whichFighter enemyFighter = static_cast<whichFighter>(chosenFighter ^ 1);
 
@@ -86,6 +87,16 @@ void CoopState::update()
 						std::memcpy(&aux, buffer, sizeof(Vector2D));
 						if (typeOfSocket(i) == POSITION) enemyFighterTr->setPos(aux);
 						else if (typeOfSocket(i) == DIRECTION) enemyFighterTr->setDir(aux);
+					}
+					else if (result == sizeof(infoTransform)) {
+						std::memcpy(&tr, buffer, sizeof(infoTransform));
+						if (typeOfSocket(i) == BULLET) {
+							auto bullet = man.addEntity(_grp_BULLETS);
+							bullet->addComponent<Transform>(TRANSFORM, tr.pos, tr.dir, 5, 20, tr.rot);
+							bullet->addComponent<Image>(IMAGE, game->getArrayTexture(FIRE));
+							bullet->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WINDOW_WIDTH, WINDOW_HEIGHT);
+							game->getArraySound(SHOOT)->play();
+						}
 					}
 					else if (result == sizeof(float)) {
 						std::memcpy(&f, buffer, sizeof(float));
@@ -136,6 +147,13 @@ void CoopState::checkCollision()
 			}
 		}
 	}
+}
+
+void CoopState::sendBullet(Entity* bullet)
+{
+	auto tr = bullet->getComponent<Transform>(TRANSFORM);
+	infoTransform aux(tr->getPos(), tr->getDir(), tr->getRot());
+	SDLNet_TCP_Send(socket[BULLET], &aux, sizeof(infoTransform));
 }
 
 void CoopState::iAmAHost()

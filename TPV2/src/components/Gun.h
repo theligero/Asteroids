@@ -11,6 +11,7 @@
 #include "Image.h"
 #include "DisableOnExit.h"
 #include "../ecs/Manager.h"
+#include "../states/CoopState.h"
 
 
 class Gun : public Component
@@ -18,11 +19,17 @@ class Gun : public Component
 public:
 	Gun(SoundEffect* soundHandle, Texture* t, int w, int h) : 
 		WindowWidth(w), WindowHeight(h), shootSound(soundHandle), 
-		bulletTexture(t), tr(nullptr) { clock = new VirtualTimer(); }
+		bulletTexture(t), tr(nullptr), coopState(nullptr) { clock = new VirtualTimer(); }
+	Gun(SoundEffect* soundHandle, Texture* t, CoopState* c, int w, int h) :
+		WindowWidth(w), WindowHeight(h), shootSound(soundHandle),
+		bulletTexture(t), tr(nullptr), coopState(c) {
+		clock = new VirtualTimer();
+	}
 	virtual ~Gun() {}
 	void initComponent() override;
 	void update() override;
 private:
+	CoopState* coopState;
 	Transform* tr;
 	Texture* bulletTexture;
 	Uint32 lastTime = 0;

@@ -8,7 +8,16 @@
 #include "../utils/Collisions.h"
 
 const int MAX_CHARACTERS = 10;
-const int NUM_SOCKETS = 4;
+const int NUM_SOCKETS = 5;
+
+struct infoTransform {
+	infoTransform(Vector2D p, Vector2D d, float r) :
+		pos(p), dir(d), rot(r) {}
+	infoTransform() : pos(), dir(), rot() {}
+	Vector2D pos;
+	Vector2D dir;
+	float rot;
+};
 
 class Game;
 
@@ -36,6 +45,8 @@ public:
 	virtual bool onExit();
 
 	void checkCollision();
+
+	void sendBullet(Entity* bullet);
 
 	void iAmAHost();
 	void iAmAGuest();
