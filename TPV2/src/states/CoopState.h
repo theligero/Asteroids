@@ -36,6 +36,7 @@ private:
 	Entity** fighter = new Entity*[2];
 	char** username = new char*[2];
 	whichFighter chosenFighter;
+	TCPsocket masterSocket;
 public:
 	CoopState(Game* g);
 	virtual ~CoopState();

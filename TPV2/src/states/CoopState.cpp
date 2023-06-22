@@ -105,6 +105,7 @@ void CoopState::update()
 								game->getStateMachine()->changeState(new MainMenuState(game));
 								done = true;
 								std::cout << "pinga" << std::endl;
+								return;
 								// fighter[enemyFighter]->setAlive(false);
 							}
 						}
@@ -113,10 +114,12 @@ void CoopState::update()
 			}
 		}
 
-		tr.dir = fighterTr->getDir();
-		tr.pos = fighterTr->getPos();
-		tr.rot = fighterTr->getRot();
-		SDLNet_TCP_Send(socket[ENEMY], &tr, sizeof(infoTransform));
+		if(fighterTr != nullptr && !done){
+			tr.dir = fighterTr->getDir();
+			tr.pos = fighterTr->getPos();
+			tr.rot = fighterTr->getRot();
+			SDLNet_TCP_Send(socket[ENEMY], &tr, sizeof(infoTransform));
+		}
 	}
 
 	else game->getStateMachine()->changeState(new MainMenuState(game));
@@ -140,6 +143,18 @@ bool CoopState::onExit()
 	auto& man = *Manager::instance();
 	for (auto& e : man.getEntities(_grp_FIGHTER)) e->setAlive(false);
 	for (auto& i : man.getEntities(_grp_BULLETS)) i->setAlive(false);
+
+	if (chosenFighter == HOST) {
+		SDLNet_TCP_Close(masterSocket);
+		SDLNet_TCP_DelSocket(socketSet, masterSocket);
+		masterSocket = nullptr;
+	}
+
+	for (int i = 0; i < NUM_SOCKETS; i++) {
+		SDLNet_TCP_Close(socket[i]);
+		SDLNet_TCP_DelSocket(socketSet, socket[i]);
+		socket[i] = nullptr;
+	}
 	std::cout << "Saliendo de CoopState\n";
 	return true;
 }
@@ -179,7 +194,7 @@ void CoopState::iAmAHost()
 	int result = 0;
 
 	if (SDLNet_ResolveHost(&ip, nullptr, 1234) < 0) { std::cout << "error\n"; }
-	TCPsocket masterSocket = SDLNet_TCP_Open(&ip);
+	masterSocket = SDLNet_TCP_Open(&ip);
 	if (!masterSocket) { std::cout << "error\n"; }
 	socketSet = SDLNet_AllocSocketSet(NUM_SOCKETS + 1);
 	SDLNet_TCP_AddSocket(socketSet, masterSocket);

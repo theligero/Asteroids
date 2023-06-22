@@ -45,6 +45,7 @@ void MainMenuState::update()
 			}
 		}
 	}
+	man.refresh();
 }
 
 void MainMenuState::render()
