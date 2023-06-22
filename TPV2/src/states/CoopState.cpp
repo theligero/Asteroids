@@ -106,10 +106,15 @@ void CoopState::update()
 			}
 		}
 	}
+	if (fighter[chosenFighter]->isAlive()) {
+		SDLNet_TCP_Send(socket[POSITION], &fighterTr->getPos(), sizeof(Vector2D));
+		SDLNet_TCP_Send(socket[DIRECTION], &fighterTr->getDir(), sizeof(Vector2D));
+		SDLNet_TCP_Send(socket[ROTATION], &fighterTr->getRot(), sizeof(float));
+	}
+	else {
+		SDLNet_TCP_Send(socket[PLAYER_DEAD], &fighter[chosenFighter]->isAlive(), sizeof(bool));
+	}
 
-	SDLNet_TCP_Send(socket[POSITION], &fighterTr->getPos(), sizeof(Vector2D));
-	SDLNet_TCP_Send(socket[DIRECTION], &fighterTr->getDir(), sizeof(Vector2D));
-	SDLNet_TCP_Send(socket[ROTATION], &fighterTr->getRot(), sizeof(float));
 
 	man.refresh();
 }

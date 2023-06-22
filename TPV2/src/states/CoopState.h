@@ -8,7 +8,7 @@
 #include "../utils/Collisions.h"
 
 const int MAX_CHARACTERS = 10;
-const int NUM_SOCKETS = 5;
+const int NUM_SOCKETS = 6;
 
 struct infoTransform {
 	infoTransform(Vector2D p, Vector2D d, float r) :
@@ -23,7 +23,7 @@ class Game;
 
 enum whichFighter { HOST, GUEST };
 
-enum typeOfSocket { USERNAME, POSITION, ROTATION, DIRECTION, BULLET };
+enum typeOfSocket { USERNAME, POSITION, ROTATION, DIRECTION, BULLET, PLAYER_DEAD };
 
 class CoopState : public GameState
 {
