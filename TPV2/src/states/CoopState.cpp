@@ -61,8 +61,8 @@ void CoopState::update()
 
 	char buffer[256];
 
-	Vector2D aux;
 	infoTransform tr;
+	bool enemyLive;
 	float f;
 	whichFighter enemyFighter = static_cast<whichFighter>(chosenFighter ^ 1);
 
@@ -96,6 +96,12 @@ void CoopState::update()
 							enemyFighterTr->setPos(tr.pos);
 							enemyFighterTr->setDir(tr.dir);
 							enemyFighterTr->setRot(tr.rot);
+						}
+					}
+					else if (result == sizeof(bool)) {
+						std::memcpy(&enemyLive, buffer, sizeof(bool));
+						if (!enemyLive) {
+							fighter[enemyFighter]->setAlive(enemyLive);
 						}
 					}
 				}
