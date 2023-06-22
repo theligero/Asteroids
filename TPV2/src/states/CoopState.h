@@ -25,6 +25,8 @@ enum whichFighter { HOST, GUEST };
 
 enum typeOfSocket { USERNAME, ENEMY, BULLET, PLAYER_DEAD };
 
+using infoFinished = char[9];
+
 class CoopState : public GameState
 {
 private:

@@ -62,7 +62,7 @@ void CoopState::update()
 	char buffer[256];
 
 	infoTransform tr;
-	bool enemyLive;
+	infoFinished fin;
 	float f;
 	whichFighter enemyFighter = static_cast<whichFighter>(chosenFighter ^ 1);
 
@@ -98,17 +98,21 @@ void CoopState::update()
 							enemyFighterTr->setRot(tr.rot);
 						}
 					}
-					else if (result == sizeof(bool)) {
-						std::memcpy(&enemyLive, buffer, sizeof(bool));
-						if (!enemyLive) {
-							fighter[enemyFighter]->setAlive(enemyLive);
+					else if (result == sizeof(infoFinished)) {
+						std::memcpy(&fin, buffer, sizeof(infoFinished));
+						if (typeOfSocket(i) == PLAYER_DEAD && fin == "TERMINADO") {
+							std::cout << "pinga" << std::endl;
+							// fighter[enemyFighter]->setAlive(false);
 						}
 					}
 				}
 			}
 		}
 	}
-	if (fighter[chosenFighter]->isAlive()) {
+	if (fighter[chosenFighter] != nullptr) {
+		tr.dir = fighterTr->getDir();
+		tr.pos = fighterTr->getPos();
+		tr.rot = fighterTr->getRot();
 		SDLNet_TCP_Send(socket[ENEMY], &tr, sizeof(infoTransform));
 	}
 	else {
