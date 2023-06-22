@@ -83,12 +83,7 @@ void CoopState::update()
 					socket[i] = nullptr;
 				}
 				else {
-					if (result == sizeof(Vector2D)) {
-						std::memcpy(&aux, buffer, sizeof(Vector2D));
-						if (typeOfSocket(i) == POSITION) enemyFighterTr->setPos(aux);
-						else if (typeOfSocket(i) == DIRECTION) enemyFighterTr->setDir(aux);
-					}
-					else if (result == sizeof(infoTransform)) {
+					if (result == sizeof(infoTransform)) {
 						std::memcpy(&tr, buffer, sizeof(infoTransform));
 						if (typeOfSocket(i) == BULLET) {
 							auto bullet = man.addEntity(_grp_BULLETS);
@@ -97,19 +92,18 @@ void CoopState::update()
 							bullet->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WINDOW_WIDTH, WINDOW_HEIGHT);
 							game->getArraySound(SHOOT)->play();
 						}
-					}
-					else if (result == sizeof(float)) {
-						std::memcpy(&f, buffer, sizeof(float));
-						if (typeOfSocket(i) == ROTATION) enemyFighterTr->setRot(f);
+						else if (typeOfSocket(i) == ENEMY) {
+							enemyFighterTr->setPos(tr.pos);
+							enemyFighterTr->setDir(tr.dir);
+							enemyFighterTr->setRot(tr.rot);
+						}
 					}
 				}
 			}
 		}
 	}
 	if (fighter[chosenFighter]->isAlive()) {
-		SDLNet_TCP_Send(socket[POSITION], &fighterTr->getPos(), sizeof(Vector2D));
-		SDLNet_TCP_Send(socket[DIRECTION], &fighterTr->getDir(), sizeof(Vector2D));
-		SDLNet_TCP_Send(socket[ROTATION], &fighterTr->getRot(), sizeof(float));
+		SDLNet_TCP_Send(socket[ENEMY], &tr, sizeof(infoTransform));
 	}
 	else {
 		SDLNet_TCP_Send(socket[PLAYER_DEAD], &fighter[chosenFighter]->isAlive(), sizeof(bool));
