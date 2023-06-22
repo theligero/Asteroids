@@ -63,7 +63,7 @@ void CoopState::update()
 
 	infoTransform tr;
 	infoFinished fin;
-	float f;
+	bool done = false;
 	whichFighter enemyFighter = static_cast<whichFighter>(chosenFighter ^ 1);
 
 	auto fighterTr = fighter[chosenFighter]->getComponent<Transform>(TRANSFORM);
@@ -100,7 +100,9 @@ void CoopState::update()
 					}
 					else if (result == sizeof(infoFinished)) {
 						std::memcpy(&fin, buffer, sizeof(infoFinished));
-						if (typeOfSocket(i) == PLAYER_DEAD && fin == "TERMINADO") {
+						if (typeOfSocket(i) == PLAYER_DEAD && strcmp(fin, FIN) == 0) {
+							game->getStateMachine()->changeState(new MainMenuState(game));
+							done = true;
 							std::cout << "pinga" << std::endl;
 							// fighter[enemyFighter]->setAlive(false);
 						}
@@ -109,11 +111,13 @@ void CoopState::update()
 			}
 		}
 	}
-
-	tr.dir = fighterTr->getDir();
-	tr.pos = fighterTr->getPos();
-	tr.rot = fighterTr->getRot();
-	SDLNet_TCP_Send(socket[ENEMY], &tr, sizeof(infoTransform));
+	
+	if (!done) {
+		tr.dir = fighterTr->getDir();
+		tr.pos = fighterTr->getPos();
+		tr.rot = fighterTr->getRot();
+		SDLNet_TCP_Send(socket[ENEMY], &tr, sizeof(infoTransform));
+	}
 
 	man.refresh();
 }
@@ -141,15 +145,15 @@ void CoopState::checkCollision()
 
 	for (auto& e : man.getEntities(_grp_BULLETS)) {
 		auto trBullet = e->getComponent<Transform>(TRANSFORM);
-		for (auto& i : man.getEntities(_grp_FIGHTER)) {
-			auto trFighter = i->getComponent<Transform>(TRANSFORM);
-			if (Collisions::collidesWithRotation(trBullet->getPos(), trBullet->getW(), trBullet->getH(), trBullet->getRot(),
-				trFighter->getPos(), trFighter->getW(), trFighter->getH(), trFighter->getRot())) {
-				game->getArraySound(FIGHTER_EXPLOSION)->play(0, 1);
-				infoFinished aux = "TERMINADO";
-				SDLNet_TCP_Send(socket[PLAYER_DEAD], &aux, sizeof(infoFinished));
-				std::cout << "me han dado :(" << std::endl;
-			}
+		auto trFighter = fighter[chosenFighter]->getComponent<Transform>(TRANSFORM);
+		if (Collisions::collidesWithRotation(trBullet->getPos(), trBullet->getW(), trBullet->getH(), trBullet->getRot(),
+			trFighter->getPos(), trFighter->getW(), trFighter->getH(), trFighter->getRot())) {
+			e->setAlive(false);
+			game->getArraySound(FIGHTER_EXPLOSION)->play(0, 1);
+			infoFinished aux = "TERMINADO";
+			SDLNet_TCP_Send(socket[PLAYER_DEAD], &aux, sizeof(infoFinished));
+			std::cout << "me han dado :(" << std::endl;
+			game->getStateMachine()->changeState(new MainMenuState(game));
 		}
 	}
 }

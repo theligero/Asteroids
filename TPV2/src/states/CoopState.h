@@ -7,8 +7,12 @@
 #include "../ecs/Manager.h"
 #include "../utils/Collisions.h"
 
+using infoFinished = char[10];
+
 const int MAX_CHARACTERS = 10;
 const int NUM_SOCKETS = 4;
+
+const infoFinished FIN = "TERMINADO";
 
 struct infoTransform {
 	infoTransform(Vector2D p, Vector2D d, float r) :
@@ -24,8 +28,6 @@ class Game;
 enum whichFighter { HOST, GUEST };
 
 enum typeOfSocket { USERNAME, ENEMY, BULLET, PLAYER_DEAD };
-
-using infoFinished = char[10];
 
 class CoopState : public GameState
 {
