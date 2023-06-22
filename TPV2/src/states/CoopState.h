@@ -12,8 +12,6 @@ using infoFinished = char[10];
 const int MAX_CHARACTERS = 10;
 const int NUM_SOCKETS = 4;
 
-const infoFinished FIN = "TERMINADO";
-
 struct infoTransform {
 	infoTransform(Vector2D p, Vector2D d, float r) :
 		pos(p), dir(d), rot(r) {}
@@ -48,7 +46,7 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 
-	void checkCollision();
+	bool checkCollision();
 
 	void sendBullet(Entity* bullet);
 

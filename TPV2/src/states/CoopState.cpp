@@ -57,67 +57,69 @@ void CoopState::update()
 	auto& man = *Manager::instance();
 
 	InputHandler::instance()->refresh();
-	checkCollision();
 
 	char buffer[256];
 
 	infoTransform tr;
 	infoFinished fin;
-	bool done = false;
 	whichFighter enemyFighter = static_cast<whichFighter>(chosenFighter ^ 1);
 
-	auto fighterTr = fighter[chosenFighter]->getComponent<Transform>(TRANSFORM);
-	auto enemyFighterTr = fighter[enemyFighter]->getComponent<Transform>(TRANSFORM);
+	bool done = checkCollision();
+	
+	if (!done) {
+		auto fighterTr = fighter[chosenFighter]->getComponent<Transform>(TRANSFORM);
+		auto enemyFighterTr = fighter[enemyFighter]->getComponent<Transform>(TRANSFORM);
 
-	man.update();
+		man.update();
 
-	if (SDLNet_CheckSockets(socketSet, SDL_MAX_UINT32) > 0) {
-		int result = 0;
-		// TODO II: PROCESS DATA on client sockets
-		for (int i = 0; i < NUM_SOCKETS; i++) {
-			if (socket[i] != nullptr && SDLNet_SocketReady(socket[i])) {
-				result = SDLNet_TCP_Recv(socket[i], buffer, 255);
-				if (result <= 0) {
-					SDLNet_TCP_Close(socket[i]);
-					SDLNet_TCP_DelSocket(socketSet, socket[i]);
-					socket[i] = nullptr;
-				}
-				else {
-					if (result == sizeof(infoTransform)) {
-						std::memcpy(&tr, buffer, sizeof(infoTransform));
-						if (typeOfSocket(i) == BULLET) {
-							auto bullet = man.addEntity(_grp_BULLETS);
-							bullet->addComponent<Transform>(TRANSFORM, tr.pos, tr.dir, 5, 20, tr.rot);
-							bullet->addComponent<Image>(IMAGE, game->getArrayTexture(FIRE));
-							bullet->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WINDOW_WIDTH, WINDOW_HEIGHT);
-							game->getArraySound(SHOOT)->play();
-						}
-						else if (typeOfSocket(i) == ENEMY) {
-							enemyFighterTr->setPos(tr.pos);
-							enemyFighterTr->setDir(tr.dir);
-							enemyFighterTr->setRot(tr.rot);
-						}
+		if (SDLNet_CheckSockets(socketSet, SDL_MAX_UINT32) > 0) {
+			int result = 0;
+			// TODO II: PROCESS DATA on client sockets
+			for (int i = 0; i < NUM_SOCKETS; i++) {
+				if (socket[i] != nullptr && SDLNet_SocketReady(socket[i])) {
+					result = SDLNet_TCP_Recv(socket[i], buffer, 255);
+					if (result <= 0) {
+						SDLNet_TCP_Close(socket[i]);
+						SDLNet_TCP_DelSocket(socketSet, socket[i]);
+						socket[i] = nullptr;
 					}
-					else if (result == sizeof(infoFinished)) {
-						std::memcpy(&fin, buffer, sizeof(infoFinished));
-						if (typeOfSocket(i) == PLAYER_DEAD && strcmp(fin, FIN) == 0) {
-							game->getStateMachine()->changeState(new MainMenuState(game));
-							done = true;
-							std::cout << "pinga" << std::endl;
-							// fighter[enemyFighter]->setAlive(false);
+					else {
+						if (result == sizeof(infoTransform)) {
+							std::memcpy(&tr, buffer, sizeof(infoTransform));
+							if (typeOfSocket(i) == BULLET) {
+								auto bullet = man.addEntity(_grp_BULLETS);
+								bullet->addComponent<Transform>(TRANSFORM, tr.pos, tr.dir, 5, 20, tr.rot);
+								bullet->addComponent<Image>(IMAGE, game->getArrayTexture(FIRE));
+								bullet->addComponent<DisableOnExit>(DISABLE_ON_EXIT, WINDOW_WIDTH, WINDOW_HEIGHT);
+								game->getArraySound(SHOOT)->play();
+							}
+							else if (typeOfSocket(i) == ENEMY) {
+								enemyFighterTr->setPos(tr.pos);
+								enemyFighterTr->setDir(tr.dir);
+								enemyFighterTr->setRot(tr.rot);
+							}
+						}
+						else if (result == sizeof(infoFinished)) {
+							std::memcpy(&fin, buffer, sizeof(infoFinished));
+							if (typeOfSocket(i) == PLAYER_DEAD && strcmp(fin, "TERMINADO") == 0) {
+								game->getStateMachine()->changeState(new MainMenuState(game));
+								done = true;
+								std::cout << "pinga" << std::endl;
+								// fighter[enemyFighter]->setAlive(false);
+							}
 						}
 					}
 				}
 			}
 		}
-	}
-	
-	if (!done) {
+
 		tr.dir = fighterTr->getDir();
 		tr.pos = fighterTr->getPos();
 		tr.rot = fighterTr->getRot();
 		SDLNet_TCP_Send(socket[ENEMY], &tr, sizeof(infoTransform));
 	}
+
+	else game->getStateMachine()->changeState(new MainMenuState(game));
 
 	man.refresh();
 }
@@ -135,11 +137,14 @@ bool CoopState::onEnter()
 
 bool CoopState::onExit()
 {
+	auto& man = *Manager::instance();
+	for (auto& e : man.getEntities(_grp_FIGHTER)) e->setAlive(false);
+	for (auto& i : man.getEntities(_grp_BULLETS)) i->setAlive(false);
 	std::cout << "Saliendo de CoopState\n";
 	return true;
 }
 
-void CoopState::checkCollision()
+bool CoopState::checkCollision()
 {
 	auto& man = *Manager::instance();
 
@@ -153,9 +158,12 @@ void CoopState::checkCollision()
 			infoFinished aux = "TERMINADO";
 			SDLNet_TCP_Send(socket[PLAYER_DEAD], &aux, sizeof(infoFinished));
 			std::cout << "me han dado :(" << std::endl;
-			game->getStateMachine()->changeState(new MainMenuState(game));
+			/*game->getStateMachine()->changeState(new MainMenuState(game));*/
+			return true;
 		}
 	}
+
+	return false;
 }
 
 void CoopState::sendBullet(Entity* bullet)
