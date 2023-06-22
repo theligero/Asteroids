@@ -109,16 +109,11 @@ void CoopState::update()
 			}
 		}
 	}
-	if (fighter[chosenFighter] != nullptr) {
-		tr.dir = fighterTr->getDir();
-		tr.pos = fighterTr->getPos();
-		tr.rot = fighterTr->getRot();
-		SDLNet_TCP_Send(socket[ENEMY], &tr, sizeof(infoTransform));
-	}
-	else {
-		SDLNet_TCP_Send(socket[PLAYER_DEAD], &fighter[chosenFighter]->isAlive(), sizeof(bool));
-	}
 
+	tr.dir = fighterTr->getDir();
+	tr.pos = fighterTr->getPos();
+	tr.rot = fighterTr->getRot();
+	SDLNet_TCP_Send(socket[ENEMY], &tr, sizeof(infoTransform));
 
 	man.refresh();
 }
@@ -151,7 +146,8 @@ void CoopState::checkCollision()
 			if (Collisions::collidesWithRotation(trBullet->getPos(), trBullet->getW(), trBullet->getH(), trBullet->getRot(),
 				trFighter->getPos(), trFighter->getW(), trFighter->getH(), trFighter->getRot())) {
 				game->getArraySound(FIGHTER_EXPLOSION)->play(0, 1);
-				i->setAlive(false);
+				infoFinished aux = "TERMINADO";
+				SDLNet_TCP_Send(socket[PLAYER_DEAD], &aux, sizeof(infoFinished));
 				std::cout << "me han dado :(" << std::endl;
 			}
 		}
