@@ -11,10 +11,3 @@ void Follow::initComponent()
 	assert(followedTr != nullptr);
 	tr = mngr->getComponent<Transform>(ent);
 }
-
-void Follow::update()
-{
-		Vector2D newDir2 = (followedTr->getPos() - tr->getPos()).normalize() * FOLLOWING_SPEED;
-		newDir2.rotate(newDir2.angle(followedTr->getPos() - tr->getPos()) > 0 ? 1.0f : -1.0f);
-		tr->getDir().set(newDir2);
-}

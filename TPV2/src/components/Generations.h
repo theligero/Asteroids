@@ -9,7 +9,7 @@ using namespace ecs;
 const int MAX_GENERATIONS = 3;
 const int MIN_GENERATIONS = 1;
 
-class Generations : public Component
+struct Generations : public Component
 {
 public:
 	constexpr static cmpId_type id = GENERATIONS;

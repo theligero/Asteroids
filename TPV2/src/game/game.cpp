@@ -95,23 +95,7 @@ void Game::run()
 	}
 }
 
-void Game::render()
-{
-	SDL_RenderClear(renderer);
-	stateMachine->render();
-	SDL_RenderPresent(renderer);
-}
-
-void Game::update()
-{
-	stateMachine->update();
-}
-
 void Game::handleEvents()
 {
 }
 
-GameStateMachine* Game::getStateMachine()
-{
-	return stateMachine;
-}

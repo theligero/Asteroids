@@ -7,9 +7,8 @@
 #include "../game/game.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SoundEffect.h"
-#include "../states/PauseState.h"
 
-
+class Game;
 
 struct FighterCtrl : public Component
 {
@@ -21,7 +20,6 @@ public:
 	virtual ~FighterCtrl() { InputHandler::close(); }
 	inline SoundEffect* getSound() { return thrustSound; }
 	void initComponent() override;
-	//void update() override;
 private:
 	Transform* tr;
 	Gun* gun;

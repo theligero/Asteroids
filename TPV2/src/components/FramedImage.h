@@ -4,11 +4,13 @@
 #include "../ecs/Component.h"
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/VirtualTimer.h"
-#include "Image.h"
+#include "Transform.h"
+#include "../game/ecs_def.h"
 
 const int TIME_PER_FRAME = 50;
 
-class FramedImage : public Component
+
+struct FramedImage : public Component
 {
 public:
 	constexpr static cmpId_type id = ecs::FRAMED_IMAGE;
@@ -18,8 +20,6 @@ public:
 	inline Texture* getTexture() { return tex; }
 	inline SDL_Rect& getTextFrame() { return textFrame; }
 	void initComponent() override;
-	void render() override;
-	void update() override;
 private:
 	SDL_Rect textFrame;
 	VirtualTimer* clock;

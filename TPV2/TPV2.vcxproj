@@ -27,8 +27,6 @@
     <ClInclude Include="src\components\Generations.h" />
     <ClInclude Include="src\components\Gun.h" />
     <ClInclude Include="src\components\Health.h" />
-    <ClInclude Include="src\components\Image.h" />
-    <ClInclude Include="src\components\PauseCtrl.h" />
     <ClInclude Include="src\components\ShowAtOpposideSide.h" />
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\ecs\Component.h" />
@@ -51,12 +49,6 @@
     <ClInclude Include="src\sdlutils\SoundEffect.h" />
     <ClInclude Include="src\sdlutils\Texture.h" />
     <ClInclude Include="src\sdlutils\VirtualTimer.h" />
-    <ClInclude Include="src\states\EndState.h" />
-    <ClInclude Include="src\states\GameState.h" />
-    <ClInclude Include="src\states\GameStateMachine.h" />
-    <ClInclude Include="src\states\MainMenuState.h" />
-    <ClInclude Include="src\states\PauseState.h" />
-    <ClInclude Include="src\states\PlayState.h" />
     <ClInclude Include="src\systems\AsteroidsSystem.h" />
     <ClInclude Include="src\systems\BulletSystem.h" />
     <ClInclude Include="src\systems\CollisionsSystem.h" />
@@ -74,11 +66,8 @@
     <ClCompile Include="src\components\FighterCtrl.cpp" />
     <ClCompile Include="src\components\Follow.cpp" />
     <ClCompile Include="src\components\FramedImage.cpp" />
-    <ClCompile Include="src\components\Generations.cpp" />
     <ClCompile Include="src\components\Gun.cpp" />
     <ClCompile Include="src\components\Health.cpp" />
-    <ClCompile Include="src\components\Image.cpp" />
-    <ClCompile Include="src\components\PauseCtrl.cpp" />
     <ClCompile Include="src\components\ShowAtOpposideSide.cpp" />
     <ClCompile Include="src\components\Transform.cpp" />
     <ClCompile Include="src\ecs\Component.cpp" />
@@ -94,12 +83,6 @@
     <ClCompile Include="src\sdlutils\sdlutils_demo.cpp" />
     <ClCompile Include="src\sdlutils\SoundEffect.cpp" />
     <ClCompile Include="src\sdlutils\Texture.cpp" />
-    <ClCompile Include="src\states\EndState.cpp" />
-    <ClCompile Include="src\states\GameState.cpp" />
-    <ClCompile Include="src\states\GameStateMachine.cpp" />
-    <ClCompile Include="src\states\MainMenuState.cpp" />
-    <ClCompile Include="src\states\PauseState.cpp" />
-    <ClCompile Include="src\states\PlayState.cpp" />
     <ClCompile Include="src\systems\AsteroidsSystem.cpp" />
     <ClCompile Include="src\systems\BulletSystem.cpp" />
     <ClCompile Include="src\systems\CollisionsSystem.cpp" />

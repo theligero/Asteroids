@@ -15,7 +15,6 @@ public:
 	DeAcceleration() : tr(nullptr) { };
 	virtual ~DeAcceleration() { }
 	void initComponent() override;
-	void update() override;
 private:
 	Transform* tr;
 };

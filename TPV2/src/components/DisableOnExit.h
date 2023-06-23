@@ -4,7 +4,7 @@
 #include "../ecs/Component.h"
 #include "Transform.h"
 
-class DisableOnExit : public Component
+struct DisableOnExit : public Component
 {
 public:
 	constexpr static cmpId_type id = DISABLE_ON_EXIT;
@@ -13,7 +13,6 @@ public:
 	inline int getWindowWidth() { return WindowWidth; }
 	inline int getWindowHeight() { return WindowHeight; }
 	void initComponent() override;
-	void update() override;
 private:
 	Transform* tr = nullptr;
 	int WindowWidth;

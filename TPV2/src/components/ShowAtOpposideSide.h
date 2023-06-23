@@ -15,7 +15,6 @@ public:
 	inline int getWindowWidth() { return WindowWidth; }
 	inline int getWindowHeight() { return WindowHeight; }
 	void initComponent() override;
-	void update() override;
 private:
 	Transform* tr;
 	int WindowWidth;

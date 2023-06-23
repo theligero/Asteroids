@@ -11,7 +11,6 @@ namespace ecs {
 	enum cmpId : cmpId_type {
 		TRANSFORM = 0,
 		DEACCELERATION,
-		IMAGE,
 		HEALTH,
 		FIGHTER_CTRL,
 		GUN,

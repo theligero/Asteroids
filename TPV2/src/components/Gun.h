@@ -8,7 +8,6 @@
 #include "../sdlutils/VirtualTimer.h"
 #include "../sdlutils/Texture.h"
 #include "Transform.h"
-#include "Image.h"
 #include "DisableOnExit.h"
 #include "../ecs/Manager.h"
 
@@ -27,7 +26,6 @@ public:
 	inline int getWindowWidth() { return WindowWidth; }
 	inline int getWindowHeight() { return WindowHeight; }
 	void initComponent() override;
-	void update() override;
 private:
 	Transform* tr;
 	Uint32 lastTime = 0;

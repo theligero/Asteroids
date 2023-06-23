@@ -6,7 +6,6 @@
 #include "../sdlutils/SoundEffect.h"
 #include "../sdlutils/Font.h"
 #include "../components/Transform.h"
-#include "../components/Image.h"
 #include "../components/ShowAtOpposideSide.h"
 #include "../components/FighterCtrl.h"
 #include "../components/Health.h"
@@ -15,8 +14,6 @@
 #include "../components/FramedImage.h"
 #include "../components/Gun.h"
 #include "../components/Follow.h"
-#include "../states/GameStateMachine.h"
-#include "../states/PlayState.h"
 #include "../systems/AsteroidsSystem.h"
 #include "../systems/BulletSystem.h"
 #include "../systems/CollisionsSystem.h"
@@ -89,7 +86,6 @@ public:
 	SoundEffect* getArraySound(SoundName key) { 
 		return arraySound[key].get(); 
 	}
-	GameStateMachine* getStateMachine();
 	
 
 	
@@ -99,7 +95,6 @@ private:
 	std::unique_ptr<Texture> arrayTexture[NUM_TEXTURES];
 	std::unique_ptr<Texture> arrayText[NUM_TEXTS];
 	std::unique_ptr<SoundEffect> arraySound[NUM_SOUNDS];
-	GameStateMachine* stateMachine = nullptr;
 	Manager* mngr_;
 	InputHandler* inputHdlr;
 	AsteroidsSystem* asteroidSys;

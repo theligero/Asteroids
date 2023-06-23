@@ -3,7 +3,6 @@
 #include "../components/Transform.h"
 #include "../components/DeAcceleration.h"
 #include "../components/Health.h"
-#include "../components/Image.h"
 #include "../components/ShowAtOpposideSide.h"
 #include "../components/Gun.h"
 #include "../components/FighterCtrl.h"
