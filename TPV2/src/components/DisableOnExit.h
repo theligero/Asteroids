@@ -4,7 +4,7 @@
 #include "../ecs/Component.h"
 #include "Transform.h"
 
-struct DisableOnExit : public Component
+class DisableOnExit : public Component
 {
 public:
 	constexpr static cmpId_type id = DISABLE_ON_EXIT;

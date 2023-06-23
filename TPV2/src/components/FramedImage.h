@@ -10,7 +10,7 @@
 const int TIME_PER_FRAME = 50;
 
 
-struct FramedImage : public Component
+class FramedImage : public Component
 {
 public:
 	constexpr static cmpId_type id = ecs::FRAMED_IMAGE;

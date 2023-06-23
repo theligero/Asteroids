@@ -12,7 +12,7 @@ const float FOLLOWING_SPEED = 0.01f;
 #endif
 const int UPDATE_STEP = 300;
 
-struct Follow : public Component
+class Follow : public Component
 {
 public:
 	constexpr static cmpId_type id = ecs::FOLLOW;
