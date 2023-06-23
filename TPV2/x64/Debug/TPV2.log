@@ -1,3 +1,2 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-     Creando biblioteca C:\UNI\TPV2\Reclonado deAsteroids\Asteroids\bin\AsteroidsDebug.lib y objeto C:\UNI\TPV2\Reclonado deAsteroids\Asteroids\bin\AsteroidsDebug.exp
-  TPV2.vcxproj -> C:\UNI\TPV2\Reclonado deAsteroids\Asteroids\bin\AsteroidsDebug.exe
+  TPV2.vcxproj -> C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.exe
