@@ -68,12 +68,12 @@ void FighterSystem::initSystem()
 	enemyCoop = man->addEntity(_grp_COOP_FIGHTERS);
 
 	if(host){
-		trFriend = man->addComponent<Transform>(friendCoop, Vector2D(0, 300), Vector2D(0, 0), 35, 30, 0);
-		trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(765, 300), Vector2D(0, 0), 35, 30, 0);
+		trFriend = man->addComponent<Transform>(friendCoop, Vector2D(0, 300), Vector2D(0, 0), 35, 30, 270);
+		trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(765, 300), Vector2D(0, 0), 35, 30, 90);
 	}
 	else {
-		trFriend = man->addComponent<Transform>(friendCoop, Vector2D(765, 300), Vector2D(0, 0), 35, 30, 0);
-		trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(0, 300), Vector2D(0, 0), 35, 30, 0);
+		trFriend = man->addComponent<Transform>(friendCoop, Vector2D(765, 300), Vector2D(0, 0), 35, 30, 90);
+		trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(0, 300), Vector2D(0, 0), 35, 30, 270);
 	}
 }
 
