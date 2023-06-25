@@ -59,7 +59,7 @@ void FighterSystem::initSystem()
 
 	//Coop mode
 	friendCoop = man->addEntity(_grp_COOP_FIGHTERS);
-	trFriend = man->addComponent<Transform>(fighterSolo, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
+	trFriend = man->addComponent<Transform>(friendCoop, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
 	saosFriend = man->addComponent<ShowAtOpposideSide>(friendCoop, WINDOW_WIDTH, WINDOW_HEIGHT);
 	gFriend = man->addComponent<Gun>(friendCoop, game->getArraySound(SHOOT), WINDOW_WIDTH, WINDOW_HEIGHT);
 	fcFriend = man->addComponent<FighterCtrl>(friendCoop, game->getArraySound(THRUST), game);

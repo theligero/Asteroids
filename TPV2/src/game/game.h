@@ -20,6 +20,7 @@
 #include "../systems/FighterSystem.h"
 #include "../systems/GameCtrlSystem.h"
 #include "../systems/RenderSystem.h"
+#include "../systems/OnlineSystem.h"
 
 const int NUM_TEXTURES = 9;
 const int NUM_TEXTS = 3;
@@ -106,6 +107,7 @@ private:
 	FighterSystem* fighterSys;
 	GameCtrlSystem* gameCtrlSys;
 	RenderSystem* renderSys;
+	OnlineSystem* onlineSys;
 };
 
 #endif GAME_H_

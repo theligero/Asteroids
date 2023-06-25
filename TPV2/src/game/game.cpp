@@ -54,6 +54,8 @@ Game::Game()
 	gameCtrlSys = mngr_->addSystem<GameCtrlSystem>(3);
 
 	renderSys = mngr_->addSystem<RenderSystem>(this, 3);
+
+	onlineSys = mngr_->addSystem<OnlineSystem>(this);
 	
 }
 
