@@ -64,7 +64,7 @@ private:
 	// onRoundStart, y en update no hacer nada si no está activo)
 	bool active_;
 	int state_ = 0; //0 - SOLO, 1 - COOP
-	bool host;
+	bool host_;
 
 	Game* game;
 	SoundEffect* hitSound;

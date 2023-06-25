@@ -91,7 +91,7 @@ void OnlineSystem::update()
 								Message m;
 								m.id = _m_ENEMY_DEAD;
 								man->send(m);
-								//active_ = false;
+								active_ = false;
 								//Prueba o no si el active = false es necesario
 								std::cout << "pinga" << std::endl;
 								return;
