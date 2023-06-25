@@ -93,7 +93,7 @@ void FighterSystem::update()
 }
 void FighterSystem::fighterMovement(Transform* tr, ShowAtOpposideSide* saos, DeAcceleration* da)
 {
-	//Actualización del transform
+	//Actualizaciï¿½n del transform
 	tr->getPos() = tr->getPos() + tr->getDir();
 	tr->getCenter() = tr->getPos() + Vector2D(tr->getW() / 2.0f, tr->getH() / 2.0f);
 
@@ -108,7 +108,7 @@ void FighterSystem::fighterMovement(Transform* tr, ShowAtOpposideSide* saos, DeA
 	else if (tr->getPos().getY() < -tr->getH())
 		tr->getPos().setY(saos->getWindowHeight());
 
-	//Desaceleración
+	//Desaceleraciï¿½n
 	if (tr->getDir().magnitude() > 0.005)
 		tr->getDir().set(tr->getDir() * da->deAcceleration);
 	else {
