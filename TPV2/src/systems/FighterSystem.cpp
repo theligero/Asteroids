@@ -64,7 +64,6 @@ void FighterSystem::initSystem()
 	gFriend = man->addComponent<Gun>(friendCoop, game->getArraySound(SHOOT), WINDOW_WIDTH, WINDOW_HEIGHT);
 	fcFriend = man->addComponent<FighterCtrl>(friendCoop, game->getArraySound(THRUST), game);
 	daFriend = man->addComponent<DeAcceleration>(friendCoop);
-	trFriend = man->addComponent<Transform>(friendCoop, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
 
 	enemyCoop = man->addEntity(_grp_COOP_FIGHTERS);
 	trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
@@ -239,21 +238,19 @@ void FighterSystem::onOnline(bool host)
 		trFriend->setPos(Vector2D(0, 300));
 		trFriend->setDir(Vector2D(0, 0));
 		trFriend->setRot(90);
+
 		trEnemy->setPos(Vector2D(765, 300));
 		trEnemy->setDir(Vector2D(0, 0));
 		trEnemy->setRot(270);
-		trFriend = man->addComponent<Transform>(friendCoop, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
-		trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
 	}
 	else {
 		trFriend->setPos(Vector2D(765, 300));
 		trFriend->setDir(Vector2D(0, 0));
 		trFriend->setRot(270);
+
 		trEnemy->setPos(Vector2D(0, 300));
 		trEnemy->setDir(Vector2D(0, 0));
 		trEnemy->setRot(90);
-		trFriend = man->addComponent<Transform>(friendCoop, Vector2D(765, 300), Vector2D(0, 0), 35, 30, 270);
-		trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(0, 300), Vector2D(0, 0), 35, 30, 90);
 	}
 
 	state_ = 2;
