@@ -131,7 +131,7 @@ void FighterSystem::fighterInput(Transform* tr, FighterCtrl *fc)
 	else if (InputHandler::instance()->isKeyDown(SDLK_d))
 		tr->setRot(tr->getRot() + 5.0f);
 
-	if (InputHandler::instance()->isKeyDown(SDLK_SPACE)) {
+	if (InputHandler::instance()->isKeyDown(SDLK_SPACE) && state_ == 1) {
 		Message m;
 		m.id = _m_PAUSE_GAME;
 		man->send(m);
