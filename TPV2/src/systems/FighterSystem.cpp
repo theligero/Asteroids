@@ -225,13 +225,7 @@ void FighterSystem::onCollision_FighterAsteroid()
 }
 void FighterSystem::onCollision_FighterBullet()
 {
-	for(auto nave: man->getEntities(ecs::_grp_COOP_FIGHTERS)){
-		Transform* tr = man->getComponent<Transform>(nave);
-		hitSound->play(0, 1);
-		tr->setPos(Vector2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
-		tr->resetDir();
-		tr->setRot(0);
-	}
+	hitSound->play(0, 1);
 }
 void FighterSystem::onOnline(bool host)
 {

@@ -162,5 +162,5 @@ void GameCtrlSystem::onFighterBulletDeath()
 	state_ = 3;
 	winner_ = 0;
 	m.id = ecs::_m_MAIN_MENU;
-	man->send(m);
+	man->send(m, true);
 }
