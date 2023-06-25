@@ -51,9 +51,9 @@ Game::Game()
 
 	collisionSys = mngr_->addSystem<CollisionsSystem>();
 
-	gameCtrlSys = mngr_->addSystem<GameCtrlSystem>();
+	gameCtrlSys = mngr_->addSystem<GameCtrlSystem>(3);
 
-	renderSys = mngr_->addSystem<RenderSystem>(this);
+	renderSys = mngr_->addSystem<RenderSystem>(this, 3);
 	
 }
 

@@ -6,6 +6,15 @@
 void RenderSystem::receive(const Message& m)
 {
 	switch (m.id) {
+	case _m_MAIN_MENU:
+		onMainMenu();
+		break;
+	case _m_IS_GUEST:
+		onOnline();
+		break;
+	case _m_IS_HOST:
+		onOnline();
+		break;
 	case _m_START_GAME:
 		onGameStart();
 		break;
@@ -27,23 +36,29 @@ void RenderSystem::initSystem()
 	infoText = game->getArrayText(PAUSE);
 	loseText = game->getArrayText(LOSE);
 	winText = game->getArrayText(WIN);
+	soloText = game->getArrayTexture(SOLO);
+	coopText = game->getArrayTexture(COOP);
+	titleText = game->getArrayTexture(TITLE);
 }
 
 void RenderSystem::update()
 {
-	Vector2D pos = { 10, 10 };
-	Vector2D posChange = { 30, 0 };
-	for (auto e : man->getEntities(ecs::_grp_FIGHTER)) {
-		auto tr = man->getComponent<Transform>(e);
-		auto h = man->getComponent<Health>(e);
-		for (int i = 0; i < h->getLives(); i++) {
-			h->getTexture()->render(getTrRect(pos, tr), 0);
-			pos = pos + posChange;
+	if(state_ < 3){
+		Vector2D pos = { 10, 10 };
+		Vector2D posChange = { 30, 0 };
+		for (auto e : man->getEntities(ecs::_grp_FIGHTER)) {
+			auto tr = man->getComponent<Transform>(e);
+			auto h = man->getComponent<Health>(e);
+			for (int i = 0; i < h->getLives(); i++) {
+				h->getTexture()->render(getTrRect(pos, tr), 0);
+				pos = pos + posChange;
+			}
 		}
 	}
 
 	switch (state_) {
 	case 0:
+		sdlutils().hideCursor();
 		for (auto e : man->getEntities(ecs::_grp_FIGHTER)) {
 			auto tr = man->getComponent<Transform>(e);
 			fighterTex->render(getTrRect(tr), tr->getRot());
@@ -63,12 +78,14 @@ void RenderSystem::update()
 		}
 		break;
 	case 1:
+		sdlutils().hideCursor();
 		for (auto e : man->getEntities(ecs::_grp_INFO)) {
 			auto tr = man->getComponent<Transform>(e);
 			infoText->render(getTrRect(tr), tr->getRot());
 		}
 		break;
 	case 2:
+		sdlutils().hideCursor();
 		//ASTEROID
 		if (winner_ == 1) {
 			for (auto e : man->getEntities(ecs::_grp_LOSE)) {
@@ -89,6 +106,30 @@ void RenderSystem::update()
 		}
 		
 		break;
+	case 3:
+		sdlutils().showCursor();
+		for (auto e : man->getEntities(ecs::_grp_TITLE)) {
+			auto tr = man->getComponent<Transform>(e);
+			titleText->render(getTrRect(tr), tr->getRot());
+		}
+
+		for (auto e : man->getEntities(ecs::_grp_SOLO_BUTTON)) {
+			auto tr = man->getComponent<Transform>(e);
+			soloText->render(getTrRect(tr), tr->getRot());
+		}
+
+		for (auto e : man->getEntities(ecs::_grp_COOP_BUTTON)) {
+			auto tr = man->getComponent<Transform>(e);
+			coopText->render(getTrRect(tr), tr->getRot());
+		}
+		break;
+	case 4:
+		sdlutils().hideCursor();
+		for (auto e : man->getEntities(ecs::_grp_COOP_FIGHTERS)) {
+			auto tr = man->getComponent<Transform>(e);
+			fighterTex->render(getTrRect(tr), tr->getRot());
+		}
+		break;
 	default:
 		break;
 	}
@@ -105,6 +146,17 @@ SDL_Rect RenderSystem::getTrRect(Vector2D pos, Transform* tr)
 {
 	SDL_Rect dest = build_sdlrect(pos, tr->getW(), tr->getH());
 	return dest;
+}
+
+void RenderSystem::onMainMenu()
+{
+	winner_ = 0;
+	state_ = 3;
+}
+
+void RenderSystem::onOnline()
+{
+	state_ = 4;
 }
 
 //Pausa el juego. PAUSE

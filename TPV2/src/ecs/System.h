@@ -13,6 +13,7 @@ struct Message {
 	// _m_STÄRT_GAME
 	struct {
 		bool pause;
+		bool soloOrCoop;
 	} start_game_data;
 	// _m_PAUSE_GAME
 	struct {
@@ -40,7 +41,21 @@ struct Message {
 	struct {
 		Health* fighterHealth;
 	}fighter_hit_data;
-
+	// _m_FIGHTER_BULLET_HIT
+	struct {
+		Entity* bulletHit;
+	}fighter_bullet_hit_data;
+	// IS_m_IS_HOST  || _m_IS_GUEST
+	struct {
+		bool host;
+		std::string name;
+	}online_init_data;
+	// _m_MOVE_ENEMY
+	struct {
+		Vector2D enemyPos;
+		Vector2D enemyDir;
+		float enemyRot;
+	}move_enemy_data;
 };
 
 class Manager;

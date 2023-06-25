@@ -9,6 +9,14 @@ void BulletSystem::receive(const Message& m)
 	case _m_START_GAME: //Si viene de pausa (no crea asteroides) o no(crea asteroides)
 		onRoundStart(m.start_game_data.pause);
 		break;
+	case _m_IS_GUEST:
+		onOnline();
+		break;
+	case _m_IS_HOST:
+		onOnline();
+		break;
+	case _m_MAIN_MENU:
+		onOnlineOver();
 	case _m_PAUSE_GAME:
 		onRoundOver(m.end_game_data.pause);
 		break;
@@ -17,6 +25,9 @@ void BulletSystem::receive(const Message& m)
 		break;
 	case _m_ASTEROID_DESTROYED:
 		onCollision_BulletAsteroid(m.asteroid_collision_data.bulletHit);
+		break;
+	case _m_FIGHTER_BULLET_HIT:
+		onCollision_Bullet_Fighter(m.asteroid_collision_data.bulletHit);
 		break;
 	case _m_BULLET_SHOT:
 		shoot(m.shot_bullet_data.pos, m.shot_bullet_data.vel, m.shot_bullet_data.width, m.shot_bullet_data.height, m.shot_bullet_data.rot);
@@ -55,7 +66,28 @@ void BulletSystem::shoot(Vector2D pos, Vector2D vel, double width, double height
 	man->addComponent<DisableOnExit>(newBullet, wWidth, wHeight);
 }
 
+void BulletSystem::onOnline()
+{
+	for (auto e : man->getEntities(ecs::_grp_BULLETS)) {
+		man->setAlive(e, false);
+	}
+	active_ = true;
+}
+
+void BulletSystem::onOnlineOver()
+{
+	for (auto e : man->getEntities(ecs::_grp_BULLETS)) {
+		man->setAlive(e, false);
+	}
+	active_ = false;
+}
+
 void BulletSystem::onCollision_BulletAsteroid(Entity* b)
+{
+	man->setAlive(b, false);
+}
+
+void BulletSystem::onCollision_Bullet_Fighter(Entity* b)
 {
 	man->setAlive(b, false);
 }

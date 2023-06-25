@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\Clickable.h" />
     <ClInclude Include="src\components\DeAcceleration.h" />
     <ClInclude Include="src\components\DisableOnExit.h" />
     <ClInclude Include="src\components\FighterCtrl.h" />
@@ -54,6 +55,7 @@
     <ClInclude Include="src\systems\CollisionsSystem.h" />
     <ClInclude Include="src\systems\FighterSystem.h" />
     <ClInclude Include="src\systems\GameCtrlSystem.h" />
+    <ClInclude Include="src\systems\OnlineSystem.h" />
     <ClInclude Include="src\systems\RenderSystem.h" />
     <ClInclude Include="src\utils\Collisions.h" />
     <ClInclude Include="src\utils\mpl.h" />
@@ -61,6 +63,7 @@
     <ClInclude Include="src\utils\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\Clickable.cpp" />
     <ClCompile Include="src\components\DeAcceleration.cpp" />
     <ClCompile Include="src\components\DisableOnExit.cpp" />
     <ClCompile Include="src\components\FighterCtrl.cpp" />
@@ -88,6 +91,7 @@
     <ClCompile Include="src\systems\CollisionsSystem.cpp" />
     <ClCompile Include="src\systems\FighterSystem.cpp" />
     <ClCompile Include="src\systems\GameCtrlSystem.cpp" />
+    <ClCompile Include="src\systems\OnlineSystem.cpp" />
     <ClCompile Include="src\systems\RenderSystem.cpp" />
     <ClCompile Include="src\utils\Collisions.cpp" />
     <ClCompile Include="src\utils\Vector2D.cpp" />

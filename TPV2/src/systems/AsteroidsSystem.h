@@ -53,7 +53,7 @@ private:
 	//Texturas de los asteroides
 	Texture* goldAsteroid;
 	Texture* normalAsteroid;
-	//Entidad del fighter
+	//Entidad del fighterSolo
 	Entity* fighter;
 	//Sonido de choque
 	SoundEffect* asteroidDestroyed;

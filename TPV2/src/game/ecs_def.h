@@ -20,6 +20,7 @@ namespace ecs {
 		FOLLOW,
 		DISABLE_ON_EXIT,
 		PAUSE_CTRL,
+		CLICKABLE,
 		// do not remove this
 		LAST_CMP_ID
 	};
@@ -35,6 +36,10 @@ namespace ecs {
 		_grp_INFO,
 		_grp_WIN,
 		_grp_LOSE,
+		_grp_TITLE,
+		_grp_COOP_BUTTON,
+		_grp_SOLO_BUTTON,
+		_grp_COOP_FIGHTERS,
 		_LAST_GRP_ID
 	};
 
@@ -48,6 +53,7 @@ namespace ecs {
 		_sys_FIGHTER,
 		_sys_GAME_CTRL,
 		_sys_RENDER,
+		_sys_ONLINE,
 
 		// do not remove this
 		_LAST_SYS_ID
@@ -58,12 +64,17 @@ namespace ecs {
 	enum msgId : msgId_type {
 		_m_PAUSE_GAME,
 		_m_START_GAME,
-		//?????UNPAUSEGAME
+		_m_MAIN_MENU,
 		_m_END_GAME,
 		_m_FIGHTER_HIT,
 		_m_BULLET_SHOT,
 		_m_ASTEROID_DESTROYED,
-		_m_NO_MORE_ASTEROIDS
+		_m_FIGHTER_BULLET_HIT,
+		_m_MOVE_ENEMY,
+		_m_ENEMY_DEAD,
+		_m_NO_MORE_ASTEROIDS,
+		_m_IS_HOST,
+		_m_IS_GUEST
 	};
 }
 

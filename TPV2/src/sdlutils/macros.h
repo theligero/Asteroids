@@ -42,7 +42,7 @@ inline SDL_Rect build_sdlrect(float x, float y, float w, float h) {
 /*
  * COLOR(hexnum)
  *
- * it is used to generate SDL_Color from a hex number (e.g., 0xaaff12ff), so
+ * it is used to generate SDL_Color from a hex number (e.gSolo., 0xaaff12ff), so
  * instead of writing
  *
  *  { 0x44, 0x11, 0x22, 0x33 }
@@ -71,7 +71,7 @@ inline SDL_Color build_sdlcolor(std::string strnum) {
  *  it is  used to expand an SDL_Color into its components, so instead
  *  of writing
  *
- *    SDL_SetRenderDrawColor(game_->getRenderer(), color.r, color.g, color.b, color.a);
+ *    SDL_SetRenderDrawColor(game_->getRenderer(), color.r, color.gSolo, color.b, color.a);
  *
  *  we can simply write
  *

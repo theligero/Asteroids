@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\UNI\TPV2\Asteroids\bin\AsteroidsDebug.exe</FullPath>
+      <FullPath>C:\UNI\TPV2\Asteroids\Asteroids\bin\AsteroidsDebug.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

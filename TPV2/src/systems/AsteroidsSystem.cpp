@@ -30,7 +30,7 @@ void AsteroidsSystem::initSystem()
 {
 	goldAsteroid = game->getArrayTexture(ASTEROID_GOLD);
 	normalAsteroid = game->getArrayTexture(ASTEROID);
-	fighter = man->getSystem<FighterSystem>()->getFighter();
+	fighter = man->getSystem<FighterSystem>()->getSoloFighter();
 	asteroidDestroyed = game->getArraySound(ASTEROID_EXPLOSION);
 }
 

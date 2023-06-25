@@ -7,6 +7,7 @@
 #include "../components/Gun.h"
 #include "../components/FighterCtrl.h"
 #include "BulletSystem.h"
+#include "OnlineSystem.h"
 
 void FighterSystem::receive(const Message& m)
 {
@@ -23,6 +24,20 @@ void FighterSystem::receive(const Message& m)
 	case _m_FIGHTER_HIT:
 		onCollision_FighterAsteroid();
 		break;
+	case _m_FIGHTER_BULLET_HIT:
+		onCollision_FighterBullet();
+		break;
+	case _m_MOVE_ENEMY:
+		onMove_Enemy(m.move_enemy_data.enemyPos, m.move_enemy_data.enemyDir, m.move_enemy_data.enemyRot);
+	case _m_IS_GUEST:
+		onOnline();
+		break;
+	case _m_IS_HOST:
+		onOnline();
+		break;
+	case _m_MAIN_MENU:
+		onRoundOver();
+			break;
 	default:
 		break;
 	}
@@ -32,30 +47,51 @@ void FighterSystem::initSystem()
 {
 	hitSound = game->getArraySound(FIGHTER_EXPLOSION);
 
-	fighter = man->addEntity(_grp_FIGHTER);
-	tr = man->addComponent<Transform>(fighter, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
-	da = man->addComponent<DeAcceleration>(fighter);
-	man->addComponent<Health>(fighter, WINDOW_WIDTH, WINDOW_HEIGHT, game->getArrayTexture(HEART));
-	//man->addComponent<Image>(fighter, game->getArrayTexture(FIGHTER));
-	saos = man->addComponent<ShowAtOpposideSide>(fighter, WINDOW_WIDTH, WINDOW_HEIGHT);
-	g = man->addComponent<Gun>(fighter, game->getArraySound(SHOOT), WINDOW_WIDTH, WINDOW_HEIGHT);
-	fc = man->addComponent<FighterCtrl>(fighter, game->getArraySound(THRUST), game);
+	//Solo mode
+	fighterSolo = man->addEntity(_grp_FIGHTER);
+	trSolo = man->addComponent<Transform>(fighterSolo, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
+	daSolo = man->addComponent<DeAcceleration>(fighterSolo);
+	man->addComponent<Health>(fighterSolo, WINDOW_WIDTH, WINDOW_HEIGHT, game->getArrayTexture(HEART));
+	//man->addComponent<Image>(fighterSolo, game->getArrayTexture(FIGHTER));
+	saosSolo = man->addComponent<ShowAtOpposideSide>(fighterSolo, WINDOW_WIDTH, WINDOW_HEIGHT);
+	gSolo = man->addComponent<Gun>(fighterSolo, game->getArraySound(SHOOT), WINDOW_WIDTH, WINDOW_HEIGHT);
+	fcSolo = man->addComponent<FighterCtrl>(fighterSolo, game->getArraySound(THRUST), game);
 
+	//Coop mode
+	friendCoop = man->addEntity(_grp_COOP_FIGHTERS);
+	trFriend = man->addComponent<Transform>(fighterSolo, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
+	saosFriend = man->addComponent<ShowAtOpposideSide>(friendCoop, WINDOW_WIDTH, WINDOW_HEIGHT);
+	gFriend = man->addComponent<Gun>(friendCoop, game->getArraySound(SHOOT), WINDOW_WIDTH, WINDOW_HEIGHT);
+	fcFriend = man->addComponent<FighterCtrl>(friendCoop, game->getArraySound(THRUST), game);
+	daFriend = man->addComponent<DeAcceleration>(friendCoop);
+
+	enemyCoop = man->addEntity(_grp_COOP_FIGHTERS);
+	trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
 }
 
 void FighterSystem::update()
 {
 	if(active_){
-		//Caza se mueve
-		fighterMovement();
-		//Caza recibe input
-		fighterInput();
-		//Caza ataca
-		fighterAttack();
+		if (state_ == 1) {
+			//Caza se mueve
+			fighterMovement(trSolo, saosSolo, daSolo);
+			//Caza recibe input
+			fighterInput(trSolo, fcSolo);
+			//Caza ataca
+			fighterAttack(trSolo, gSolo);
+		}
+		else if (state_ == 2) {
+			//Caza friend se mueve
+			fighterMovement(trFriend, saosFriend, daFriend);
+			//Caza friend recibe input
+			fighterInput(trFriend, fcFriend);
+			//Caza  friend ataca
+			onlineFighterAttack(trFriend, gFriend);
+		}
 	}
 
 }
-void FighterSystem::fighterMovement()
+void FighterSystem::fighterMovement(Transform* tr, ShowAtOpposideSide* saos, DeAcceleration* da)
 {
 	//Actualización del transform
 	tr->getPos() = tr->getPos() + tr->getDir();
@@ -79,7 +115,7 @@ void FighterSystem::fighterMovement()
 		tr->getDir().set(Vector2D(0, 0));
 	}
 }
-void FighterSystem::fighterInput()
+void FighterSystem::fighterInput(Transform* tr, FighterCtrl *fc)
 {
 	//Control del caza con input del jugador
 	if (InputHandler::instance()->isKeyDown(SDLK_w)) {
@@ -100,14 +136,43 @@ void FighterSystem::fighterInput()
 		man->send(m);
 	}
 }
-void FighterSystem::fighterAttack()
+
+void FighterSystem::fighterAttack(Transform* tr, Gun* g)
+{
+	//Disparo
+	if (InputHandler::instance()->isKeyDown(SDLK_s) && g->getClock()->currTime() > 250) {
+#ifdef _DEBUG
+		std::cout << "Bala" << std::endl;
+#endif
+		Vector2D bulletP = tr->getPos() + Vector2D(trSolo->getW() / 2.0f, tr->getH() / 2.0f)
+			- Vector2D(0.0f, tr->getH() / 2.0f + 5.0f + 12.0f).rotate(tr->getRot())
+			- Vector2D(2.0f, 10.0f);
+#ifdef SDLUTILS
+		Vector2D bulletV = Vector2D(0.0f, -1.0f).rotate(tr->getRot()) * 15;
+#else
+		Vector2D bulletV = Vector2D(0.0f, -1.0f).rotate(tr->getRot()) * 0.09f;
+#endif
+		Message m;
+		m.id = _m_BULLET_SHOT;
+		m.shot_bullet_data.pos = bulletP;
+		m.shot_bullet_data.vel = bulletV;
+		m.shot_bullet_data.width = 5;
+		m.shot_bullet_data.height = 20;
+		m.shot_bullet_data.rot = tr->getRot();
+		man->getSystem<BulletSystem>()->receive(m);
+		g->getSound()->play();
+		g->getClock()->reset();
+	}
+}
+
+void FighterSystem::onlineFighterAttack(Transform* tr, Gun* g)
 {
 	//Disparo
 	if (InputHandler::instance()->isKeyDown(SDLK_s) && g->getClock()->currTime() > 250) {
 	#ifdef _DEBUG
 		std::cout << "Bala" << std::endl;
 	#endif
-		Vector2D bulletP = tr->getPos() + Vector2D(tr->getW() / 2.0f, tr->getH() / 2.0f)
+		Vector2D bulletP = tr->getPos() + Vector2D(trSolo->getW() / 2.0f, tr->getH() / 2.0f)
 			- Vector2D(0.0f, tr->getH() / 2.0f + 5.0f + 12.0f).rotate(tr->getRot())
 			- Vector2D(2.0f, 10.0f);
 	#ifdef SDLUTILS
@@ -123,16 +188,23 @@ void FighterSystem::fighterAttack()
 		m.shot_bullet_data.height = 20;
 		m.shot_bullet_data.rot = tr->getRot();
 		man->getSystem<BulletSystem>()->receive(m);
+		man->getSystem<OnlineSystem>()->receive(m);
 		g->getSound()->play();
 		g->getClock()->reset();
 	}
 }
-//Asteroide choca contra fighter
+void FighterSystem::onMove_Enemy(Vector2D pos, Vector2D dir, float rot)
+{
+	trEnemy->setPos(pos);
+	trEnemy->setDir(dir);
+	trEnemy->setRot(rot);
+}
+//Asteroide choca contra fighterSolo
 
 void FighterSystem::onCollision_FighterAsteroid()
 {
-	//Health* h = man->getComponent<Health>(fighter);
-	Transform* tr = man->getComponent<Transform>(fighter);
+	//Health* h = man->getComponent<Health>(fighterSolo);
+	Transform* tr = man->getComponent<Transform>(fighterSolo);
 	hitSound->play(0, 1);
 	tr->setPos(Vector2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
 	tr->resetDir();
@@ -148,13 +220,30 @@ void FighterSystem::onCollision_FighterAsteroid()
 	}*/
 
 }
+void FighterSystem::onCollision_FighterBullet()
+{
+	for(auto nave: man->getEntities(ecs::_grp_COOP_FIGHTERS)){
+		Transform* tr = man->getComponent<Transform>(nave);
+		hitSound->play(0, 1);
+		tr->setPos(Vector2D(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+		tr->resetDir();
+		tr->setRot(0);
+	}
+}
+void FighterSystem::onOnline()
+{
+	state_ = 2;
+	active_ = true;
+}
 //Fin juego o pausa
 void FighterSystem::onRoundOver()
 {
+	state_ = 0;
 	active_ = false;
 }
 //Inicio de juego o salida de pausa
 void FighterSystem::onRoundStart()
 {
+	state_ = 1;
 	active_ = true;
 }
