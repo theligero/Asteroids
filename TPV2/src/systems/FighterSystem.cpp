@@ -29,6 +29,7 @@ void FighterSystem::receive(const Message& m)
 		break;
 	case _m_MOVE_ENEMY:
 		onMove_Enemy(m.move_enemy_data.enemyPos, m.move_enemy_data.enemyDir, m.move_enemy_data.enemyRot);
+		break;
 	case _m_IS_GUEST:
 		onOnline(false);
 		break;
@@ -195,9 +196,11 @@ void FighterSystem::onlineFighterAttack(Transform* tr, Gun* g)
 }
 void FighterSystem::onMove_Enemy(Vector2D pos, Vector2D dir, float rot)
 {
-	trEnemy->setPos(pos);
-	trEnemy->setDir(dir);
-	trEnemy->setRot(rot);
+	if(active_){
+		trEnemy->setPos(pos);
+		trEnemy->setDir(dir);
+		trEnemy->setRot(rot);
+	}
 }
 //Asteroide choca contra fighterSolo
 
@@ -235,22 +238,16 @@ void FighterSystem::onOnline(bool host)
 	host_ = host;
 
 	if (host) {
+		//Derecha
 		trFriend->setPos(Vector2D(0, 300));
 		trFriend->setDir(Vector2D(0, 0));
 		trFriend->setRot(90);
-
-		trEnemy->setPos(Vector2D(765, 300));
-		trEnemy->setDir(Vector2D(0, 0));
-		trEnemy->setRot(270);
 	}
 	else {
+		//Izquierda
 		trFriend->setPos(Vector2D(765, 300));
 		trFriend->setDir(Vector2D(0, 0));
 		trFriend->setRot(270);
-
-		trEnemy->setPos(Vector2D(0, 300));
-		trEnemy->setDir(Vector2D(0, 0));
-		trEnemy->setRot(90);
 	}
 
 	state_ = 2;
