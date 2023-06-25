@@ -129,6 +129,10 @@ void RenderSystem::update()
 			auto tr = man->getComponent<Transform>(e);
 			fighterTex->render(getTrRect(tr), tr->getRot());
 		}
+		for (auto e : man->getEntities(ecs::_grp_BULLETS)) {
+			auto tr = man->getComponent<Transform>(e);
+			bulletTex->render(getTrRect(tr), tr->getRot());
+		}
 		break;
 	default:
 		break;

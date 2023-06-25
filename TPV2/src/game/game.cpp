@@ -85,6 +85,7 @@ void Game::run()
 		collisionSys->update();
 		fighterSys->update();
 		gameCtrlSys->update();
+		onlineSys->update();
 
 		SDL_RenderClear(renderer);
 		renderSys->update();

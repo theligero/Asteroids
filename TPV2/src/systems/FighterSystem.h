@@ -55,7 +55,7 @@ private:
 	void onCollision_FighterBullet();
 
 	//El juego esta en modo online
-	void onOnline();
+	void onOnline(bool host);
 	// Para gestionar el mensaje de que ha acabado una ronda. Desactivar el sistema.
 	void onRoundOver();
 	// Para gestionar el mensaje de que ha empezado una ronda. Activar el sistema.
@@ -64,6 +64,7 @@ private:
 	// onRoundStart, y en update no hacer nada si no está activo)
 	bool active_;
 	int state_ = 0; //0 - SOLO, 1 - COOP
+	bool host;
 
 	Game* game;
 	SoundEffect* hitSound;

@@ -30,10 +30,10 @@ void FighterSystem::receive(const Message& m)
 	case _m_MOVE_ENEMY:
 		onMove_Enemy(m.move_enemy_data.enemyPos, m.move_enemy_data.enemyDir, m.move_enemy_data.enemyRot);
 	case _m_IS_GUEST:
-		onOnline();
+		onOnline(false);
 		break;
 	case _m_IS_HOST:
-		onOnline();
+		onOnline(true);
 		break;
 	case _m_MAIN_MENU:
 		onRoundOver();
@@ -66,7 +66,15 @@ void FighterSystem::initSystem()
 	daFriend = man->addComponent<DeAcceleration>(friendCoop);
 
 	enemyCoop = man->addEntity(_grp_COOP_FIGHTERS);
-	trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(400, 300), Vector2D(0, 0), 35, 30, 0);
+
+	if(host){
+		trFriend = man->addComponent<Transform>(friendCoop, Vector2D(0, 300), Vector2D(0, 0), 35, 30, 0);
+		trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(765, 300), Vector2D(0, 0), 35, 30, 0);
+	}
+	else {
+		trFriend = man->addComponent<Transform>(friendCoop, Vector2D(765, 300), Vector2D(0, 0), 35, 30, 0);
+		trEnemy = man->addComponent<Transform>(enemyCoop, Vector2D(0, 300), Vector2D(0, 0), 35, 30, 0);
+	}
 }
 
 void FighterSystem::update()
@@ -230,7 +238,7 @@ void FighterSystem::onCollision_FighterBullet()
 		tr->setRot(0);
 	}
 }
-void FighterSystem::onOnline()
+void FighterSystem::onOnline(bool host)
 {
 	state_ = 2;
 	active_ = true;
