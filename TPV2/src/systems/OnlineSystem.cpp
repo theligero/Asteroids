@@ -114,17 +114,19 @@ void OnlineSystem::update()
 
 void OnlineSystem::onRoundOver()
 {
-	active_ = false;
-	if (host) {
-		SDLNet_TCP_Close(masterSocket);
-		SDLNet_TCP_DelSocket(socketSet, masterSocket);
-		masterSocket = nullptr;
-	}
+	if(active_){
+		active_ = false;
+		if (host) {
+			SDLNet_TCP_Close(masterSocket);
+			SDLNet_TCP_DelSocket(socketSet, masterSocket);
+			masterSocket = nullptr;
+		}
 
-	for (int i = 0; i < NUM_SOCKETS; i++) {
-		SDLNet_TCP_Close(socket[i]);
-		SDLNet_TCP_DelSocket(socketSet, socket[i]);
-		socket[i] = nullptr;
+		for (int i = 0; i < NUM_SOCKETS; i++) {
+			SDLNet_TCP_Close(socket[i]);
+			SDLNet_TCP_DelSocket(socketSet, socket[i]);
+			socket[i] = nullptr;
+		}
 	}
 }
 
