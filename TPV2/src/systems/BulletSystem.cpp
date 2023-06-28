@@ -17,6 +17,7 @@ void BulletSystem::receive(const Message& m)
 		break;
 	case _m_MAIN_MENU:
 		onOnlineOver();
+		break;
 	case _m_PAUSE_GAME:
 		onRoundOver(m.end_game_data.pause);
 		break;

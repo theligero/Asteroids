@@ -15,7 +15,6 @@ void OnlineSystem::receive(const Message& m)
 	case _m_IS_GUEST:
 		onGuest();
 		break;
-		break;
 	case _m_MAIN_MENU:
 		onRoundOver();
 		break;
@@ -138,9 +137,9 @@ void OnlineSystem::onHost()
 	char buffer[256];
 	int result = 0;
 
-	if (SDLNet_ResolveHost(&ip, nullptr, 1234) < 0) { std::cout << "error\n"; }
+	if (SDLNet_ResolveHost(&ip, nullptr, 1234) < 0) { std::cout << "error resolver\n"; }
 	masterSocket = SDLNet_TCP_Open(&ip);
-	if (!masterSocket) { std::cout << "error\n"; }
+	if (!masterSocket) { std::cout << "error no hay socket\n"; }
 	socketSet = SDLNet_AllocSocketSet(NUM_SOCKETS + 1);
 	SDLNet_TCP_AddSocket(socketSet, masterSocket);
 	for (int i = 0; i < NUM_SOCKETS; i++) { socket[i] = nullptr; }

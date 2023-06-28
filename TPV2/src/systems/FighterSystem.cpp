@@ -38,7 +38,7 @@ void FighterSystem::receive(const Message& m)
 		break;
 	case _m_MAIN_MENU:
 		onRoundOver();
-			break;
+		break;
 	default:
 		break;
 	}

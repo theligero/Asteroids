@@ -11,6 +11,7 @@ void CollisionsSystem::receive(const Message& m)
 	switch (m.id) {
 	case _m_MAIN_MENU:
 		onRoundOver();
+		break;
 	case _m_IS_GUEST:
 		onOnline();
 		break;
